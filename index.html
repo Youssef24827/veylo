@@ -482,7 +482,7 @@
     © 2026 Veylo — Discover. Save. Build.
   </footer>
 
-  <script>
+<script>
   const hearts = document.querySelectorAll(".heart");
 
   hearts.forEach(heart => {
@@ -499,13 +499,16 @@
     });
   });
 
+
   const saveButtons = document.querySelectorAll(".save");
   const spaceBox = document.querySelector(".space-box");
 
   saveButtons.forEach(button => {
+
     button.addEventListener("click", () => {
 
       const product = button.closest(".product");
+
       const name = product.querySelector("h2").textContent;
       const price = product.querySelector(".price").textContent;
       const image = product.querySelector(".product-image").textContent;
@@ -514,14 +517,27 @@
       button.style.background = "#e8e8e5";
       button.style.color = "#111";
 
-      spaceBox.innerHTML = `
-        <div style="display:flex;align-items:center;gap:20px;width:100%;">
-          <div style="font-size:55px;">
+      const savedProduct = document.createElement("div");
+
+      savedProduct.style.display = "flex";
+      savedProduct.style.alignItems = "center";
+      savedProduct.style.justifyContent = "space-between";
+      savedProduct.style.gap = "20px";
+      savedProduct.style.width = "100%";
+      savedProduct.style.padding = "15px";
+      savedProduct.style.marginBottom = "12px";
+      savedProduct.style.background = "#1b1b1b";
+      savedProduct.style.borderRadius = "16px";
+
+      savedProduct.innerHTML = `
+        <div style="display:flex;align-items:center;gap:18px;">
+          
+          <div style="font-size:50px;">
             ${image}
           </div>
 
           <div>
-            <strong style="font-size:18px;">
+            <strong style="font-size:17px;">
               ${name}
             </strong>
 
@@ -529,15 +545,46 @@
               ${price}
             </div>
           </div>
+
         </div>
+
+        <button class="remove-product">
+          Remove
+        </button>
       `;
 
+      spaceBox.appendChild(savedProduct);
+
+
+      const removeButton = savedProduct.querySelector(".remove-product");
+
+      removeButton.style.border = "none";
+      removeButton.style.background = "#333";
+      removeButton.style.color = "white";
+      removeButton.style.padding = "9px 13px";
+      removeButton.style.borderRadius = "9px";
+      removeButton.style.cursor = "pointer";
+
+
+      removeButton.addEventListener("click", () => {
+
+        savedProduct.remove();
+
+        button.textContent = "＋ Save";
+        button.style.background = "#111";
+        button.style.color = "white";
+
+      });
+
     });
+
   });
+
 
   const categories = document.querySelectorAll(".category");
 
   categories.forEach(category => {
+
     category.addEventListener("click", () => {
 
       categories.forEach(item => {
@@ -547,8 +594,9 @@
       category.classList.add("active");
 
     });
+
   });
-  </script>
+</script>
 
 </body>
 </html>
