@@ -397,5 +397,21 @@
 
   </main>
 
-</body>
+</body><script>
+  const hearts = document.querySelectorAll(".heart");
+
+  hearts.forEach(heart => {
+    heart.addEventListener("click", () => {
+      if (heart.textContent === "♡") {
+        heart.textContent = "♥";
+        heart.style.background = "#111";
+        heart.style.color = "white";
+      } else {
+        heart.textContent = "♡";
+        heart.style.background = "white";
+        heart.style.color = "#111";
+      }
+    });
+  });
+</script>
 </html>
