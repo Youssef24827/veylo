@@ -72,6 +72,9 @@
       font-size: 15px;
     }
 
+
+    /* HERO */
+
     .hero {
       max-width: 1400px;
       margin: auto;
@@ -102,10 +105,14 @@
       line-height: 1.6;
     }
 
+
+    /* SEARCH */
+
     .search {
       max-width: 1400px;
       margin: 10px auto 0;
       padding: 0 40px 25px;
+      position: relative;
     }
 
     .search-box {
@@ -121,6 +128,15 @@
     .search-box:focus {
       border-color: #111;
     }
+
+    .search-hint {
+      margin-top: 10px;
+      color: #999;
+      font-size: 12px;
+    }
+
+
+    /* CATEGORIES */
 
     .categories {
       max-width: 1400px;
@@ -148,6 +164,9 @@
       border-color: #111;
     }
 
+
+    /* FEED */
+
     .feed {
       max-width: 1400px;
       margin: auto;
@@ -173,11 +192,8 @@
 
     .product-image {
       height: 330px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #e9e9e6;
       overflow: hidden;
+      background: #e9e9e6;
     }
 
     .product-image img {
@@ -254,6 +270,33 @@
       background: #333;
     }
 
+
+    /* NO RESULTS */
+
+    .no-results {
+      display: none;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px 80px;
+    }
+
+    .no-results-box {
+      background: white;
+      border-radius: 22px;
+      padding: 50px 30px;
+      text-align: center;
+    }
+
+    .no-results-box h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .no-results-box p {
+      color: #888;
+    }
+
+
     /* MODAL */
 
     .product-modal {
@@ -305,12 +348,10 @@
       background: white;
       font-size: 26px;
       cursor: pointer;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     }
 
     .modal-image {
       height: 520px;
-      background: #e9e9e6;
     }
 
     .modal-image img {
@@ -361,15 +402,8 @@
       padding: 15px;
       border-radius: 13px;
       font-weight: 700;
-      font-size: 14px;
       cursor: pointer;
     }
-
-    .better-button:hover {
-      background: #333;
-    }
-
-    /* ALTERNATIVES */
 
     .better-results {
       margin-top: 25px;
@@ -428,6 +462,7 @@
       border-radius: 999px;
     }
 
+
     /* INSPIRATION */
 
     .inspiration {
@@ -454,7 +489,6 @@
     .inspiration-header p {
       color: #888;
       margin-top: 12px;
-      font-size: 16px;
     }
 
     .inspiration-grid {
@@ -468,12 +502,6 @@
       background: white;
       border-radius: 24px;
       overflow: hidden;
-      transition: 0.25s ease;
-    }
-
-    .inspiration-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 45px rgba(0,0,0,0.08);
     }
 
     .inspiration-card.large {
@@ -491,7 +519,6 @@
 
     .inspiration-card.large .inspiration-image {
       height: 520px;
-      font-size: 120px;
     }
 
     .inspiration-info {
@@ -510,6 +537,7 @@
       margin-top: 8px;
       font-size: 20px;
     }
+
 
     /* MY SPACE */
 
@@ -539,7 +567,6 @@
     .my-space p {
       color: #aaa;
       margin-top: 12px;
-      font-size: 16px;
     }
 
     .space-box {
@@ -603,9 +630,6 @@
       cursor: pointer;
     }
 
-    .remove-product:hover {
-      background: #444;
-    }
 
     footer {
       text-align: center;
@@ -613,6 +637,9 @@
       color: #999;
       font-size: 13px;
     }
+
+
+    /* RESPONSIVE */
 
     @media (max-width: 1000px) {
 
@@ -625,12 +652,8 @@
       }
 
       .inspiration-card.large {
-        grid-row: auto;
         grid-column: span 2;
-      }
-
-      .inspiration-card.large .inspiration-image {
-        height: 350px;
+        grid-row: auto;
       }
 
       .product-modal-content {
@@ -641,11 +664,8 @@
         height: 350px;
       }
 
-      .modal-info {
-        padding: 35px;
-      }
-
     }
+
 
     @media (max-width: 650px) {
 
@@ -659,10 +679,6 @@
 
       .hero {
         padding: 50px 20px 25px;
-      }
-
-      .hero h1 {
-        letter-spacing: -2px;
       }
 
       .search,
@@ -692,44 +708,14 @@
         grid-column: auto;
       }
 
-      .inspiration-card.large .inspiration-image {
-        height: 300px;
-      }
-
       .my-space {
         margin-left: 20px;
         margin-right: 20px;
         padding: 45px 25px;
       }
 
-      .saved-product {
-        align-items: flex-start;
-      }
-
-      .saved-left {
-        gap: 10px;
-      }
-
-      .saved-image {
-        width: 55px;
-        height: 55px;
-      }
-
-      .saved-name {
-        font-size: 14px;
-      }
-
       .product-modal {
         padding: 12px;
-      }
-
-      .product-modal-content {
-        max-height: 95vh;
-        border-radius: 22px;
-      }
-
-      .modal-image {
-        height: 280px;
       }
 
       .modal-info {
@@ -745,7 +731,11 @@
   </style>
 </head>
 
+
 <body>
+
+
+  <!-- NAV -->
 
   <nav>
 
@@ -776,6 +766,8 @@
   </nav>
 
 
+  <!-- HERO -->
+
   <section class="hero">
 
     <small>
@@ -793,16 +785,25 @@
   </section>
 
 
+  <!-- SEARCH -->
+
   <div class="search">
 
     <input
       class="search-box"
+      id="search-box"
       type="text"
       placeholder="Search products, styles, ideas..."
     >
 
+    <div class="search-hint">
+      Try “chair”, “lamp”, “minimal”, “beige”, “setup”...
+    </div>
+
   </div>
 
+
+  <!-- CATEGORIES -->
 
   <div class="categories">
 
@@ -825,7 +826,12 @@
   </div>
 
 
-  <main class="feed">
+  <!-- PRODUCTS -->
+
+  <main
+    class="feed"
+    id="product-feed"
+  >
 
 
     <!-- CHAIR -->
@@ -833,6 +839,7 @@
     <article
       class="product"
       data-product="chair"
+      data-search="chair chaise minimal beige furniture meuble calme clean design"
     >
 
       <button class="heart">
@@ -884,6 +891,7 @@
     <article
       class="product"
       data-product="lamp"
+      data-search="lamp lampe lighting lumière orbit soft minimal beige"
     >
 
       <button class="heart">
@@ -935,6 +943,7 @@
     <article
       class="product"
       data-product="display"
+      data-search="display écran monitor screen setup bureau work studio clean minimal"
     >
 
       <button class="heart">
@@ -986,6 +995,7 @@
     <article
       class="product"
       data-product="sofa"
+      data-search="sofa canapé cloud furniture meuble confort beige living salon soft minimal"
     >
 
       <button class="heart">
@@ -1031,10 +1041,33 @@
 
     </article>
 
+
   </main>
 
 
-  <!-- PRODUCT MODAL -->
+  <!-- NO RESULTS -->
+
+  <section
+    class="no-results"
+    id="no-results"
+  >
+
+    <div class="no-results-box">
+
+      <h2>
+        Nothing found.
+      </h2>
+
+      <p>
+        Try another product, style or category.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- MODAL -->
 
   <div
     class="product-modal"
@@ -1050,7 +1083,6 @@
         ×
       </button>
 
-
       <div class="modal-image">
 
         <img
@@ -1060,7 +1092,6 @@
         >
 
       </div>
-
 
       <div class="modal-info">
 
@@ -1081,14 +1112,12 @@
           id="modal-price"
         ></div>
 
-
         <button
           class="better-button"
           id="better-button"
         >
           Find me better
         </button>
-
 
         <div
           class="better-results"
@@ -1133,7 +1162,6 @@
 
     </div>
 
-
     <div class="inspiration-grid">
 
       <div class="inspiration-card large">
@@ -1156,7 +1184,6 @@
 
       </div>
 
-
       <div class="inspiration-card">
 
         <div class="inspiration-image">
@@ -1177,7 +1204,6 @@
 
       </div>
 
-
       <div class="inspiration-card">
 
         <div class="inspiration-image">
@@ -1197,7 +1223,6 @@
         </div>
 
       </div>
-
 
       <div class="inspiration-card">
 
@@ -1261,8 +1286,194 @@
 
   <script>
 
+
     /* =========================
-       PRODUCT DATA
+       ELEMENTS
+    ========================= */
+
+    const products =
+      document.querySelectorAll(".product");
+
+    const searchBox =
+      document.querySelector("#search-box");
+
+    const noResults =
+      document.querySelector("#no-results");
+
+    const categories =
+      document.querySelectorAll(".category");
+
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    function performSearch() {
+
+      const query =
+        searchBox.value
+          .toLowerCase()
+          .trim();
+
+
+      let visibleProducts = 0;
+
+
+      products.forEach(product => {
+
+        const searchableText =
+          product.dataset.search
+            .toLowerCase();
+
+
+        const productCategory =
+          product
+            .querySelector(".tag")
+            .textContent
+            .toLowerCase()
+            .trim();
+
+
+        const matchesSearch =
+          query === "" ||
+          searchableText.includes(query);
+
+
+        const activeCategory =
+          document
+            .querySelector(".category.active")
+            .textContent
+            .toLowerCase()
+            .trim();
+
+
+        const matchesCategory =
+          activeCategory === "all" ||
+          productCategory === activeCategory;
+
+
+        if (
+          matchesSearch &&
+          matchesCategory
+        ) {
+
+          product.style.display = "";
+
+          visibleProducts++;
+
+        } else {
+
+          product.style.display = "none";
+
+        }
+
+      });
+
+
+      if (
+        visibleProducts === 0
+      ) {
+
+        noResults.style.display =
+          "block";
+
+      } else {
+
+        noResults.style.display =
+          "none";
+
+      }
+
+    }
+
+
+    searchBox.addEventListener(
+      "input",
+      performSearch
+    );
+
+
+    /* =========================
+       CATEGORIES
+    ========================= */
+
+    categories.forEach(category => {
+
+      category.addEventListener(
+        "click",
+        () => {
+
+          categories.forEach(item => {
+
+            item.classList.remove(
+              "active"
+            );
+
+          });
+
+
+          category.classList.add(
+            "active"
+          );
+
+
+          performSearch();
+
+        }
+      );
+
+    });
+
+
+    /* =========================
+       HEARTS
+    ========================= */
+
+    const hearts =
+      document.querySelectorAll(".heart");
+
+
+    hearts.forEach(heart => {
+
+      heart.addEventListener(
+        "click",
+        event => {
+
+          event.stopPropagation();
+
+
+          if (
+            heart.textContent.trim() === "♡"
+          ) {
+
+            heart.textContent = "♥";
+
+            heart.style.background =
+              "#111";
+
+            heart.style.color =
+              "white";
+
+          } else {
+
+            heart.textContent = "♡";
+
+            heart.style.background =
+              "white";
+
+            heart.style.color =
+              "#111";
+
+          }
+
+        }
+      );
+
+    });
+
+
+    /* =========================
+       ALTERNATIVES
     ========================= */
 
     const alternatives = {
@@ -1285,7 +1496,6 @@
 
       ],
 
-
       lamp: [
 
         {
@@ -1304,7 +1514,6 @@
 
       ],
 
-
       display: [
 
         {
@@ -1322,7 +1531,6 @@
         }
 
       ],
-
 
       sofa: [
 
@@ -1343,87 +1551,6 @@
       ]
 
     };
-
-
-    /* =========================
-       PRODUCTS
-    ========================= */
-
-    const products =
-      document.querySelectorAll(".product");
-
-
-    /* =========================
-       HEARTS
-    ========================= */
-
-    const hearts =
-      document.querySelectorAll(".heart");
-
-
-    hearts.forEach(heart => {
-
-      heart.addEventListener("click", event => {
-
-        event.stopPropagation();
-
-
-        if (
-          heart.textContent.trim() === "♡"
-        ) {
-
-          heart.textContent = "♥";
-
-          heart.style.background = "#111";
-
-          heart.style.color = "white";
-
-        } else {
-
-          heart.textContent = "♡";
-
-          heart.style.background = "white";
-
-          heart.style.color = "#111";
-
-        }
-
-      });
-
-    });
-
-
-    /* =========================
-       SEARCH
-    ========================= */
-
-    const searchBox =
-      document.querySelector(".search-box");
-
-
-    searchBox.addEventListener("input", () => {
-
-      const search =
-        searchBox.value
-          .toLowerCase()
-          .trim();
-
-
-      products.forEach(product => {
-
-        const text =
-          product.textContent
-            .toLowerCase();
-
-
-        product.style.display =
-          text.includes(search)
-            ? ""
-            : "none";
-
-      });
-
-    });
 
 
     /* =========================
@@ -1461,118 +1588,99 @@
       document.querySelector("#alternatives-list");
 
 
-    let currentProduct =
-      null;
+    let currentProduct = null;
 
-
-    /* =========================
-       OPEN PRODUCT
-    ========================= */
 
     products.forEach(product => {
 
-      product.addEventListener("click", event => {
+      product.addEventListener(
+        "click",
+        event => {
+
+          if (
+            event.target.closest(".save") ||
+            event.target.closest(".heart")
+          ) {
+            return;
+          }
 
 
-        if (
-          event.target.closest(".save") ||
-          event.target.closest(".heart")
-        ) {
-          return;
+          currentProduct =
+            product.dataset.product;
+
+
+          modalImage.src =
+            product
+              .querySelector(".product-image img")
+              .src;
+
+
+          modalImage.alt =
+            product
+              .querySelector("h2")
+              .textContent
+              .trim();
+
+
+          modalTag.textContent =
+            product
+              .querySelector(".tag")
+              .textContent
+              .trim();
+
+
+          modalName.textContent =
+            product
+              .querySelector("h2")
+              .textContent
+              .trim();
+
+
+          modalDescription.textContent =
+            product
+              .querySelector(".description")
+              .textContent
+              .trim();
+
+
+          modalPrice.textContent =
+            product
+              .querySelector(".price")
+              .textContent
+              .trim();
+
+
+          alternativesList.innerHTML =
+            "";
+
+
+          betterResults.classList.remove(
+            "active"
+          );
+
+
+          betterButton.textContent =
+            "Find me better";
+
+
+          productModal.classList.add(
+            "active"
+          );
+
         }
-
-
-        currentProduct =
-          product.dataset.product;
-
-
-        const image =
-          product
-            .querySelector(".product-image img")
-            .src;
-
-
-        const tag =
-          product
-            .querySelector(".tag")
-            .textContent
-            .trim();
-
-
-        const name =
-          product
-            .querySelector("h2")
-            .textContent
-            .trim();
-
-
-        const description =
-          product
-            .querySelector(".description")
-            .textContent
-            .trim();
-
-
-        const price =
-          product
-            .querySelector(".price")
-            .textContent
-            .trim();
-
-
-        modalImage.src =
-          image;
-
-
-        modalImage.alt =
-          name;
-
-
-        modalTag.textContent =
-          tag;
-
-
-        modalName.textContent =
-          name;
-
-
-        modalDescription.textContent =
-          description;
-
-
-        modalPrice.textContent =
-          price;
-
-
-        alternativesList.innerHTML =
-          "";
-
-
-        betterResults.classList.remove(
-          "active"
-        );
-
-
-        betterButton.textContent =
-          "Find me better";
-
-
-        productModal.classList.add(
-          "active"
-        );
-
-      });
+      );
 
     });
 
 
-    /* =========================
-       FIND ME BETTER
-    ========================= */
+    /* FIND ME BETTER */
 
     betterButton.addEventListener(
       "click",
       () => {
+
+        const results =
+          alternatives[currentProduct];
 
 
         if (
@@ -1593,16 +1701,11 @@
         }
 
 
-        const results =
-          alternatives[currentProduct];
-
-
         alternativesList.innerHTML =
           "";
 
 
         results.forEach(item => {
-
 
           const alternative =
             document.createElement("div");
@@ -1657,9 +1760,7 @@
     );
 
 
-    /* =========================
-       CLOSE MODAL
-    ========================= */
+    /* CLOSE MODAL */
 
     modalClose.addEventListener(
       "click",
@@ -1716,18 +1817,15 @@
     const saveButtons =
       document.querySelectorAll(".save");
 
-
     const spaceBox =
       document.querySelector(".space-box");
 
 
     saveButtons.forEach(button => {
 
-
       button.addEventListener(
         "click",
         event => {
-
 
           event.stopPropagation();
 
@@ -1847,7 +1945,6 @@
             "click",
             () => {
 
-
               savedProduct.remove();
 
 
@@ -1883,83 +1980,6 @@
 
             }
           );
-
-
-        }
-
-      );
-
-    });
-
-
-    /* =========================
-       CATEGORIES
-    ========================= */
-
-    const categories =
-      document.querySelectorAll(
-        ".category"
-      );
-
-
-    categories.forEach(category => {
-
-
-      category.addEventListener(
-        "click",
-        () => {
-
-
-          categories.forEach(item => {
-
-            item.classList.remove(
-              "active"
-            );
-
-          });
-
-
-          category.classList.add(
-            "active"
-          );
-
-
-          const selectedCategory =
-            category.textContent
-              .trim()
-              .toLowerCase();
-
-
-          products.forEach(product => {
-
-
-            const tag =
-              product
-                .querySelector(".tag")
-                .textContent
-                .trim()
-                .toLowerCase();
-
-
-            if (
-              selectedCategory === "all" ||
-              tag === selectedCategory
-            ) {
-
-              product.style.display =
-                "";
-
-            } else {
-
-              product.style.display =
-                "none";
-
-            }
-
-          });
-
-
-          searchBox.value = "";
 
         }
 
