@@ -3,55 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Veylo — Discover your world</title>
 
   <style>
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: #f5f5f2;
       color: #111;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
     }
 
     nav {
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 50;
       height: 72px;
+      background: rgba(245,245,242,.94);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid #e8e8e3;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 40px;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #e8e8e8;
+      padding: 0 5%;
     }
 
     .logo {
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -1.5px;
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -1px;
     }
 
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 28px;
+      align-items: center;
     }
 
     .nav-links a {
       text-decoration: none;
-      color: #777;
+      color: #666;
       font-size: 14px;
       font-weight: 600;
     }
@@ -69,91 +73,86 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 15px;
+      font-weight: 700;
     }
-
-
-    /* HERO */
 
     .hero {
-      max-width: 1400px;
+      padding: 90px 5% 45px;
+      max-width: 1250px;
       margin: auto;
-      padding: 75px 40px 30px;
     }
 
-    .hero small {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 2px;
+    .eyebrow {
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 15px;
+      font-weight: 600;
       text-transform: uppercase;
-      color: #999;
+      letter-spacing: 1px;
     }
 
     .hero h1 {
-      margin-top: 14px;
-      font-size: clamp(40px, 6vw, 76px);
-      line-height: 0.98;
-      letter-spacing: -4px;
-      max-width: 850px;
+      font-size: clamp(44px, 7vw, 78px);
+      line-height: .95;
+      letter-spacing: -5px;
+      max-width: 800px;
+      margin-bottom: 25px;
     }
 
     .hero p {
-      margin-top: 22px;
-      color: #777;
+      color: #666;
+      max-width: 540px;
       font-size: 17px;
-      max-width: 560px;
       line-height: 1.6;
     }
 
-
-    /* SEARCH */
-
-    .search {
-      max-width: 1400px;
-      margin: 10px auto 0;
-      padding: 0 40px 25px;
+    .search-section {
+      max-width: 1250px;
+      margin: auto;
+      padding: 0 5% 35px;
     }
 
     .search-box {
       background: white;
-      border: 1px solid #e7e7e7;
-      border-radius: 16px;
-      padding: 17px 20px;
+      border-radius: 18px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid #e8e8e3;
+    }
+
+    .search-box span {
+      font-size: 19px;
+    }
+
+    .search-box input {
       width: 100%;
-      font-size: 15px;
+      border: none;
       outline: none;
+      font-size: 15px;
+      background: transparent;
     }
-
-    .search-box:focus {
-      border-color: #111;
-    }
-
-    .search-hint {
-      margin-top: 10px;
-      color: #999;
-      font-size: 12px;
-    }
-
-
-    /* CATEGORIES */
 
     .categories {
-      max-width: 1400px;
+      max-width: 1250px;
       margin: auto;
-      padding: 0 40px 20px;
+      padding: 0 5% 35px;
       display: flex;
       gap: 10px;
       overflow-x: auto;
     }
 
     .category {
-      border: 1px solid #ddd;
+      border: none;
       background: white;
-      border-radius: 999px;
-      padding: 10px 16px;
-      font-size: 13px;
+      border: 1px solid #e8e8e3;
+      padding: 11px 18px;
+      border-radius: 50px;
       white-space: nowrap;
-      cursor: pointer;
+      font-size: 13px;
+      color: #555;
+      transition: .2s;
     }
 
     .category:hover,
@@ -163,47 +162,64 @@
       border-color: #111;
     }
 
-
-    /* FEED */
-
-    .feed {
-      max-width: 1400px;
+    .section {
+      max-width: 1250px;
       margin: auto;
-      padding: 20px 40px 80px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      padding: 20px 5% 80px;
     }
 
-    .product {
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .section-header h2 {
+      font-size: 27px;
+      letter-spacing: -1px;
+    }
+
+    .section-header span {
+      color: #888;
+      font-size: 13px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .product-card {
       background: white;
       border-radius: 22px;
       overflow: hidden;
+      border: 1px solid #e9e9e5;
+      transition: transform .25s, box-shadow .25s;
       position: relative;
-      transition: 0.25s ease;
-      cursor: pointer;
     }
 
-    .product:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 45px rgba(0,0,0,0.09);
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,.07);
     }
 
     .product-image {
-      height: 330px;
+      height: 280px;
+      position: relative;
       overflow: hidden;
-      background: #e9e9e6;
+      background: #eee;
     }
 
     .product-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      transition: 0.4s ease;
+      transition: transform .4s;
     }
 
-    .product:hover .product-image img {
+    .product-card:hover .product-image img {
       transform: scale(1.04);
     }
 
@@ -211,248 +227,338 @@
       position: absolute;
       top: 14px;
       right: 14px;
-      width: 40px;
-      height: 40px;
-      border: none;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      background: white;
+      border: none;
+      background: rgba(255,255,255,.92);
       font-size: 18px;
-      cursor: pointer;
-      z-index: 3;
+      z-index: 2;
+    }
+
+    .heart.saved {
+      color: #e63946;
     }
 
     .product-info {
-      padding: 20px;
+      padding: 18px;
     }
 
-    .tag {
-      color: #999;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+    .product-info h3 {
+      font-size: 16px;
+      margin-bottom: 7px;
     }
 
-    .product h2 {
-      font-size: 19px;
-      margin: 9px 0;
-    }
-
-    .description {
-      color: #888;
+    .product-info p {
       font-size: 13px;
-      margin-bottom: 14px;
+      color: #777;
+      margin-bottom: 15px;
     }
 
-    .bottom {
+    .product-bottom {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 8px;
     }
 
     .price {
-      font-weight: 800;
-      font-size: 17px;
+      font-weight: 700;
+      font-size: 15px;
     }
 
-    .product-actions {
+    .actions {
       display: flex;
       gap: 6px;
     }
 
-    .save,
-    .collection-button {
+    .save-btn,
+    .collection-btn {
       border: none;
-      border-radius: 10px;
-      padding: 10px 11px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 12px;
-    }
-
-    .save {
       background: #111;
       color: white;
+      padding: 9px 11px;
+      border-radius: 10px;
+      font-size: 11px;
     }
 
-    .save:hover {
-      background: #333;
-    }
-
-    .collection-button {
-      background: #eeeeeb;
+    .collection-btn {
+      background: #f0f0ed;
       color: #111;
     }
 
-    .collection-button:hover {
-      background: #ddd;
-    }
-
-
-    /* NO RESULTS */
-
-    .no-results {
-      display: none;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 20px 40px 80px;
-    }
-
-    .no-results-box {
+    .empty {
       background: white;
-      border-radius: 22px;
-      padding: 50px 30px;
+      border: 1px dashed #d7d7d1;
+      border-radius: 20px;
+      padding: 45px;
       text-align: center;
+      color: #777;
     }
 
-    .no-results-box h2 {
-      font-size: 28px;
-      margin-bottom: 10px;
+    #my-space {
+      padding-top: 20px;
     }
 
-    .no-results-box p {
-      color: #888;
-    }
-
-
-    /* PRODUCT MODAL */
-
-    .product-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      background: rgba(0,0,0,0.55);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 25px;
-      opacity: 0;
-      pointer-events: none;
-      transition: 0.25s ease;
-    }
-
-    .product-modal.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .product-modal-content {
-      width: min(900px, 100%);
-      max-height: 90vh;
-      overflow-y: auto;
-      background: white;
-      border-radius: 28px;
-      position: relative;
+    .saved-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      overflow: hidden;
-      transform: translateY(20px);
-      transition: 0.25s ease;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
     }
 
-    .product-modal.active .product-modal-content {
-      transform: translateY(0);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      z-index: 5;
-      width: 42px;
-      height: 42px;
-      border: none;
-      border-radius: 50%;
+    .saved-card {
       background: white;
-      font-size: 26px;
-      cursor: pointer;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid #e8e8e3;
     }
 
-    .modal-image {
-      height: 520px;
-    }
-
-    .modal-image img {
+    .saved-card img {
       width: 100%;
-      height: 100%;
+      height: 190px;
       object-fit: cover;
     }
 
-    .modal-info {
-      padding: 55px 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    .saved-card-content {
+      padding: 15px;
     }
 
-    .modal-tag {
-      color: #999;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .saved-card-content h4 {
+      margin-bottom: 8px;
     }
 
-    .modal-info h2 {
-      font-size: 42px;
-      letter-spacing: -2px;
-      margin-top: 12px;
-    }
-
-    .modal-description {
+    .saved-card-content p {
       color: #777;
-      line-height: 1.6;
-      margin-top: 18px;
+      font-size: 13px;
+      margin-bottom: 12px;
     }
 
-    .modal-price {
-      font-size: 25px;
-      font-weight: 800;
-      margin-top: 25px;
+    .remove-btn {
+      width: 100%;
+      border: none;
+      background: #f0f0ed;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 12px;
     }
 
-    .better-button {
-      margin-top: 25px;
+    .collections-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .new-collection {
+      border: none;
+      background: #111;
+      color: white;
+      padding: 11px 17px;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+
+    .collections-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .collection-card {
+      background: white;
+      border-radius: 20px;
+      border: 1px solid #e8e8e3;
+      padding: 20px;
+      transition: .2s;
+    }
+
+    .collection-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.06);
+    }
+
+    .collection-icon {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .collection-card h3 {
+      margin-bottom: 7px;
+      font-size: 17px;
+    }
+
+    .collection-card p {
+      color: #888;
+      font-size: 13px;
+      margin-bottom: 17px;
+    }
+
+    .collection-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .open-collection-btn {
+      flex: 1;
+      border: none;
+      background: #111;
+      color: white;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 12px;
+    }
+
+    .delete-collection-btn {
+      border: none;
+      background: #f0f0ed;
+      border-radius: 10px;
+      padding: 10px 13px;
+      font-size: 12px;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-box {
+      width: min(560px, 100%);
+      background: white;
+      border-radius: 24px;
+      padding: 25px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .modal-header h2 {
+      font-size: 23px;
+      letter-spacing: -1px;
+    }
+
+    .close {
+      border: none;
+      background: #f1f1ee;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      font-size: 18px;
+    }
+
+    .modal-input {
+      width: 100%;
+      border: 1px solid #ddd;
+      padding: 13px;
+      border-radius: 12px;
+      outline: none;
+      margin-bottom: 15px;
+    }
+
+    .modal-main-btn {
       width: 100%;
       border: none;
       background: #111;
       color: white;
-      padding: 15px;
+      padding: 13px;
+      border-radius: 12px;
+    }
+
+    .collection-choice {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f6f6f3;
       border-radius: 13px;
-      font-weight: 700;
+      padding: 14px;
+      margin-bottom: 9px;
       cursor: pointer;
     }
 
-    .better-results {
-      margin-top: 25px;
-      display: none;
+    .collection-choice:hover {
+      background: #ecece8;
     }
 
-    .better-results.active {
-      display: block;
+    .collection-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
     }
 
-    .better-results-title {
+    .collection-product {
+      border: 1px solid #e8e8e3;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .collection-product img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .collection-product-info {
+      padding: 12px;
+    }
+
+    .collection-product-info h4 {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .collection-product-info p {
       font-size: 13px;
-      font-weight: 700;
       color: #777;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+    }
+
+    .collection-remove {
+      width: 100%;
+      border: none;
+      background: #f0f0ed;
+      padding: 9px;
+      border-radius: 9px;
+      font-size: 11px;
+    }
+
+    .collection-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 35px 15px;
+      background: #f6f6f3;
+      border-radius: 15px;
+      color: #777;
+      font-size: 13px;
     }
 
     .alternative {
       display: flex;
-      align-items: center;
       gap: 12px;
-      padding: 10px;
-      background: #f5f5f2;
-      border-radius: 14px;
-      margin-bottom: 8px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid #eee;
+      border-radius: 13px;
+      margin-bottom: 9px;
     }
 
     .alternative img {
-      width: 55px;
-      height: 55px;
+      width: 65px;
+      height: 65px;
       border-radius: 10px;
       object-fit: cover;
     }
@@ -461,1786 +567,920 @@
       flex: 1;
     }
 
-    .alternative-name {
+    .alternative-info h4 {
       font-size: 13px;
-      font-weight: 700;
+      margin-bottom: 5px;
     }
 
-    .alternative-price {
-      margin-top: 5px;
+    .alternative-info p {
       font-size: 12px;
       color: #777;
     }
 
-    .cheaper {
-      font-size: 10px;
-      font-weight: 700;
-      color: #16803c;
-      background: #e4f5e9;
-      padding: 5px 7px;
-      border-radius: 999px;
-    }
-
-
-    /* INSPIRATION */
-
-    .inspiration {
-      max-width: 1400px;
-      margin: 0 auto 80px;
-      padding: 60px 40px;
-    }
-
-    .inspiration-header small {
-      color: #999;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .inspiration-header h2 {
-      font-size: clamp(36px, 5vw, 58px);
-      letter-spacing: -2px;
-      margin-top: 12px;
-      max-width: 750px;
-    }
-
-    .inspiration-header p {
-      color: #888;
-      margin-top: 12px;
-    }
-
-    .inspiration-grid {
-      margin-top: 40px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .inspiration-card {
-      background: white;
-      border-radius: 24px;
-      overflow: hidden;
-      transition: 0.25s ease;
-    }
-
-    .inspiration-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 45px rgba(0,0,0,0.08);
-    }
-
-    .inspiration-card.large {
-      grid-row: span 2;
-    }
-
-    .inspiration-image {
-      height: 250px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 90px;
-      background: #e8e5df;
-    }
-
-    .inspiration-card.large .inspiration-image {
-      height: 520px;
-    }
-
-    .inspiration-info {
-      padding: 20px;
-    }
-
-    .inspiration-info span {
-      color: #999;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    .inspiration-info h3 {
-      margin-top: 8px;
-      font-size: 20px;
-    }
-
-
-    /* MY SPACE */
-
-    .my-space {
-      max-width: 1400px;
-      margin: 0 auto 80px;
-      padding: 60px 40px;
-      background: #111;
-      color: white;
-      border-radius: 28px;
-    }
-
-    .my-space small {
-      color: #999;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .my-space h2 {
-      font-size: clamp(36px, 5vw, 58px);
-      letter-spacing: -2px;
-      margin-top: 12px;
-    }
-
-    .my-space > p {
-      color: #aaa;
-      margin-top: 12px;
-    }
-
-
-    /* COLLECTIONS */
-
-    .collections-header {
-      margin-top: 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .collections-header span {
-      color: #777;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .collections-header h3 {
-      margin-top: 7px;
-      font-size: 25px;
-    }
-
-    #create-collection {
-      border: none;
-      background: white;
-      color: #111;
-      border-radius: 12px;
-      padding: 12px 16px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    #create-collection:hover {
-      background: #e8e8e5;
-    }
-
-    .collections-list {
-      margin-top: 22px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
-
-    .collection-card {
-      background: #1b1b1b;
-      border-radius: 18px;
-      padding: 20px;
-      min-height: 180px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: 0.2s ease;
-    }
-
-    .collection-card:hover {
-      transform: translateY(-4px);
-      background: #202020;
-    }
-
-    .collection-icon {
-      font-size: 30px;
-    }
-
-    .collection-name {
-      font-size: 17px;
-      font-weight: 700;
-    }
-
-    .collection-count {
-      color: #888;
-      font-size: 12px;
-      margin-top: 6px;
-    }
-
-    .collection-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 15px;
-    }
-
-    .collection-action {
-      border: none;
-      background: #303030;
-      color: white;
-      padding: 7px 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 11px;
-    }
-
-    .collection-action:hover {
-      background: #444;
-    }
-
-
-    /* SAVED PRODUCTS */
-
-    .space-box {
-      margin-top: 25px;
-      min-height: 120px;
-      border: 1px dashed #444;
-      border-radius: 18px;
-      padding: 25px;
-      color: #777;
-    }
-
-    .saved-title {
-      color: white;
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 15px;
-    }
-
-    .saved-product {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      width: 100%;
-      padding: 15px;
-      margin-bottom: 12px;
-      background: #1b1b1b;
-      border-radius: 16px;
-      color: white;
-    }
-
-    .saved-left {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .saved-image {
-      width: 70px;
-      height: 70px;
-      border-radius: 12px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    .saved-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .saved-name {
-      font-size: 17px;
-      font-weight: 700;
-    }
-
-    .saved-price {
-      color: #aaa;
-      margin-top: 6px;
-    }
-
-    .remove-product {
-      border: none;
-      background: #333;
-      color: white;
-      padding: 9px 13px;
-      border-radius: 9px;
-      cursor: pointer;
-    }
-
-    .remove-product:hover {
-      background: #444;
-    }
-
-
-    /* COLLECTION MODAL */
-
-    .collection-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 150;
-      background: rgba(0,0,0,0.55);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      opacity: 0;
-      pointer-events: none;
-      transition: 0.25s ease;
-    }
-
-    .collection-modal.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .collection-modal-content {
-      width: min(500px, 100%);
-      background: white;
-      border-radius: 24px;
-      padding: 30px;
-      position: relative;
-      transform: translateY(20px);
-      transition: 0.25s ease;
-    }
-
-    .collection-modal.active .collection-modal-content {
-      transform: translateY(0);
-    }
-
-    .collection-modal-content h2 {
-      font-size: 30px;
-      letter-spacing: -1px;
-    }
-
-    .collection-modal-content p {
-      color: #888;
-      margin-top: 8px;
-      font-size: 14px;
-    }
-
-    .collection-input {
-      width: 100%;
-      margin-top: 22px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 14px;
-      font-size: 15px;
-      outline: none;
-    }
-
-    .collection-input:focus {
-      border-color: #111;
-    }
-
-    .collection-create-button {
-      width: 100%;
-      border: none;
-      background: #111;
-      color: white;
-      padding: 14px;
-      border-radius: 12px;
-      margin-top: 12px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .collection-close {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 38px;
-      height: 38px;
-      border: none;
-      border-radius: 50%;
-      background: #f2f2ef;
-      font-size: 22px;
-      cursor: pointer;
-    }
-
-
-    /* ADD TO COLLECTION MODAL */
-
-    .add-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 160;
-      background: rgba(0,0,0,0.55);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      opacity: 0;
-      pointer-events: none;
-      transition: 0.25s ease;
-    }
-
-    .add-modal.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .add-modal-content {
-      width: min(500px, 100%);
-      background: white;
-      border-radius: 24px;
-      padding: 30px;
-      position: relative;
-    }
-
-    .add-modal-content h2 {
-      font-size: 28px;
-      letter-spacing: -1px;
-    }
-
-    .add-modal-content p {
-      color: #888;
-      font-size: 14px;
-      margin-top: 8px;
-    }
-
-    .add-product-preview {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 20px;
-      padding: 12px;
-      background: #f5f5f2;
-      border-radius: 14px;
-    }
-
-    .add-product-preview img {
-      width: 55px;
-      height: 55px;
-      border-radius: 10px;
-      object-fit: cover;
-    }
-
-    .add-product-preview-name {
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .collection-choice-list {
-      margin-top: 20px;
-      max-height: 280px;
-      overflow-y: auto;
-    }
-
-    .collection-choice {
-      width: 100%;
-      border: none;
-      background: #f5f5f2;
-      padding: 15px;
-      border-radius: 13px;
-      margin-bottom: 8px;
-      text-align: left;
-      cursor: pointer;
-      font-weight: 700;
-    }
-
-    .collection-choice:hover {
-      background: #e8e8e5;
-    }
-
-    .no-collections {
-      color: #888;
-      padding: 15px 0;
-      font-size: 14px;
-    }
-
-    .add-modal-close {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 38px;
-      height: 38px;
-      border: none;
-      border-radius: 50%;
-      background: #f2f2ef;
-      font-size: 22px;
-      cursor: pointer;
-    }
-
-
-    footer {
-      text-align: center;
-      padding: 30px 20px 50px;
-      color: #999;
-      font-size: 13px;
-    }
-
-
-    /* RESPONSIVE */
-
-    @media (max-width: 1000px) {
-
-      .feed {
+    @media (max-width: 900px) {
+      .products-grid,
+      .saved-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .inspiration-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .collections-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .inspiration-card.large {
-        grid-column: span 2;
-        grid-row: auto;
+      .nav-links {
+        gap: 14px;
       }
-
-      .product-modal-content {
-        grid-template-columns: 1fr;
-      }
-
-      .modal-image {
-        height: 350px;
-      }
-
-      .collections-list {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
     }
 
-
-    @media (max-width: 650px) {
-
+    @media (max-width: 600px) {
       nav {
         padding: 0 20px;
       }
 
-      .nav-links {
+      .nav-links a {
         display: none;
       }
 
       .hero {
-        padding: 50px 20px 25px;
+        padding-top: 60px;
       }
 
       .hero h1 {
-        letter-spacing: -2px;
+        letter-spacing: -3px;
       }
 
-      .search,
-      .categories,
-      .feed {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      .feed {
+      .products-grid,
+      .saved-grid,
+      .collections-grid {
         grid-template-columns: 1fr;
       }
 
       .product-image {
-        height: 300px;
+        height: 320px;
       }
 
-      .inspiration {
-        padding: 45px 20px;
-      }
-
-      .inspiration-grid {
+      .collection-detail-grid {
         grid-template-columns: 1fr;
       }
-
-      .inspiration-card.large {
-        grid-column: auto;
-      }
-
-      .my-space {
-        margin-left: 20px;
-        margin-right: 20px;
-        padding: 45px 25px;
-      }
-
-      .collections-header {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .collections-list {
-        grid-template-columns: 1fr;
-      }
-
-      .saved-product {
-        align-items: flex-start;
-      }
-
-      .saved-left {
-        gap: 10px;
-      }
-
-      .saved-image {
-        width: 55px;
-        height: 55px;
-      }
-
-      .saved-name {
-        font-size: 14px;
-      }
-
-      .product-actions {
-        flex-direction: column;
-      }
-
-      .product-modal {
-        padding: 12px;
-      }
-
-      .modal-info {
-        padding: 28px 22px;
-      }
-
-      .modal-info h2 {
-        font-size: 32px;
-      }
-
     }
-
   </style>
 </head>
 
-
 <body>
 
-
-  <!-- NAV -->
-
   <nav>
-
-    <div class="logo">
-      veylo
-    </div>
+    <div class="logo">veylo.</div>
 
     <div class="nav-links">
-
-      <a href="#">
-        Discover
-      </a>
-
-      <a href="#inspiration">
-        Inspiration
-      </a>
-
-      <a href="#my-space">
-        My Space
-      </a>
-
+      <a href="#discover">Discover</a>
+      <a href="#inspiration">Inspiration</a>
+      <a href="#my-space">My Space</a>
     </div>
 
-    <div class="profile">
-      V
-    </div>
-
+    <div class="profile">V</div>
   </nav>
 
+  <main>
 
-  <!-- HERO -->
+    <section class="hero" id="discover">
+      <div class="eyebrow">Your visual shopping space</div>
+      <h1>Find things that fit your world.</h1>
+      <p>
+        Discover products, save your favorites and build collections
+        around the life you want.
+      </p>
+    </section>
 
-  <section class="hero">
+    <section class="search-section">
+      <div class="search-box">
+        <span>⌕</span>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search furniture, lighting, setup..."
+        >
+      </div>
+    </section>
 
-    <small>
-      Discover · Save · Build
-    </small>
-
-    <h1>
-      Find things that fit your world.
-    </h1>
-
-    <p>
-      Discover products, collect your ideas and build the things you actually want.
-    </p>
-
-  </section>
-
-
-  <!-- SEARCH -->
-
-  <div class="search">
-
-    <input
-      class="search-box"
-      id="search-box"
-      type="text"
-      placeholder="Search products, styles, ideas..."
-    >
-
-    <div class="search-hint">
-      Try “chair”, “lamp”, “minimal”, “beige”, “setup”...
+    <div class="categories">
+      <button class="category active" data-category="all">All</button>
+      <button class="category" data-category="furniture">Furniture</button>
+      <button class="category" data-category="lighting">Lighting</button>
+      <button class="category" data-category="setup">Setup</button>
     </div>
 
-  </div>
-
-
-  <!-- CATEGORIES -->
-
-  <div class="categories">
-
-    <button class="category active">
-      All
-    </button>
-
-    <button class="category">
-      Furniture
-    </button>
-
-    <button class="category">
-      Lighting
-    </button>
-
-    <button class="category">
-      Setup
-    </button>
-
-  </div>
-
-
-  <!-- PRODUCTS -->
-
-  <main
-    class="feed"
-    id="product-feed"
-  >
-
-
-    <!-- CHAIR -->
-
-    <article
-      class="product"
-      data-product="chair"
-      data-search="chair chaise minimal beige furniture meuble calme clean design"
-    >
-
-      <button class="heart">
-        ♡
-      </button>
-
-      <div class="product-image">
-
-        <img
-          src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=900&q=80"
-          alt="Minimal Chair"
-        >
-
+    <section class="section">
+      <div class="section-header">
+        <h2>Discover</h2>
+        <span id="resultCount">4 products</span>
       </div>
 
-      <div class="product-info">
+      <div class="products-grid" id="productsGrid">
 
-        <span class="tag">
-          Furniture
-        </span>
-
-        <h2>
-          Minimal Chair
-        </h2>
-
-        <p class="description">
-          Clean design for a calm space.
-        </p>
-
-        <div class="bottom">
-
-          <span class="price">
-            129 €
-          </span>
-
-          <div class="product-actions">
-
-            <button class="save">
-              ＋ Save
-            </button>
-
-            <button class="collection-button">
-              + Collection
-            </button>
-
+        <article
+          class="product-card"
+          data-id="chair"
+          data-category="furniture"
+          data-search="minimal chair furniture chair home interior"
+          data-name="Minimal Chair"
+          data-price="129€"
+          data-description="A simple chair designed for calm and modern spaces."
+          data-image="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=900&q=80"
+        >
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=900&q=80" alt="Minimal Chair">
+            <button class="heart">♡</button>
           </div>
 
-        </div>
+          <div class="product-info">
+            <h3>Minimal Chair</h3>
+            <p>Furniture · Minimal</p>
 
-      </div>
+            <div class="product-bottom">
+              <span class="price">129€</span>
 
-    </article>
+              <div class="actions">
+                <button class="collection-btn">+ Collection</button>
+                <button class="save-btn">Save</button>
+              </div>
+            </div>
+          </div>
+        </article>
 
-
-    <!-- LAMP -->
-
-    <article
-      class="product"
-      data-product="lamp"
-      data-search="lamp lampe lighting lumière orbit soft minimal beige"
-    >
-
-      <button class="heart">
-        ♡
-      </button>
-
-      <div class="product-image">
-
-        <img
-          src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80"
-          alt="Orbit Lamp"
+        <article
+          class="product-card"
+          data-id="lamp"
+          data-category="lighting"
+          data-search="orbit lamp lighting light home bedroom"
+          data-name="Orbit Lamp"
+          data-price="59€"
+          data-description="Soft ambient lighting for a warm atmosphere."
+          data-image="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80"
         >
-
-      </div>
-
-      <div class="product-info">
-
-        <span class="tag">
-          Lighting
-        </span>
-
-        <h2>
-          Orbit Lamp
-        </h2>
-
-        <p class="description">
-          Soft light. Simple shape.
-        </p>
-
-        <div class="bottom">
-
-          <span class="price">
-            49 €
-          </span>
-
-          <div class="product-actions">
-
-            <button class="save">
-              ＋ Save
-            </button>
-
-            <button class="collection-button">
-              + Collection
-            </button>
-
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80" alt="Orbit Lamp">
+            <button class="heart">♡</button>
           </div>
 
-        </div>
+          <div class="product-info">
+            <h3>Orbit Lamp</h3>
+            <p>Lighting · Ambient</p>
 
-      </div>
+            <div class="product-bottom">
+              <span class="price">59€</span>
 
-    </article>
+              <div class="actions">
+                <button class="collection-btn">+ Collection</button>
+                <button class="save-btn">Save</button>
+              </div>
+            </div>
+          </div>
+        </article>
 
-
-    <!-- DISPLAY -->
-
-    <article
-      class="product"
-      data-product="display"
-      data-search="display écran monitor screen setup bureau work studio clean minimal"
-    >
-
-      <button class="heart">
-        ♡
-      </button>
-
-      <div class="product-image">
-
-        <img
-          src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"
-          alt="Studio Display"
+        <article
+          class="product-card"
+          data-id="display"
+          data-category="setup"
+          data-search="studio display monitor setup desk work screen"
+          data-name="Studio Display"
+          data-price="499€"
+          data-description="A clean display for a focused creative setup."
+          data-image="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80"
         >
-
-      </div>
-
-      <div class="product-info">
-
-        <span class="tag">
-          Setup
-        </span>
-
-        <h2>
-          Studio Display
-        </h2>
-
-        <p class="description">
-          A cleaner way to work.
-        </p>
-
-        <div class="bottom">
-
-          <span class="price">
-            299 €
-          </span>
-
-          <div class="product-actions">
-
-            <button class="save">
-              ＋ Save
-            </button>
-
-            <button class="collection-button">
-              + Collection
-            </button>
-
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80" alt="Studio Display">
+            <button class="heart">♡</button>
           </div>
 
-        </div>
+          <div class="product-info">
+            <h3>Studio Display</h3>
+            <p>Setup · Workspace</p>
 
-      </div>
+            <div class="product-bottom">
+              <span class="price">499€</span>
 
-    </article>
+              <div class="actions">
+                <button class="collection-btn">+ Collection</button>
+                <button class="save-btn">Save</button>
+              </div>
+            </div>
+          </div>
+        </article>
 
-
-    <!-- SOFA -->
-
-    <article
-      class="product"
-      data-product="sofa"
-      data-search="sofa canapé cloud furniture meuble confort beige living salon soft minimal"
-    >
-
-      <button class="heart">
-        ♡
-      </button>
-
-      <div class="product-image">
-
-        <img
-          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"
-          alt="Cloud Sofa"
+        <article
+          class="product-card"
+          data-id="sofa"
+          data-category="furniture"
+          data-search="cloud sofa furniture couch living room interior"
+          data-name="Cloud Sofa"
+          data-price="899€"
+          data-description="A soft sofa designed for relaxed living spaces."
+          data-image="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"
         >
-
-      </div>
-
-      <div class="product-info">
-
-        <span class="tag">
-          Furniture
-        </span>
-
-        <h2>
-          Cloud Sofa
-        </h2>
-
-        <p class="description">
-          Comfort made minimal.
-        </p>
-
-        <div class="bottom">
-
-          <span class="price">
-            699 €
-          </span>
-
-          <div class="product-actions">
-
-            <button class="save">
-              ＋ Save
-            </button>
-
-            <button class="collection-button">
-              + Collection
-            </button>
-
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80" alt="Cloud Sofa">
+            <button class="heart">♡</button>
           </div>
 
-        </div>
+          <div class="product-info">
+            <h3>Cloud Sofa</h3>
+            <p>Furniture · Living</p>
+
+            <div class="product-bottom">
+              <span class="price">899€</span>
+
+              <div class="actions">
+                <button class="collection-btn">+ Collection</button>
+                <button class="save-btn">Save</button>
+              </div>
+            </div>
+          </div>
+        </article>
 
       </div>
+    </section>
 
-    </article>
+    <section class="section" id="inspiration">
+      <div class="section-header">
+        <h2>Inspiration</h2>
+        <span>Build your world</span>
+      </div>
+
+      <div class="empty">
+        More visual inspiration is coming to Veylo.
+      </div>
+    </section>
+
+    <section class="section" id="my-space">
+
+      <div class="section-header">
+        <h2>My Space</h2>
+        <span>Your saved world</span>
+      </div>
+
+      <h3 style="margin-bottom:18px;">Saved products</h3>
+
+      <div class="saved-grid" id="savedGrid"></div>
+
+      <div style="height:55px;"></div>
+
+      <div class="collections-header">
+        <div>
+          <h3>My collections</h3>
+          <p style="color:#888;font-size:13px;margin-top:6px;">
+            Turn your ideas into visual worlds.
+          </p>
+        </div>
+
+        <button class="new-collection" id="newCollectionBtn">
+          + New collection
+        </button>
+      </div>
+
+      <div class="collections-grid" id="collectionsGrid"></div>
+
+    </section>
 
   </main>
 
-
-  <!-- NO RESULTS -->
-
-  <section
-    class="no-results"
-    id="no-results"
-  >
-
-    <div class="no-results-box">
-
-      <h2>
-        Nothing found.
-      </h2>
-
-      <p>
-        Try another product, style or category.
-      </p>
-
-    </div>
-
-  </section>
-
-
   <!-- PRODUCT MODAL -->
+  <div class="modal" id="productModal">
+    <div class="modal-box">
 
-  <div
-    class="product-modal"
-    id="product-modal"
-  >
+      <div class="modal-header">
+        <h2 id="modalProductName"></h2>
+        <button class="close" data-close="productModal">×</button>
+      </div>
 
-    <div class="product-modal-content">
-
-      <button
-        class="modal-close"
-        id="modal-close"
+      <img
+        id="modalProductImage"
+        src=""
+        alt=""
+        style="width:100%;height:280px;object-fit:cover;border-radius:18px;margin-bottom:18px;"
       >
-        ×
-      </button>
 
-      <div class="modal-image">
+      <p id="modalProductDescription" style="color:#777;line-height:1.6;margin-bottom:12px;"></p>
 
-        <img
-          id="modal-image"
-          src=""
-          alt=""
-        >
+      <div style="font-size:20px;font-weight:700;margin-bottom:20px;" id="modalProductPrice"></div>
 
-      </div>
+      <h3 style="margin-bottom:15px;">Find me better</h3>
 
-      <div class="modal-info">
-
-        <span
-          class="modal-tag"
-          id="modal-tag"
-        ></span>
-
-        <h2 id="modal-name"></h2>
-
-        <p
-          class="modal-description"
-          id="modal-description"
-        ></p>
-
-        <div
-          class="modal-price"
-          id="modal-price"
-        ></div>
-
-        <button
-          class="better-button"
-          id="better-button"
-        >
-          Find me better
-        </button>
-
-        <div
-          class="better-results"
-          id="better-results"
-        >
-
-          <div class="better-results-title">
-            We found some alternatives for you
-          </div>
-
-          <div id="alternatives-list"></div>
-
-        </div>
-
-      </div>
+      <div id="alternatives"></div>
 
     </div>
-
   </div>
 
+  <!-- CREATE COLLECTION MODAL -->
+  <div class="modal" id="collectionModal">
+    <div class="modal-box">
 
-  <!-- INSPIRATION -->
-
-  <section
-    class="inspiration"
-    id="inspiration"
-  >
-
-    <div class="inspiration-header">
-
-      <small>
-        Inspiration
-      </small>
-
-      <h2>
-        Build the world you imagine.
-      </h2>
-
-      <p>
-        Discover spaces, styles and ideas worth saving.
-      </p>
-
-    </div>
-
-    <div class="inspiration-grid">
-
-      <div class="inspiration-card large">
-
-        <div class="inspiration-image">
-          🏠
-        </div>
-
-        <div class="inspiration-info">
-
-          <span>
-            Interior
-          </span>
-
-          <h3>
-            Warm Minimal Home
-          </h3>
-
-        </div>
-
+      <div class="modal-header">
+        <h2>Create collection</h2>
+        <button class="close" data-close="collectionModal">×</button>
       </div>
-
-
-      <div class="inspiration-card">
-
-        <div class="inspiration-image">
-          🖥️
-        </div>
-
-        <div class="inspiration-info">
-
-          <span>
-            Setup
-          </span>
-
-          <h3>
-            Clean Creator Desk
-          </h3>
-
-        </div>
-
-      </div>
-
-
-      <div class="inspiration-card">
-
-        <div class="inspiration-image">
-          👕
-        </div>
-
-        <div class="inspiration-info">
-
-          <span>
-            Style
-          </span>
-
-          <h3>
-            Everyday Essentials
-          </h3>
-
-        </div>
-
-      </div>
-
-
-      <div class="inspiration-card">
-
-        <div class="inspiration-image">
-          🛋️
-        </div>
-
-        <div class="inspiration-info">
-
-          <span>
-            Living
-          </span>
-
-          <h3>
-            Soft Neutral Space
-          </h3>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- MY SPACE -->
-
-  <section
-    class="my-space"
-    id="my-space"
-  >
-
-    <small>
-      My Space
-    </small>
-
-    <h2>
-      Your saved world.
-    </h2>
-
-    <p>
-      Everything you want to keep, in one place.
-    </p>
-
-
-    <!-- COLLECTIONS -->
-
-    <div class="collections-header">
-
-      <div>
-
-        <span>
-          Collections
-        </span>
-
-        <h3>
-          Build your world.
-        </h3>
-
-      </div>
-
-      <button
-        id="create-collection"
-      >
-        + New collection
-      </button>
-
-    </div>
-
-
-    <div
-      class="collections-list"
-      id="collections-list"
-    ></div>
-
-
-    <!-- SAVED PRODUCTS -->
-
-    <div class="space-box">
-
-      <div class="saved-title">
-        Saved products
-      </div>
-
-      <div class="empty-message">
-        Your saved products will appear here.
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- NEW COLLECTION MODAL -->
-
-  <div
-    class="collection-modal"
-    id="collection-modal"
-  >
-
-    <div class="collection-modal-content">
-
-      <button
-        class="collection-close"
-        id="collection-close"
-      >
-        ×
-      </button>
-
-      <h2>
-        New collection
-      </h2>
-
-      <p>
-        Create a space for the things you want.
-      </p>
 
       <input
-        class="collection-input"
-        id="collection-input"
         type="text"
-        maxlength="40"
-        placeholder="Ex: Mon futur appart"
+        id="collectionName"
+        class="modal-input"
+        placeholder="Ex. Mon futur appart"
       >
 
-      <button
-        class="collection-create-button"
-        id="collection-create-button"
-      >
+      <button class="modal-main-btn" id="createCollectionBtn">
         Create collection
       </button>
 
     </div>
-
   </div>
 
-
   <!-- ADD TO COLLECTION MODAL -->
+  <div class="modal" id="addCollectionModal">
+    <div class="modal-box">
 
-  <div
-    class="add-modal"
-    id="add-modal"
-  >
+      <div class="modal-header">
+        <h2>Add to collection</h2>
+        <button class="close" data-close="addCollectionModal">×</button>
+      </div>
 
-    <div class="add-modal-content">
+      <div id="collectionChoices"></div>
 
-      <button
-        class="add-modal-close"
-        id="add-modal-close"
-      >
-        ×
-      </button>
+    </div>
+  </div>
 
-      <h2>
-        Add to collection
-      </h2>
+  <!-- COLLECTION DETAIL MODAL -->
+  <div class="modal" id="collectionDetailModal">
 
-      <p>
-        Choose where you want to keep this product.
-      </p>
+    <div class="modal-box">
 
+      <div class="modal-header">
+        <div>
+          <h2 id="collectionDetailTitle">Collection</h2>
+          <p
+            id="collectionDetailCount"
+            style="color:#888;font-size:13px;margin-top:5px;"
+          ></p>
+        </div>
+
+        <button class="close" data-close="collectionDetailModal">×</button>
+      </div>
 
       <div
-        class="add-product-preview"
-        id="add-product-preview"
-      ></div>
-
-
-      <div
-        class="collection-choice-list"
-        id="collection-choice-list"
+        class="collection-detail-grid"
+        id="collectionDetailGrid"
       ></div>
 
     </div>
 
   </div>
 
-
-  <footer>
-    © 2026 Veylo — Discover. Save. Build.
-  </footer>
-
-
   <script>
 
+    const savedKey = "veylo_saved_products";
+    const collectionsKey = "veylo_collections";
 
-    /* =========================
-       ELEMENTS
-    ========================= */
+    let savedProducts = JSON.parse(
+      localStorage.getItem(savedKey) || "[]"
+    );
 
-    const products =
-      document.querySelectorAll(".product");
+    let collections = JSON.parse(
+      localStorage.getItem(collectionsKey) || "[]"
+    );
 
-    const searchBox =
-      document.querySelector("#search-box");
+    let currentCategory = "all";
+    let productToAdd = null;
+    let currentCollectionId = null;
 
-    const noResults =
-      document.querySelector("#no-results");
+    const alternativesData = {
+      chair: [
+        {
+          name: "Soft Minimal Chair",
+          price: "89€",
+          image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=300&q=80"
+        },
+        {
+          name: "Nordic Lounge Chair",
+          price: "109€",
+          image: "https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=300&q=80"
+        }
+      ],
 
-    const categories =
-      document.querySelectorAll(".category");
+      lamp: [
+        {
+          name: "Glow Table Lamp",
+          price: "29€",
+          image: "https://images.unsplash.com/photo-1543198126-a8ad8e47fb22?auto=format&fit=crop&w=300&q=80"
+        },
+        {
+          name: "Round Light",
+          price: "39€",
+          image: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=300&q=80"
+        }
+      ],
 
-    const spaceBox =
-      document.querySelector(".space-box");
+      display: [
+        {
+          name: "Clean Desk Monitor",
+          price: "229€",
+          image: "https://images.unsplash.com/photo-1616763355548-1b606f439f86?auto=format&fit=crop&w=300&q=80"
+        },
+        {
+          name: "Studio Screen",
+          price: "259€",
+          image: "https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?auto=format&fit=crop&w=300&q=80"
+        }
+      ],
 
-    const saveButtons =
-      document.querySelectorAll(".save");
+      sofa: [
+        {
+          name: "Soft Cloud Sofa",
+          price: "499€",
+          image: "https://images.unsplash.com/photo-1550254478-ead40cc54513?auto=format&fit=crop&w=300&q=80"
+        },
+        {
+          name: "Minimal Lounge Sofa",
+          price: "579€",
+          image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=300&q=80"
+        }
+      ]
+    };
 
-    const collectionButtons =
-      document.querySelectorAll(
-        ".collection-button"
+
+    function saveStorage() {
+
+      localStorage.setItem(
+        savedKey,
+        JSON.stringify(savedProducts)
       );
 
-
-    /* =========================
-       SEARCH
-    ========================= */
-
-    function performSearch() {
-
-      const query =
-        searchBox.value
-          .toLowerCase()
-          .trim();
+      localStorage.setItem(
+        collectionsKey,
+        JSON.stringify(collections)
+      );
+    }
 
 
-      let visibleProducts = 0;
+    function getProductData(card) {
 
-
-      products.forEach(product => {
-
-        const searchableText =
-          product.dataset.search
-            .toLowerCase();
-
-
-        const productCategory =
-          product
-            .querySelector(".tag")
-            .textContent
-            .toLowerCase()
-            .trim();
-
-
-        const matchesSearch =
-          query === "" ||
-          searchableText.includes(query);
-
-
-        const activeCategory =
-          document
-            .querySelector(".category.active")
-            .textContent
-            .toLowerCase()
-            .trim();
-
-
-        const matchesCategory =
-          activeCategory === "all" ||
-          productCategory === activeCategory;
-
-
-        if (
-          matchesSearch &&
-          matchesCategory
-        ) {
-
-          product.style.display = "";
-
-          visibleProducts++;
-
-        } else {
-
-          product.style.display = "none";
-
-        }
-
-      });
-
-
-      noResults.style.display =
-        visibleProducts === 0
-          ? "block"
-          : "none";
+      return {
+        id: card.dataset.id,
+        name: card.dataset.name,
+        price: card.dataset.price,
+        description: card.dataset.description,
+        image: card.dataset.image
+      };
 
     }
 
 
-    searchBox.addEventListener(
-      "input",
-      performSearch
-    );
+    function getAllProducts() {
+
+      return [...document.querySelectorAll(".product-card")];
+
+    }
 
 
-    /* =========================
-       CATEGORIES
-    ========================= */
+    function renderSaved() {
 
-    categories.forEach(category => {
+      const grid = document.getElementById("savedGrid");
 
-      category.addEventListener(
-        "click",
-        () => {
+      if (savedProducts.length === 0) {
 
-          categories.forEach(item => {
+        grid.innerHTML = `
+          <div class="empty" style="grid-column:1/-1;">
+            Aucun produit sauvegardé pour le moment.
+          </div>
+        `;
 
-            item.classList.remove(
-              "active"
-            );
+        return;
+      }
 
-          });
+      grid.innerHTML = savedProducts.map(product => `
+
+        <div class="saved-card">
+
+          <img src="${product.image}" alt="${product.name}">
+
+          <div class="saved-card-content">
+
+            <h4>${product.name}</h4>
+
+            <p>${product.price}</p>
+
+            <button
+              class="remove-btn"
+              onclick="removeSaved('${product.id}')"
+            >
+              Remove
+            </button>
+
+          </div>
+
+        </div>
+
+      `).join("");
+
+    }
 
 
-          category.classList.add(
-            "active"
-          );
+    function removeSaved(id) {
 
-
-          performSearch();
-
-        }
+      savedProducts = savedProducts.filter(
+        product => product.id !== id
       );
 
-    });
+      saveStorage();
+      renderSaved();
+      updateHearts();
+
+    }
 
 
-    /* =========================
-       HEARTS
-    ========================= */
+    function updateHearts() {
 
-    const hearts =
-      document.querySelectorAll(".heart");
+      document.querySelectorAll(".product-card").forEach(card => {
 
+        const heart = card.querySelector(".heart");
 
-    hearts.forEach(heart => {
+        const exists = savedProducts.some(
+          product => product.id === card.dataset.id
+        );
 
-      heart.addEventListener(
-        "click",
-        event => {
-
-          event.stopPropagation();
-
-
-          if (
-            heart.textContent.trim() === "♡"
-          ) {
-
-            heart.textContent = "♥";
-
-            heart.style.background =
-              "#111";
-
-            heart.style.color =
-              "white";
-
-          } else {
-
-            heart.textContent = "♡";
-
-            heart.style.background =
-              "white";
-
-            heart.style.color =
-              "#111";
-
-          }
-
+        if (exists) {
+          heart.classList.add("saved");
+          heart.textContent = "♥";
+        } else {
+          heart.classList.remove("saved");
+          heart.textContent = "♡";
         }
+
+      });
+
+    }
+
+
+    function toggleSave(card) {
+
+      const product = getProductData(card);
+
+      const exists = savedProducts.some(
+        item => item.id === product.id
       );
 
-    });
+      if (exists) {
+
+        savedProducts = savedProducts.filter(
+          item => item.id !== product.id
+        );
+
+      } else {
+
+        savedProducts.push(product);
+
+      }
+
+      saveStorage();
+      renderSaved();
+      updateHearts();
+
+    }
 
 
-    /* =========================
-       ALTERNATIVES
-    ========================= */
+    function renderCollections() {
 
-    const alternatives = {
+      const grid = document.getElementById("collectionsGrid");
 
-      chair: [
+      if (collections.length === 0) {
 
-        {
-          name: "Soft Minimal Chair",
-          price: "89 €",
-          difference: "-40 €",
-          image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=300&q=80"
-        },
+        grid.innerHTML = `
+          <div class="empty" style="grid-column:1/-1;">
+            Aucune collection pour le moment.<br>
+            Crée ta première collection.
+          </div>
+        `;
 
-        {
-          name: "Nordic Lounge Chair",
-          price: "109 €",
-          difference: "-20 €",
-          image: "https://images.unsplash.com/photo-1519947486511-46149fa0a254?auto=format&fit=crop&w=300&q=80"
-        }
+        return;
+      }
 
-      ],
+      grid.innerHTML = collections.map(collection => `
 
-      lamp: [
+        <div class="collection-card">
 
-        {
-          name: "Glow Table Lamp",
-          price: "29 €",
-          difference: "-20 €",
-          image: "https://images.unsplash.com/photo-1543198126-a8ad8e47fb22?auto=format&fit=crop&w=300&q=80"
-        },
+          <div class="collection-icon">
+            ${collection.icon}
+          </div>
 
-        {
-          name: "Round Light",
-          price: "39 €",
-          difference: "-10 €",
-          image: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=300&q=80"
-        }
+          <h3>${collection.name}</h3>
 
-      ],
+          <p>
+            ${collection.products.length}
+            ${collection.products.length > 1 ? "produits" : "produit"}
+          </p>
 
-      display: [
+          <div class="collection-actions">
 
-        {
-          name: "Clean Desk Monitor",
-          price: "229 €",
-          difference: "-70 €",
-          image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=300&q=80"
-        },
+            <button
+              class="open-collection-btn"
+              onclick="openCollection('${collection.id}')"
+            >
+              Open moodboard
+            </button>
 
-        {
-          name: "Studio Screen",
-          price: "259 €",
-          difference: "-40 €",
-          image: "https://images.unsplash.com/photo-1616763355548-1b606f439f86?auto=format&fit=crop&w=300&q=80"
-        }
+            <button
+              class="delete-collection-btn"
+              onclick="deleteCollection('${collection.id}')"
+            >
+              Delete
+            </button>
 
-      ],
+          </div>
 
-      sofa: [
+        </div>
 
-        {
-          name: "Soft Cloud Sofa",
-          price: "499 €",
-          difference: "-200 €",
-          image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=300&q=80"
-        },
+      `).join("");
 
-        {
-          name: "Minimal Lounge Sofa",
-          price: "579 €",
-          difference: "-120 €",
-          image: "https://images.unsplash.com/photo-1550254478-ead40cc54513?auto=format&fit=crop&w=300&q=80"
-        }
-
-      ]
-
-    };
+    }
 
 
-    /* =========================
-       PRODUCT MODAL
-    ========================= */
+    function createCollection() {
 
-    const productModal =
-      document.querySelector("#product-modal");
+      const input = document.getElementById("collectionName");
 
-    const modalClose =
-      document.querySelector("#modal-close");
+      const name = input.value.trim();
 
-    const modalImage =
-      document.querySelector("#modal-image");
+      if (!name) return;
 
-    const modalTag =
-      document.querySelector("#modal-tag");
+      const icons = ["✦", "◌", "◇", "☼", "✧", "⌂"];
 
-    const modalName =
-      document.querySelector("#modal-name");
+      const collection = {
 
-    const modalDescription =
-      document.querySelector("#modal-description");
+        id: Date.now().toString(),
 
-    const modalPrice =
-      document.querySelector("#modal-price");
+        name: name,
 
-    const betterButton =
-      document.querySelector("#better-button");
+        icon: icons[
+          Math.floor(Math.random() * icons.length)
+        ],
 
-    const betterResults =
-      document.querySelector("#better-results");
+        products: []
 
-    const alternativesList =
-      document.querySelector("#alternatives-list");
+      };
 
+      collections.push(collection);
 
-    let currentProduct = null;
+      saveStorage();
 
+      input.value = "";
 
-    products.forEach(product => {
+      closeModal("collectionModal");
 
-      product.addEventListener(
-        "click",
-        event => {
+      renderCollections();
 
-          if (
-            event.target.closest(".save") ||
-            event.target.closest(".heart") ||
-            event.target.closest(".collection-button")
-          ) {
-            return;
-          }
+    }
 
 
-          currentProduct =
-            product.dataset.product;
+    function deleteCollection(id) {
 
-
-          modalImage.src =
-            product
-              .querySelector(".product-image img")
-              .src;
-
-
-          modalImage.alt =
-            product
-              .querySelector("h2")
-              .textContent
-              .trim();
-
-
-          modalTag.textContent =
-            product
-              .querySelector(".tag")
-              .textContent
-              .trim();
-
-
-          modalName.textContent =
-            product
-              .querySelector("h2")
-              .textContent
-              .trim();
-
-
-          modalDescription.textContent =
-            product
-              .querySelector(".description")
-              .textContent
-              .trim();
-
-
-          modalPrice.textContent =
-            product
-              .querySelector(".price")
-              .textContent
-              .trim();
-
-
-          alternativesList.innerHTML =
-            "";
-
-
-          betterResults.classList.remove(
-            "active"
-          );
-
-
-          betterButton.textContent =
-            "Find me better";
-
-
-          productModal.classList.add(
-            "active"
-          );
-
-        }
+      collections = collections.filter(
+        collection => collection.id !== id
       );
 
-    });
+      saveStorage();
+
+      renderCollections();
+
+    }
 
 
-    /* =========================
-       FIND ME BETTER
-    ========================= */
+    function openAddCollection(product) {
 
-    betterButton.addEventListener(
-      "click",
-      () => {
+      productToAdd = product;
 
-        if (
-          betterResults.classList.contains(
-            "active"
-          )
-        ) {
+      const choices =
+        document.getElementById("collectionChoices");
 
-          betterResults.classList.remove(
-            "active"
-          );
+      if (collections.length === 0) {
 
-          betterButton.textContent =
-            "Find me better";
+        choices.innerHTML = `
+          <div class="empty">
+            Crée d'abord une collection.
+          </div>
+        `;
 
-          return;
+      } else {
 
-        }
+        choices.innerHTML = collections.map(collection => `
+
+          <div
+            class="collection-choice"
+            onclick="addProductToCollection('${collection.id}')"
+          >
+
+            <div>
+              <strong>
+                ${collection.icon} ${collection.name}
+              </strong>
+
+              <div style="font-size:12px;color:#888;margin-top:4px;">
+                ${collection.products.length} produits
+              </div>
+            </div>
+
+            <span>→</span>
+
+          </div>
+
+        `).join("");
+
+      }
+
+      openModal("addCollectionModal");
+
+    }
 
 
-        const results =
-          alternatives[currentProduct];
+    function addProductToCollection(collectionId) {
+
+      if (!productToAdd) return;
+
+      const collection =
+        collections.find(
+          item => item.id === collectionId
+        );
+
+      if (!collection) return;
+
+      const alreadyExists =
+        collection.products.some(
+          product => product.id === productToAdd.id
+        );
+
+      if (!alreadyExists) {
+
+        collection.products.push(productToAdd);
+
+        saveStorage();
+
+      }
+
+      closeModal("addCollectionModal");
+
+      renderCollections();
+
+    }
 
 
-        alternativesList.innerHTML =
-          "";
+    function openCollection(id) {
+
+      const collection =
+        collections.find(
+          item => item.id === id
+        );
+
+      if (!collection) return;
+
+      currentCollectionId = id;
+
+      document.getElementById(
+        "collectionDetailTitle"
+      ).textContent =
+        `${collection.icon} ${collection.name}`;
+
+      document.getElementById(
+        "collectionDetailCount"
+      ).textContent =
+        `${collection.products.length} ${
+          collection.products.length > 1
+            ? "produits"
+            : "produit"
+        }`;
+
+      renderCollectionProducts(collection);
+
+      openModal("collectionDetailModal");
+
+    }
 
 
-        results.forEach(item => {
+    function renderCollectionProducts(collection) {
 
-          const alternative =
-            document.createElement("div");
+      const grid =
+        document.getElementById(
+          "collectionDetailGrid"
+        );
+
+      if (collection.products.length === 0) {
+
+        grid.innerHTML = `
+          <div class="collection-empty">
+            Cette collection est encore vide.<br><br>
+            Ajoute des produits avec
+            <strong>+ Collection</strong>.
+          </div>
+        `;
+
+        return;
+
+      }
+
+      grid.innerHTML =
+        collection.products.map(product => `
+
+          <div class="collection-product">
+
+            <img
+              src="${product.image}"
+              alt="${product.name}"
+            >
+
+            <div class="collection-product-info">
+
+              <h4>${product.name}</h4>
+
+              <p>${product.price}</p>
+
+              <button
+                class="collection-remove"
+                onclick="removeFromCollection(
+                  '${collection.id}',
+                  '${product.id}'
+                )"
+              >
+                Remove from collection
+              </button>
+
+            </div>
+
+          </div>
+
+        `).join("");
+
+    }
 
 
-          alternative.className =
-            "alternative";
+    function removeFromCollection(
+      collectionId,
+      productId
+    ) {
+
+      const collection =
+        collections.find(
+          item => item.id === collectionId
+        );
+
+      if (!collection) return;
+
+      collection.products =
+        collection.products.filter(
+          product => product.id !== productId
+        );
+
+      saveStorage();
+
+      renderCollections();
+
+      renderCollectionProducts(collection);
+
+      document.getElementById(
+        "collectionDetailCount"
+      ).textContent =
+        `${collection.products.length} ${
+          collection.products.length > 1
+            ? "produits"
+            : "produit"
+        }`;
+
+    }
 
 
-          alternative.innerHTML = `
+    function openProductModal(card) {
+
+      const product = getProductData(card);
+
+      document.getElementById(
+        "modalProductName"
+      ).textContent = product.name;
+
+      document.getElementById(
+        "modalProductImage"
+      ).src = product.image;
+
+      document.getElementById(
+        "modalProductDescription"
+      ).textContent = product.description;
+
+      document.getElementById(
+        "modalProductPrice"
+      ).textContent = product.price;
+
+      const alternatives =
+        alternativesData[product.id] || [];
+
+      document.getElementById(
+        "alternatives"
+      ).innerHTML =
+        alternatives.map(item => `
+
+          <div class="alternative">
 
             <img
               src="${item.image}"
@@ -2249,1051 +1489,261 @@
 
             <div class="alternative-info">
 
-              <div class="alternative-name">
-                ${item.name}
-              </div>
+              <h4>${item.name}</h4>
 
-              <div class="alternative-price">
-                ${item.price}
-              </div>
+              <p>${item.price}</p>
 
             </div>
 
-            <span class="cheaper">
-              ${item.difference}
-            </span>
+          </div>
 
-          `;
+        `).join("");
+
+      openModal("productModal");
+
+    }
 
 
-          alternativesList.appendChild(
-            alternative
+    function openModal(id) {
+
+      document
+        .getElementById(id)
+        .classList.add("active");
+
+    }
+
+
+    function closeModal(id) {
+
+      document
+        .getElementById(id)
+        .classList.remove("active");
+
+    }
+
+
+    function filterProducts() {
+
+      const search =
+        document
+          .getElementById("searchInput")
+          .value
+          .toLowerCase()
+          .trim();
+
+      let visible = 0;
+
+      getAllProducts().forEach(card => {
+
+        const category =
+          card.dataset.category;
+
+        const searchable =
+          card.dataset.search;
+
+        const categoryMatch =
+          currentCategory === "all" ||
+          category === currentCategory;
+
+        const searchMatch =
+          !search ||
+          searchable.includes(search);
+
+        if (categoryMatch && searchMatch) {
+
+          card.style.display = "";
+          visible++;
+
+        } else {
+
+          card.style.display = "none";
+
+        }
+
+      });
+
+      document.getElementById(
+        "resultCount"
+      ).textContent =
+        `${visible} ${
+          visible > 1
+            ? "products"
+            : "product"
+        }`;
+
+    }
+
+
+    document
+      .querySelectorAll(".category")
+      .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+          document
+            .querySelectorAll(".category")
+            .forEach(item =>
+              item.classList.remove("active")
+            );
+
+          button.classList.add("active");
+
+          currentCategory =
+            button.dataset.category;
+
+          filterProducts();
+
+        });
+
+      });
+
+
+    document
+      .getElementById("searchInput")
+      .addEventListener(
+        "input",
+        filterProducts
+      );
+
+
+    document
+      .getElementById("newCollectionBtn")
+      .addEventListener("click", () => {
+
+        openModal("collectionModal");
+
+        setTimeout(() => {
+
+          document
+            .getElementById("collectionName")
+            .focus();
+
+        }, 100);
+
+      });
+
+
+    document
+      .getElementById("createCollectionBtn")
+      .addEventListener(
+        "click",
+        createCollection
+      );
+
+
+    document
+      .getElementById("collectionName")
+      .addEventListener("keydown", event => {
+
+        if (event.key === "Enter") {
+          createCollection();
+        }
+
+      });
+
+
+    document
+      .querySelectorAll(".close")
+      .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+          closeModal(
+            button.dataset.close
           );
 
         });
 
-
-        betterResults.classList.add(
-          "active"
-        );
-
-
-        betterButton.textContent =
-          "Alternatives found ✓";
-
-      }
-    );
-
-
-    /* =========================
-       CLOSE PRODUCT MODAL
-    ========================= */
-
-    modalClose.addEventListener(
-      "click",
-      () => {
-
-        productModal.classList.remove(
-          "active"
-        );
-
-      }
-    );
-
-
-    productModal.addEventListener(
-      "click",
-      event => {
-
-        if (
-          event.target === productModal
-        ) {
-
-          productModal.classList.remove(
-            "active"
-          );
-
-        }
-
-      }
-    );
-
-
-    /* =========================
-       SAVED PRODUCTS STORAGE
-    ========================= */
-
-    const STORAGE_KEY =
-      "veylo_saved_products";
-
-
-    function getSavedProducts() {
-
-      return JSON.parse(
-        localStorage.getItem(
-          STORAGE_KEY
-        ) || "[]"
-      );
-
-    }
-
-
-    function saveProductsToStorage(
-      products
-    ) {
-
-      localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(products)
-      );
-
-    }
-
-
-    /* =========================
-       RENDER SAVED PRODUCTS
-    ========================= */
-
-    function renderSavedProducts() {
-
-      const savedProducts =
-        getSavedProducts();
-
-
-      spaceBox.innerHTML = `
-
-        <div class="saved-title">
-          Saved products
-        </div>
-
-      `;
-
-
-      if (
-        savedProducts.length === 0
-      ) {
-
-        spaceBox.innerHTML += `
-
-          <div class="empty-message">
-            Your saved products will appear here.
-          </div>
-
-        `;
-
-      }
-
-
-      savedProducts.forEach(item => {
-
-        const savedProduct =
-          document.createElement("div");
-
-
-        savedProduct.className =
-          "saved-product";
-
-
-        savedProduct.innerHTML = `
-
-          <div class="saved-left">
-
-            <div class="saved-image">
-
-              <img
-                src="${item.image}"
-                alt="${item.name}"
-              >
-
-            </div>
-
-            <div>
-
-              <div class="saved-name">
-                ${item.name}
-              </div>
-
-              <div class="saved-price">
-                ${item.price}
-              </div>
-
-            </div>
-
-          </div>
-
-          <button
-            class="remove-product"
-            data-product="${item.id}"
-          >
-            Remove
-          </button>
-
-        `;
-
-
-        spaceBox.appendChild(
-          savedProduct
-        );
-
       });
 
 
-      updateSaveButtons();
+    document
+      .querySelectorAll(".modal")
+      .forEach(modal => {
 
-    }
+        modal.addEventListener(
+          "click",
+          event => {
 
+            if (event.target === modal) {
 
-    /* =========================
-       UPDATE SAVE BUTTONS
-    ========================= */
-
-    function updateSaveButtons() {
-
-      const savedProducts =
-        getSavedProducts();
-
-
-      saveButtons.forEach(button => {
-
-        const product =
-          button.closest(".product");
-
-
-        const id =
-          product.dataset.product;
-
-
-        const isSaved =
-          savedProducts.some(
-            item => item.id === id
-          );
-
-
-        if (isSaved) {
-
-          button.dataset.saved =
-            "true";
-
-          button.textContent =
-            "✓ Saved";
-
-          button.style.background =
-            "#e8e8e5";
-
-          button.style.color =
-            "#111";
-
-        } else {
-
-          button.dataset.saved =
-            "false";
-
-          button.textContent =
-            "＋ Save";
-
-          button.style.background =
-            "#111";
-
-          button.style.color =
-            "white";
-
-        }
-
-      });
-
-    }
-
-
-    /* =========================
-       SAVE BUTTONS
-    ========================= */
-
-    saveButtons.forEach(button => {
-
-      button.addEventListener(
-        "click",
-        event => {
-
-          event.stopPropagation();
-
-
-          const product =
-            button.closest(".product");
-
-
-          const id =
-            product.dataset.product;
-
-
-          let savedProducts =
-            getSavedProducts();
-
-
-          const alreadySaved =
-            savedProducts.some(
-              item => item.id === id
-            );
-
-
-          if (alreadySaved) {
-            return;
-          }
-
-
-          savedProducts.push({
-
-            id: id,
-
-            name:
-              product
-                .querySelector("h2")
-                .textContent
-                .trim(),
-
-            price:
-              product
-                .querySelector(".price")
-                .textContent
-                .trim(),
-
-            image:
-              product
-                .querySelector(".product-image img")
-                .src
-
-          });
-
-
-          saveProductsToStorage(
-            savedProducts
-          );
-
-
-          renderSavedProducts();
-
-        }
-      );
-
-    });
-
-
-    /* =========================
-       REMOVE SAVED PRODUCT
-    ========================= */
-
-    spaceBox.addEventListener(
-      "click",
-      event => {
-
-        const button =
-          event.target.closest(
-            ".remove-product"
-          );
-
-
-        if (!button) {
-          return;
-        }
-
-
-        const id =
-          button.dataset.product;
-
-
-        let savedProducts =
-          getSavedProducts();
-
-
-        savedProducts =
-          savedProducts.filter(
-            item => item.id !== id
-          );
-
-
-        saveProductsToStorage(
-          savedProducts
-        );
-
-
-        renderSavedProducts();
-
-      }
-    );
-
-
-    /* =========================
-       COLLECTION STORAGE
-    ========================= */
-
-    const COLLECTIONS_KEY =
-      "veylo_collections";
-
-
-    const collectionsList =
-      document.querySelector(
-        "#collections-list"
-      );
-
-
-    const createCollectionButton =
-      document.querySelector(
-        "#create-collection"
-      );
-
-
-    const collectionModal =
-      document.querySelector(
-        "#collection-modal"
-      );
-
-
-    const collectionClose =
-      document.querySelector(
-        "#collection-close"
-      );
-
-
-    const collectionInput =
-      document.querySelector(
-        "#collection-input"
-      );
-
-
-    const collectionCreateButton =
-      document.querySelector(
-        "#collection-create-button"
-      );
-
-
-    function getCollections() {
-
-      return JSON.parse(
-        localStorage.getItem(
-          COLLECTIONS_KEY
-        ) || "[]"
-      );
-
-    }
-
-
-    function saveCollections(
-      collections
-    ) {
-
-      localStorage.setItem(
-        COLLECTIONS_KEY,
-        JSON.stringify(collections)
-      );
-
-    }
-
-
-    /* =========================
-       RENDER COLLECTIONS
-    ========================= */
-
-    function renderCollections() {
-
-      const collections =
-        getCollections();
-
-
-      collectionsList.innerHTML =
-        "";
-
-
-      if (
-        collections.length === 0
-      ) {
-
-        collectionsList.innerHTML = `
-
-          <div
-            style="
-              grid-column: 1 / -1;
-              color: #777;
-              padding: 25px 0;
-            "
-          >
-            No collections yet. Create your first one.
-          </div>
-
-        `;
-
-        return;
-
-      }
-
-
-      collections.forEach(
-        collection => {
-
-          const card =
-            document.createElement("div");
-
-
-          card.className =
-            "collection-card";
-
-
-          card.innerHTML = `
-
-            <div>
-
-              <div class="collection-icon">
-                ${collection.icon}
-              </div>
-
-              <div
-                class="collection-name"
-                style="margin-top: 15px;"
-              >
-                ${collection.name}
-              </div>
-
-              <div class="collection-count">
-                ${collection.products.length}
-                ${collection.products.length === 1 ? "product" : "products"}
-              </div>
-
-            </div>
-
-            <div class="collection-actions">
-
-              <button
-                class="collection-action delete-collection"
-                data-id="${collection.id}"
-              >
-                Delete
-              </button>
-
-            </div>
-
-          `;
-
-
-          collectionsList.appendChild(
-            card
-          );
-
-        }
-      );
-
-    }
-
-
-    /* =========================
-       CREATE COLLECTION MODAL
-    ========================= */
-
-    createCollectionButton.addEventListener(
-      "click",
-      () => {
-
-        collectionInput.value =
-          "";
-
-        collectionModal.classList.add(
-          "active"
-        );
-
-        setTimeout(
-          () => collectionInput.focus(),
-          100
-        );
-
-      }
-    );
-
-
-    collectionClose.addEventListener(
-      "click",
-      () => {
-
-        collectionModal.classList.remove(
-          "active"
-        );
-
-      }
-    );
-
-
-    collectionModal.addEventListener(
-      "click",
-      event => {
-
-        if (
-          event.target === collectionModal
-        ) {
-
-          collectionModal.classList.remove(
-            "active"
-          );
-
-        }
-
-      }
-    );
-
-
-    /* =========================
-       CREATE COLLECTION
-    ========================= */
-
-    function createCollection() {
-
-      const name =
-        collectionInput.value.trim();
-
-
-      if (!name) {
-
-        collectionInput.focus();
-
-        return;
-
-      }
-
-
-      const collections =
-        getCollections();
-
-
-      const icons = [
-        "🏠",
-        "🖥️",
-        "👕",
-        "🛋️",
-        "✈️",
-        "✨",
-        "🎨",
-        "💡"
-      ];
-
-
-      const newCollection = {
-
-        id:
-          Date.now().toString(),
-
-        name:
-          name,
-
-        icon:
-          icons[
-            collections.length %
-            icons.length
-          ],
-
-        products: []
-
-      };
-
-
-      collections.push(
-        newCollection
-      );
-
-
-      saveCollections(
-        collections
-      );
-
-
-      renderCollections();
-
-
-      collectionModal.classList.remove(
-        "active"
-      );
-
-    }
-
-
-    collectionCreateButton.addEventListener(
-      "click",
-      createCollection
-    );
-
-
-    collectionInput.addEventListener(
-      "keydown",
-      event => {
-
-        if (
-          event.key === "Enter"
-        ) {
-
-          createCollection();
-
-        }
-
-      }
-    );
-
-
-    /* =========================
-       DELETE COLLECTION
-    ========================= */
-
-    collectionsList.addEventListener(
-      "click",
-      event => {
-
-        const deleteButton =
-          event.target.closest(
-            ".delete-collection"
-          );
-
-
-        if (!deleteButton) {
-          return;
-        }
-
-
-        const id =
-          deleteButton.dataset.id;
-
-
-        const collections =
-          getCollections();
-
-
-        const updated =
-          collections.filter(
-            collection =>
-              collection.id !== id
-          );
-
-
-        saveCollections(
-          updated
-        );
-
-
-        renderCollections();
-
-      }
-    );
-
-
-    /* =========================
-       ADD TO COLLECTION MODAL
-    ========================= */
-
-    const addModal =
-      document.querySelector(
-        "#add-modal"
-      );
-
-
-    const addModalClose =
-      document.querySelector(
-        "#add-modal-close"
-      );
-
-
-    const addProductPreview =
-      document.querySelector(
-        "#add-product-preview"
-      );
-
-
-    const collectionChoiceList =
-      document.querySelector(
-        "#collection-choice-list"
-      );
-
-
-    let productToAdd =
-      null;
-
-
-    /* =========================
-       OPEN ADD MODAL
-    ========================= */
-
-    collectionButtons.forEach(button => {
-
-      button.addEventListener(
-        "click",
-        event => {
-
-          event.stopPropagation();
-
-
-          const product =
-            button.closest(".product");
-
-
-          productToAdd = {
-
-            id:
-              product.dataset.product,
-
-            name:
-              product
-                .querySelector("h2")
-                .textContent
-                .trim(),
-
-            price:
-              product
-                .querySelector(".price")
-                .textContent
-                .trim(),
-
-            image:
-              product
-                .querySelector(".product-image img")
-                .src
-
-          };
-
-
-          addProductPreview.innerHTML = `
-
-            <img
-              src="${productToAdd.image}"
-              alt="${productToAdd.name}"
-            >
-
-            <div class="add-product-preview-name">
-              ${productToAdd.name}
-            </div>
-
-          `;
-
-
-          renderCollectionChoices();
-
-
-          addModal.classList.add(
-            "active"
-          );
-
-        }
-      );
-
-    });
-
-
-    /* =========================
-       RENDER COLLECTION CHOICES
-    ========================= */
-
-    function renderCollectionChoices() {
-
-      const collections =
-        getCollections();
-
-
-      collectionChoiceList.innerHTML =
-        "";
-
-
-      if (
-        collections.length === 0
-      ) {
-
-        collectionChoiceList.innerHTML = `
-
-          <div class="no-collections">
-            You don't have any collections yet.
-            Create one first in My Space.
-          </div>
-
-        `;
-
-        return;
-
-      }
-
-
-      collections.forEach(
-        collection => {
-
-          const choice =
-            document.createElement("button");
-
-
-          choice.className =
-            "collection-choice";
-
-
-          choice.innerHTML = `
-            ${collection.icon}
-            &nbsp;
-            ${collection.name}
-            <span style="float:right;color:#999;">
-              ${collection.products.length}
-            </span>
-          `;
-
-
-          choice.addEventListener(
-            "click",
-            () => {
-
-              addProductToCollection(
-                collection.id
-              );
+              modal.classList.remove("active");
 
             }
-          );
+
+          }
+        );
+
+      });
 
 
-          collectionChoiceList.appendChild(
-            choice
+    getAllProducts().forEach(card => {
+
+      const heart =
+        card.querySelector(".heart");
+
+      const saveButton =
+        card.querySelector(".save-btn");
+
+      const collectionButton =
+        card.querySelector(".collection-btn");
+
+      heart.addEventListener("click", event => {
+
+        event.stopPropagation();
+
+        toggleSave(card);
+
+      });
+
+
+      saveButton.addEventListener("click", event => {
+
+        event.stopPropagation();
+
+        toggleSave(card);
+
+      });
+
+
+      collectionButton.addEventListener(
+        "click",
+        event => {
+
+          event.stopPropagation();
+
+          openAddCollection(
+            getProductData(card)
           );
 
         }
       );
 
-    }
 
-
-    /* =========================
-       ADD PRODUCT TO COLLECTION
-    ========================= */
-
-    function addProductToCollection(
-      collectionId
-    ) {
-
-      const collections =
-        getCollections();
-
-
-      const collection =
-        collections.find(
-          item =>
-            item.id === collectionId
-        );
-
-
-      if (!collection) {
-        return;
-      }
-
-
-      const alreadyExists =
-        collection.products.some(
-          item =>
-            item.id === productToAdd.id
-        );
-
-
-      if (
-        alreadyExists
-      ) {
-
-        alert(
-          "This product is already in this collection."
-        );
-
-        return;
-
-      }
-
-
-      collection.products.push(
-        productToAdd
-      );
-
-
-      saveCollections(
-        collections
-      );
-
-
-      renderCollections();
-
-
-      addModal.classList.remove(
-        "active"
-      );
-
-
-      alert(
-        `${productToAdd.name} added to ${collection.name} ✓`
-      );
-
-    }
-
-
-    /* =========================
-       CLOSE ADD MODAL
-    ========================= */
-
-    addModalClose.addEventListener(
-      "click",
-      () => {
-
-        addModal.classList.remove(
-          "active"
-        );
-
-      }
-    );
-
-
-    addModal.addEventListener(
-      "click",
-      event => {
+      card.addEventListener("click", event => {
 
         if (
-          event.target === addModal
+          event.target.closest(".heart") ||
+          event.target.closest(".save-btn") ||
+          event.target.closest(".collection-btn")
         ) {
-
-          addModal.classList.remove(
-            "active"
-          );
-
+          return;
         }
 
-      }
-    );
+        openProductModal(card);
+
+      });
+
+    });
 
 
-    /* =========================
-       ESCAPE
-    ========================= */
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (
-          event.key === "Escape"
-        ) {
-
-          productModal.classList.remove(
-            "active"
-          );
-
-          collectionModal.classList.remove(
-            "active"
-          );
-
-          addModal.classList.remove(
-            "active"
-          );
-
-        }
-
-      }
-    );
-
-
-    /* =========================
-       INITIAL LOAD
-    ========================= */
-
-    renderSavedProducts();
+    renderSaved();
 
     renderCollections();
 
+    updateHearts();
+
+    filterProducts();
 
   </script>
 
