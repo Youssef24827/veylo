@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,6 +7,7 @@
   <title>Veylo — Discover your world</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -24,10 +24,15 @@
       color: #111;
     }
 
+
+    /* =========================
+       NAV
+    ========================= */
+
     nav {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
       height: 72px;
       display: flex;
       align-items: center;
@@ -72,6 +77,11 @@
       font-size: 15px;
     }
 
+
+    /* =========================
+       HERO
+    ========================= */
+
     .hero {
       max-width: 1400px;
       margin: auto;
@@ -102,6 +112,11 @@
       line-height: 1.6;
     }
 
+
+    /* =========================
+       SEARCH
+    ========================= */
+
     .search {
       max-width: 1400px;
       margin: 10px auto 0;
@@ -121,6 +136,11 @@
     .search-box:focus {
       border-color: #111;
     }
+
+
+    /* =========================
+       CATEGORIES
+    ========================= */
 
     .categories {
       max-width: 1400px;
@@ -148,6 +168,11 @@
       border-color: #111;
     }
 
+
+    /* =========================
+       PRODUCT FEED
+    ========================= */
+
     .feed {
       max-width: 1400px;
       margin: auto;
@@ -163,6 +188,7 @@
       overflow: hidden;
       position: relative;
       transition: 0.25s ease;
+      cursor: pointer;
     }
 
     .product:hover {
@@ -184,7 +210,17 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: 0.4s ease;
     }
+
+    .product:hover .product-image img {
+      transform: scale(1.04);
+    }
+
+
+    /* =========================
+       HEART
+    ========================= */
 
     .heart {
       position: absolute;
@@ -199,6 +235,11 @@
       cursor: pointer;
       z-index: 2;
     }
+
+
+    /* =========================
+       PRODUCT INFO
+    ========================= */
 
     .product-info {
       padding: 20px;
@@ -247,164 +288,191 @@
     .save:hover {
       background: #333;
     }
-<!-- PRODUCT MODAL -->
 
-<div class="product-modal" id="product-modal">
 
-  <div class="product-modal-content">
+    /* =========================
+       PRODUCT MODAL
+    ========================= */
 
-    <button class="modal-close" id="modal-close">
-      ×
-    </button>
+    .product-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0,0,0,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.25s ease;
+    }
 
-    <div class="modal-image">
-      <img id="modal-image" src="" alt="">
-    </div>
+    .product-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
 
-    <div class="modal-info">
+    .product-modal-content {
+      width: min(900px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: white;
+      border-radius: 28px;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      transform: translateY(20px);
+      transition: 0.25s ease;
+    }
 
-      <span class="modal-tag" id="modal-tag"></span>
+    .product-modal.active .product-modal-content {
+      transform: translateY(0);
+    }
 
-      <h2 id="modal-name"></h2>
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 5;
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: white;
+      font-size: 26px;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
 
-      <p class="modal-description" id="modal-description"></p>
+    .modal-image {
+      height: 520px;
+      background: #e9e9e6;
+    }
 
-      <div class="modal-price" id="modal-price"></div>
+    .modal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-      <button class="better-button">
-        Find me better
-      </button>
+    .modal-info {
+      padding: 55px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-    </div>
+    .modal-tag {
+      color: #999;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
 
-  </div>
+    .modal-info h2 {
+      font-size: 42px;
+      letter-spacing: -2px;
+      margin-top: 12px;
+    }
 
-</div>
-    /* PRODUCT MODAL */
+    .modal-description {
+      color: #777;
+      line-height: 1.6;
+      margin-top: 18px;
+    }
 
-.product-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(8px);
-}
+    .modal-price {
+      font-size: 25px;
+      font-weight: 800;
+      margin-top: 25px;
+    }
 
-.product-modal.active {
-  display: flex;
-}
+    .better-button {
+      margin-top: 25px;
+      width: 100%;
+      border: none;
+      background: #111;
+      color: white;
+      padding: 15px;
+      border-radius: 13px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+    }
 
-.product-modal-content {
-  width: min(900px, 100%);
-  background: white;
-  border-radius: 28px;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  position: relative;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.2);
-}
+    .better-button:hover {
+      background: #333;
+    }
 
-.modal-close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 42px;
-  height: 42px;
-  border: none;
-  border-radius: 50%;
-  background: white;
-  font-size: 28px;
-  cursor: pointer;
-  z-index: 2;
-}
 
-.modal-image {
-  height: 560px;
-  background: #eee;
-}
+    /* =========================
+       BETTER RESULTS
+    ========================= */
 
-.modal-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .better-results {
+      margin-top: 25px;
+      display: none;
+    }
 
-.modal-info {
-  padding: 55px 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+    .better-results.active {
+      display: block;
+    }
 
-.modal-tag {
-  color: #999;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
+    .better-results-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #777;
+      margin-bottom: 12px;
+    }
 
-.modal-info h2 {
-  font-size: 42px;
-  letter-spacing: -2px;
-  margin-top: 12px;
-}
+    .alternative {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      background: #f5f5f2;
+      border-radius: 14px;
+      margin-bottom: 8px;
+    }
 
-.modal-description {
-  color: #777;
-  line-height: 1.6;
-  margin-top: 18px;
-}
+    .alternative img {
+      width: 55px;
+      height: 55px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
 
-.modal-price {
-  font-size: 26px;
-  font-weight: 800;
-  margin-top: 25px;
-}
+    .alternative-info {
+      flex: 1;
+    }
 
-.better-button {
-  margin-top: 30px;
-  border: none;
-  background: #111;
-  color: white;
-  padding: 15px 20px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 14px;
-}
+    .alternative-name {
+      font-size: 13px;
+      font-weight: 700;
+    }
 
-.better-button:hover {
-  background: #333;
-}
+    .alternative-price {
+      margin-top: 5px;
+      font-size: 12px;
+      color: #777;
+    }
 
-@media (max-width: 700px) {
+    .cheaper {
+      font-size: 10px;
+      font-weight: 700;
+      color: #16803c;
+      background: #e4f5e9;
+      padding: 5px 7px;
+      border-radius: 999px;
+    }
 
-  .product-modal-content {
-    grid-template-columns: 1fr;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
 
-  .modal-image {
-    height: 300px;
-  }
-
-  .modal-info {
-    padding: 30px;
-  }
-
-  .modal-info h2 {
-    font-size: 32px;
-  }
-
-}
-    /* INSPIRATION */
+    /* =========================
+       INSPIRATION
+    ========================= */
 
     .inspiration {
       max-width: 1400px;
@@ -487,7 +555,10 @@
       font-size: 20px;
     }
 
-    /* MY SPACE */
+
+    /* =========================
+       MY SPACE
+    ========================= */
 
     .my-space {
       max-width: 1400px;
@@ -583,12 +654,22 @@
       background: #444;
     }
 
+
+    /* =========================
+       FOOTER
+    ========================= */
+
     footer {
       text-align: center;
       padding: 30px 20px 50px;
       color: #999;
       font-size: 13px;
     }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
 
     @media (max-width: 1000px) {
 
@@ -608,7 +689,21 @@
       .inspiration-card.large .inspiration-image {
         height: 350px;
       }
+
+      .product-modal-content {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-image {
+        height: 350px;
+      }
+
+      .modal-info {
+        padding: 35px;
+      }
+
     }
+
 
     @media (max-width: 650px) {
 
@@ -681,11 +776,40 @@
       .saved-name {
         font-size: 14px;
       }
+
+      .product-modal {
+        padding: 12px;
+      }
+
+      .product-modal-content {
+        max-height: 95vh;
+        border-radius: 22px;
+      }
+
+      .modal-image {
+        height: 280px;
+      }
+
+      .modal-info {
+        padding: 28px 22px;
+      }
+
+      .modal-info h2 {
+        font-size: 32px;
+      }
+
     }
+
   </style>
 </head>
 
+
 <body>
+
+
+  <!-- =========================
+       NAV
+  ========================= -->
 
   <nav>
 
@@ -716,6 +840,10 @@
   </nav>
 
 
+  <!-- =========================
+       HERO
+  ========================= -->
+
   <section class="hero">
 
     <small>
@@ -733,6 +861,10 @@
   </section>
 
 
+  <!-- =========================
+       SEARCH
+  ========================= -->
+
   <div class="search">
 
     <input
@@ -743,6 +875,10 @@
 
   </div>
 
+
+  <!-- =========================
+       CATEGORIES
+  ========================= -->
 
   <div class="categories">
 
@@ -765,7 +901,14 @@
   </div>
 
 
+  <!-- =========================
+       PRODUCT FEED
+  ========================= -->
+
   <main class="feed">
+
+
+    <!-- PRODUCT 1 -->
 
     <article class="product">
 
@@ -774,10 +917,12 @@
       </button>
 
       <div class="product-image">
+
         <img
           src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=900&q=80"
           alt="Minimal Chair"
         >
+
       </div>
 
       <div class="product-info">
@@ -811,6 +956,8 @@
     </article>
 
 
+    <!-- PRODUCT 2 -->
+
     <article class="product">
 
       <button class="heart">
@@ -818,10 +965,12 @@
       </button>
 
       <div class="product-image">
+
         <img
           src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80"
           alt="Orbit Lamp"
         >
+
       </div>
 
       <div class="product-info">
@@ -855,6 +1004,8 @@
     </article>
 
 
+    <!-- PRODUCT 3 -->
+
     <article class="product">
 
       <button class="heart">
@@ -862,10 +1013,12 @@
       </button>
 
       <div class="product-image">
+
         <img
           src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"
           alt="Studio Display"
         >
+
       </div>
 
       <div class="product-info">
@@ -899,6 +1052,8 @@
     </article>
 
 
+    <!-- PRODUCT 4 -->
+
     <article class="product">
 
       <button class="heart">
@@ -906,10 +1061,12 @@
       </button>
 
       <div class="product-image">
+
         <img
           src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"
           alt="Cloud Sofa"
         >
+
       </div>
 
       <div class="product-info">
@@ -942,10 +1099,146 @@
 
     </article>
 
+
   </main>
 
 
-  <section class="inspiration" id="inspiration">
+  <!-- =========================
+       PRODUCT MODAL
+  ========================= -->
+
+  <div class="product-modal" id="product-modal">
+
+    <div class="product-modal-content">
+
+      <button
+        class="modal-close"
+        id="modal-close"
+      >
+        ×
+      </button>
+
+
+      <div class="modal-image">
+
+        <img
+          id="modal-image"
+          src=""
+          alt=""
+        >
+
+      </div>
+
+
+      <div class="modal-info">
+
+        <span
+          class="modal-tag"
+          id="modal-tag"
+        ></span>
+
+        <h2 id="modal-name"></h2>
+
+        <p
+          class="modal-description"
+          id="modal-description"
+        ></p>
+
+        <div
+          class="modal-price"
+          id="modal-price"
+        ></div>
+
+
+        <button
+          class="better-button"
+          id="better-button"
+        >
+          Find me better
+        </button>
+
+
+        <!-- BETTER RESULTS -->
+
+        <div
+          class="better-results"
+          id="better-results"
+        >
+
+          <div class="better-results-title">
+            We found some alternatives for you
+          </div>
+
+
+          <div class="alternative">
+
+            <img
+              src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=300&q=80"
+              alt="Alternative chair"
+            >
+
+            <div class="alternative-info">
+
+              <div class="alternative-name">
+                Soft Minimal Chair
+              </div>
+
+              <div class="alternative-price">
+                89 €
+              </div>
+
+            </div>
+
+            <span class="cheaper">
+              -40 €
+            </span>
+
+          </div>
+
+
+          <div class="alternative">
+
+            <img
+              src="https://images.unsplash.com/photo-1519947486511-46149fa0a254?auto=format&fit=crop&w=300&q=80"
+              alt="Alternative product"
+            >
+
+            <div class="alternative-info">
+
+              <div class="alternative-name">
+                Nordic Lounge Chair
+              </div>
+
+              <div class="alternative-price">
+                109 €
+              </div>
+
+            </div>
+
+            <span class="cheaper">
+              -20 €
+            </span>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       INSPIRATION
+  ========================= -->
+
+  <section
+    class="inspiration"
+    id="inspiration"
+  >
 
     <div class="inspiration-header">
 
@@ -965,6 +1258,7 @@
 
 
     <div class="inspiration-grid">
+
 
       <div class="inspiration-card large">
 
@@ -1049,12 +1343,20 @@
 
       </div>
 
+
     </div>
 
   </section>
 
 
-  <section class="my-space" id="my-space">
+  <!-- =========================
+       MY SPACE
+  ========================= -->
+
+  <section
+    class="my-space"
+    id="my-space"
+  >
 
     <small>
       My Space
@@ -1068,6 +1370,7 @@
       Everything you want to keep, in one place.
     </p>
 
+
     <div class="space-box">
 
       <div class="empty-message">
@@ -1079,12 +1382,21 @@
   </section>
 
 
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
   <footer>
     © 2026 Veylo — Discover. Save. Build.
   </footer>
 
 
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
   <script>
+
 
     /* =========================
        PRODUCTS
@@ -1104,18 +1416,27 @@
 
     hearts.forEach(heart => {
 
-      heart.addEventListener("click", () => {
+      heart.addEventListener("click", event => {
 
-        if (heart.textContent.trim() === "♡") {
+        event.stopPropagation();
+
+
+        if (
+          heart.textContent.trim() === "♡"
+        ) {
 
           heart.textContent = "♥";
+
           heart.style.background = "#111";
+
           heart.style.color = "white";
 
         } else {
 
           heart.textContent = "♡";
+
           heart.style.background = "white";
+
           heart.style.color = "#111";
 
         }
@@ -1136,16 +1457,21 @@
     searchBox.addEventListener("input", () => {
 
       const search =
-        searchBox.value.toLowerCase().trim();
+        searchBox.value
+          .toLowerCase()
+          .trim();
 
 
       products.forEach(product => {
 
         const text =
-          product.textContent.toLowerCase();
+          product.textContent
+            .toLowerCase();
 
 
-        if (text.includes(search)) {
+        if (
+          text.includes(search)
+        ) {
 
           product.style.display = "";
 
@@ -1159,98 +1485,238 @@
 
     });
 
-/* =========================
-   PRODUCT MODAL
-========================= */
 
-const productModal =
-  document.querySelector("#product-modal");
+    /* =========================
+       PRODUCT MODAL
+    ========================= */
 
-const modalClose =
-  document.querySelector("#modal-close");
-
-const modalImage =
-  document.querySelector("#modal-image");
-
-const modalTag =
-  document.querySelector("#modal-tag");
-
-const modalName =
-  document.querySelector("#modal-name");
-
-const modalDescription =
-  document.querySelector("#modal-description");
-
-const modalPrice =
-  document.querySelector("#modal-price");
+    const productModal =
+      document.querySelector("#product-modal");
 
 
-products.forEach(product => {
-
-  product.addEventListener("click", event => {
-
-    /* Ne pas ouvrir la fiche quand on clique sur Save ou ❤️ */
-
-    if (
-      event.target.closest(".save") ||
-      event.target.closest(".heart")
-    ) {
-      return;
-    }
+    const modalClose =
+      document.querySelector("#modal-close");
 
 
-    const image =
-      product.querySelector(".product-image img").src;
-
-    const tag =
-      product.querySelector(".tag").textContent.trim();
-
-    const name =
-      product.querySelector("h2").textContent.trim();
-
-    const description =
-      product.querySelector(".description").textContent.trim();
-
-    const price =
-      product.querySelector(".price").textContent.trim();
+    const modalImage =
+      document.querySelector("#modal-image");
 
 
-    modalImage.src = image;
-
-    modalImage.alt = name;
-
-    modalTag.textContent = tag;
-
-    modalName.textContent = name;
-
-    modalDescription.textContent = description;
-
-    modalPrice.textContent = price;
+    const modalTag =
+      document.querySelector("#modal-tag");
 
 
-    productModal.classList.add("active");
-
-  });
-
-});
+    const modalName =
+      document.querySelector("#modal-name");
 
 
-modalClose.addEventListener("click", () => {
-
-  productModal.classList.remove("active");
-
-});
+    const modalDescription =
+      document.querySelector("#modal-description");
 
 
-productModal.addEventListener("click", event => {
+    const modalPrice =
+      document.querySelector("#modal-price");
 
-  if (event.target === productModal) {
 
-    productModal.classList.remove("active");
+    const betterButton =
+      document.querySelector("#better-button");
 
-  }
 
-});
+    const betterResults =
+      document.querySelector("#better-results");
+
+
+    let currentProduct =
+      null;
+
+
+    products.forEach(product => {
+
+      product.addEventListener("click", event => {
+
+
+        if (
+          event.target.closest(".save") ||
+          event.target.closest(".heart")
+        ) {
+
+          return;
+
+        }
+
+
+        currentProduct =
+          product;
+
+
+        const image =
+          product
+            .querySelector(".product-image img")
+            .src;
+
+
+        const tag =
+          product
+            .querySelector(".tag")
+            .textContent
+            .trim();
+
+
+        const name =
+          product
+            .querySelector("h2")
+            .textContent
+            .trim();
+
+
+        const description =
+          product
+            .querySelector(".description")
+            .textContent
+            .trim();
+
+
+        const price =
+          product
+            .querySelector(".price")
+            .textContent
+            .trim();
+
+
+        modalImage.src =
+          image;
+
+
+        modalImage.alt =
+          name;
+
+
+        modalTag.textContent =
+          tag;
+
+
+        modalName.textContent =
+          name;
+
+
+        modalDescription.textContent =
+          description;
+
+
+        modalPrice.textContent =
+          price;
+
+
+        betterResults.classList.remove(
+          "active"
+        );
+
+
+        betterButton.textContent =
+          "Find me better";
+
+
+        productModal.classList.add(
+          "active"
+        );
+
+      });
+
+    });
+
+
+    /* =========================
+       CLOSE MODAL
+    ========================= */
+
+    modalClose.addEventListener(
+      "click",
+      () => {
+
+        productModal.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+
+    productModal.addEventListener(
+      "click",
+      event => {
+
+        if (
+          event.target === productModal
+        ) {
+
+          productModal.classList.remove(
+            "active"
+          );
+
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          productModal.classList.remove(
+            "active"
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =========================
+       FIND ME BETTER
+    ========================= */
+
+    betterButton.addEventListener(
+      "click",
+      () => {
+
+
+        if (
+          betterResults.classList.contains(
+            "active"
+          )
+        ) {
+
+          betterResults.classList.remove(
+            "active"
+          );
+
+          betterButton.textContent =
+            "Find me better";
+
+          return;
+
+        }
+
+
+        betterButton.textContent =
+          "Alternatives found ✓";
+
+
+        betterResults.classList.add(
+          "active"
+        );
+
+
+      }
+    );
+
+
     /* =========================
        SAVE PRODUCTS
     ========================= */
@@ -1265,119 +1731,176 @@ productModal.addEventListener("click", event => {
 
     saveButtons.forEach(button => {
 
-      button.addEventListener("click", () => {
 
-        if (button.dataset.saved === "true") {
-          return;
-        }
-
-
-        const product =
-          button.closest(".product");
+      button.addEventListener(
+        "click",
+        event => {
 
 
-        const name =
-          product.querySelector("h2").textContent.trim();
+          event.stopPropagation();
 
 
-        const price =
-          product.querySelector(".price").textContent.trim();
+          if (
+            button.dataset.saved === "true"
+          ) {
 
-
-        const image =
-          product.querySelector(".product-image img").src;
-
-
-        button.dataset.saved = "true";
-
-        button.textContent = "✓ Saved";
-
-        button.style.background = "#e8e8e5";
-
-        button.style.color = "#111";
-
-
-        const emptyMessage =
-          spaceBox.querySelector(".empty-message");
-
-
-        if (emptyMessage) {
-          emptyMessage.remove();
-        }
-
-
-        const savedProduct =
-          document.createElement("div");
-
-
-        savedProduct.className =
-          "saved-product";
-
-
-        savedProduct.innerHTML = `
-
-          <div class="saved-left">
-
-            <div class="saved-image">
-              <img src="${image}" alt="${name}">
-            </div>
-
-            <div>
-
-              <div class="saved-name">
-                ${name}
-              </div>
-
-              <div class="saved-price">
-                ${price}
-              </div>
-
-            </div>
-
-          </div>
-
-          <button class="remove-product">
-            Remove
-          </button>
-
-        `;
-
-
-        spaceBox.appendChild(savedProduct);
-
-
-        const removeButton =
-          savedProduct.querySelector(".remove-product");
-
-
-        removeButton.addEventListener("click", () => {
-
-          savedProduct.remove();
-
-          button.dataset.saved = "false";
-
-          button.textContent = "＋ Save";
-
-          button.style.background = "#111";
-
-          button.style.color = "white";
-
-
-          if (spaceBox.children.length === 0) {
-
-            spaceBox.innerHTML = `
-
-              <div class="empty-message">
-                Your saved products will appear here.
-              </div>
-
-            `;
+            return;
 
           }
 
-        });
 
-      });
+          const product =
+            button.closest(".product");
+
+
+          const name =
+            product
+              .querySelector("h2")
+              .textContent
+              .trim();
+
+
+          const price =
+            product
+              .querySelector(".price")
+              .textContent
+              .trim();
+
+
+          const image =
+            product
+              .querySelector(".product-image img")
+              .src;
+
+
+          button.dataset.saved =
+            "true";
+
+
+          button.textContent =
+            "✓ Saved";
+
+
+          button.style.background =
+            "#e8e8e5";
+
+
+          button.style.color =
+            "#111";
+
+
+          const emptyMessage =
+            spaceBox.querySelector(
+              ".empty-message"
+            );
+
+
+          if (emptyMessage) {
+
+            emptyMessage.remove();
+
+          }
+
+
+          const savedProduct =
+            document.createElement(
+              "div"
+            );
+
+
+          savedProduct.className =
+            "saved-product";
+
+
+          savedProduct.innerHTML = `
+
+            <div class="saved-left">
+
+              <div class="saved-image">
+
+                <img
+                  src="${image}"
+                  alt="${name}"
+                >
+
+              </div>
+
+              <div>
+
+                <div class="saved-name">
+                  ${name}
+                </div>
+
+                <div class="saved-price">
+                  ${price}
+                </div>
+
+              </div>
+
+            </div>
+
+            <button class="remove-product">
+              Remove
+            </button>
+
+          `;
+
+
+          spaceBox.appendChild(
+            savedProduct
+          );
+
+
+          const removeButton =
+            savedProduct.querySelector(
+              ".remove-product"
+            );
+
+
+          removeButton.addEventListener(
+            "click",
+            () => {
+
+
+              savedProduct.remove();
+
+
+              button.dataset.saved =
+                "false";
+
+
+              button.textContent =
+                "＋ Save";
+
+
+              button.style.background =
+                "#111";
+
+
+              button.style.color =
+                "white";
+
+
+              if (
+                spaceBox.children.length === 0
+              ) {
+
+                spaceBox.innerHTML = `
+
+                  <div class="empty-message">
+                    Your saved products will appear here.
+                  </div>
+
+                `;
+
+              }
+
+            }
+          );
+
+
+        }
+      );
 
     });
 
@@ -1387,60 +1910,78 @@ productModal.addEventListener("click", event => {
     ========================= */
 
     const categories =
-      document.querySelectorAll(".category");
+      document.querySelectorAll(
+        ".category"
+      );
 
 
     categories.forEach(category => {
 
-      category.addEventListener("click", () => {
 
-        categories.forEach(item => {
-          item.classList.remove("active");
-        });
-
-
-        category.classList.add("active");
+      category.addEventListener(
+        "click",
+        () => {
 
 
-        const selectedCategory =
-          category.textContent
-            .trim()
-            .toLowerCase();
+          categories.forEach(item => {
+
+            item.classList.remove(
+              "active"
+            );
+
+          });
 
 
-        products.forEach(product => {
+          category.classList.add(
+            "active"
+          );
 
-          const tag =
-            product.querySelector(".tag")
-              .textContent
+
+          const selectedCategory =
+            category.textContent
               .trim()
               .toLowerCase();
 
 
-          if (
-            selectedCategory === "all" ||
-            tag === selectedCategory
-          ) {
-
-            product.style.display = "";
-
-          } else {
-
-            product.style.display = "none";
-
-          }
-
-        });
+          products.forEach(product => {
 
 
-        searchBox.value = "";
+            const tag =
+              product
+                .querySelector(".tag")
+                .textContent
+                .trim()
+                .toLowerCase();
 
-      });
+
+            if (
+              selectedCategory === "all" ||
+              tag === selectedCategory
+            ) {
+
+              product.style.display =
+                "";
+
+            } else {
+
+              product.style.display =
+                "none";
+
+            }
+
+          });
+
+
+          searchBox.value =
+            "";
+
+        }
+      );
 
     });
+
 
   </script>
 
 </body>
 </html>
-```
