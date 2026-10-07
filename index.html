@@ -12,6 +12,10 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: #f5f5f2;
@@ -366,20 +370,71 @@
 
     .collection-card {
       background: white;
-      border-radius: 20px;
+      border-radius: 22px;
       border: 1px solid #e8e8e3;
-      padding: 20px;
-      transition: .2s;
+      padding: 12px;
+      transition: .25s;
+      overflow: hidden;
     }
 
     .collection-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(0,0,0,.06);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0,0,0,.07);
+    }
+
+    .collection-preview {
+      height: 190px;
+      border-radius: 16px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 4px;
+      background: #eeeeeb;
+      margin-bottom: 17px;
+    }
+
+    .preview-image {
+      overflow: hidden;
+      background: #e8e8e4;
+    }
+
+    .preview-image:first-child {
+      grid-row: 1 / 3;
+    }
+
+    .preview-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .preview-empty {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 12px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .collection-content {
+      padding: 0 8px 8px;
+    }
+
+    .collection-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
     }
 
     .collection-icon {
-      font-size: 30px;
-      margin-bottom: 15px;
+      font-size: 22px;
     }
 
     .collection-card h3 {
@@ -390,7 +445,7 @@
     .collection-card p {
       color: #888;
       font-size: 13px;
-      margin-bottom: 17px;
+      margin-bottom: 15px;
     }
 
     .collection-actions {
@@ -438,6 +493,10 @@
       padding: 25px;
       max-height: 90vh;
       overflow-y: auto;
+    }
+
+    .collection-detail-box {
+      width: min(900px, 100%);
     }
 
     .modal-header {
@@ -494,54 +553,121 @@
       background: #ecece8;
     }
 
+    /* PINTEREST STYLE MOODBOARD */
+
     .collection-detail-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      columns: 3 220px;
+      column-gap: 14px;
     }
 
     .collection-product {
-      border: 1px solid #e8e8e3;
-      border-radius: 15px;
+      break-inside: avoid;
+      margin-bottom: 14px;
+      border-radius: 18px;
       overflow: hidden;
+      background: #f5f5f2;
+      position: relative;
     }
 
-    .collection-product img {
+    .collection-product-image {
+      position: relative;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .collection-product:nth-child(3n + 1)
+    .collection-product-image {
+      height: 340px;
+    }
+
+    .collection-product:nth-child(3n + 2)
+    .collection-product-image {
+      height: 250px;
+    }
+
+    .collection-product:nth-child(3n)
+    .collection-product-image {
+      height: 300px;
+    }
+
+    .collection-product-image img {
       width: 100%;
-      height: 180px;
+      height: 100%;
       object-fit: cover;
+      display: block;
+      transition: transform .4s;
     }
 
-    .collection-product-info {
-      padding: 12px;
+    .collection-product:hover
+    .collection-product-image img {
+      transform: scale(1.04);
     }
 
-    .collection-product-info h4 {
-      font-size: 14px;
-      margin-bottom: 6px;
+    .collection-product-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,.15),
+        transparent 35%,
+        rgba(0,0,0,.65)
+      );
+      opacity: 0;
+      transition: .25s;
     }
 
-    .collection-product-info p {
-      font-size: 13px;
-      color: #777;
-      margin-bottom: 10px;
+    .collection-product:hover
+    .collection-product-overlay {
+      opacity: 1;
     }
 
     .collection-remove {
-      width: 100%;
+      position: absolute;
+      right: 10px;
+      top: 10px;
       border: none;
-      background: #f0f0ed;
-      padding: 9px;
-      border-radius: 9px;
-      font-size: 11px;
+      background: rgba(255,255,255,.94);
+      color: #111;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      font-size: 17px;
+      z-index: 2;
+    }
+
+    .collection-product-label {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      color: white;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(5px);
+      transition: .25s;
+    }
+
+    .collection-product:hover
+    .collection-product-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .collection-product-label h4 {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .collection-product-label p {
+      font-size: 12px;
+      opacity: .85;
     }
 
     .collection-empty {
-      grid-column: 1 / -1;
+      column-span: all;
       text-align: center;
-      padding: 35px 15px;
+      padding: 60px 20px;
       background: #f6f6f3;
-      border-radius: 15px;
+      border-radius: 18px;
       color: #777;
       font-size: 13px;
     }
@@ -586,10 +712,6 @@
       .collections-grid {
         grid-template-columns: 1fr 1fr;
       }
-
-      .nav-links {
-        gap: 14px;
-      }
     }
 
     @media (max-width: 600px) {
@@ -597,7 +719,7 @@
         padding: 0 20px;
       }
 
-      .nav-links a {
+      .nav-links {
         display: none;
       }
 
@@ -620,7 +742,16 @@
       }
 
       .collection-detail-grid {
-        grid-template-columns: 1fr;
+        columns: 2 150px;
+      }
+
+      .collection-product:nth-child(3n + 1)
+      .collection-product-image,
+      .collection-product:nth-child(3n + 2)
+      .collection-product-image,
+      .collection-product:nth-child(3n)
+      .collection-product-image {
+        height: 240px;
       }
     }
   </style>
@@ -644,7 +775,9 @@
 
     <section class="hero" id="discover">
       <div class="eyebrow">Your visual shopping space</div>
+
       <h1>Find things that fit your world.</h1>
+
       <p>
         Discover products, save your favorites and build collections
         around the life you want.
@@ -652,30 +785,62 @@
     </section>
 
     <section class="search-section">
+
       <div class="search-box">
         <span>⌕</span>
+
         <input
           type="text"
           id="searchInput"
           placeholder="Search furniture, lighting, setup..."
         >
       </div>
+
     </section>
 
     <div class="categories">
-      <button class="category active" data-category="all">All</button>
-      <button class="category" data-category="furniture">Furniture</button>
-      <button class="category" data-category="lighting">Lighting</button>
-      <button class="category" data-category="setup">Setup</button>
+
+      <button
+        class="category active"
+        data-category="all"
+      >
+        All
+      </button>
+
+      <button
+        class="category"
+        data-category="furniture"
+      >
+        Furniture
+      </button>
+
+      <button
+        class="category"
+        data-category="lighting"
+      >
+        Lighting
+      </button>
+
+      <button
+        class="category"
+        data-category="setup"
+      >
+        Setup
+      </button>
+
     </div>
 
     <section class="section">
+
       <div class="section-header">
         <h2>Discover</h2>
         <span id="resultCount">4 products</span>
       </div>
 
-      <div class="products-grid" id="productsGrid">
+      <div
+        class="products-grid"
+        id="productsGrid"
+      >
 
         <article
           class="product-card"
@@ -687,25 +852,46 @@
           data-description="A simple chair designed for calm and modern spaces."
           data-image="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=900&q=80"
         >
+
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=900&q=80" alt="Minimal Chair">
+
+            <img
+              src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=900&q=80"
+              alt="Minimal Chair"
+            >
+
             <button class="heart">♡</button>
+
           </div>
 
           <div class="product-info">
+
             <h3>Minimal Chair</h3>
+
             <p>Furniture · Minimal</p>
 
             <div class="product-bottom">
+
               <span class="price">129€</span>
 
               <div class="actions">
-                <button class="collection-btn">+ Collection</button>
-                <button class="save-btn">Save</button>
+
+                <button class="collection-btn">
+                  + Collection
+                </button>
+
+                <button class="save-btn">
+                  Save
+                </button>
+
               </div>
+
             </div>
+
           </div>
+
         </article>
+
 
         <article
           class="product-card"
@@ -717,25 +903,46 @@
           data-description="Soft ambient lighting for a warm atmosphere."
           data-image="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80"
         >
+
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80" alt="Orbit Lamp">
+
+            <img
+              src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80"
+              alt="Orbit Lamp"
+            >
+
             <button class="heart">♡</button>
+
           </div>
 
           <div class="product-info">
+
             <h3>Orbit Lamp</h3>
+
             <p>Lighting · Ambient</p>
 
             <div class="product-bottom">
+
               <span class="price">59€</span>
 
               <div class="actions">
-                <button class="collection-btn">+ Collection</button>
-                <button class="save-btn">Save</button>
+
+                <button class="collection-btn">
+                  + Collection
+                </button>
+
+                <button class="save-btn">
+                  Save
+                </button>
+
               </div>
+
             </div>
+
           </div>
+
         </article>
+
 
         <article
           class="product-card"
@@ -747,25 +954,46 @@
           data-description="A clean display for a focused creative setup."
           data-image="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80"
         >
+
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80" alt="Studio Display">
+
+            <img
+              src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80"
+              alt="Studio Display"
+            >
+
             <button class="heart">♡</button>
+
           </div>
 
           <div class="product-info">
+
             <h3>Studio Display</h3>
+
             <p>Setup · Workspace</p>
 
             <div class="product-bottom">
+
               <span class="price">499€</span>
 
               <div class="actions">
-                <button class="collection-btn">+ Collection</button>
-                <button class="save-btn">Save</button>
+
+                <button class="collection-btn">
+                  + Collection
+                </button>
+
+                <button class="save-btn">
+                  Save
+                </button>
+
               </div>
+
             </div>
+
           </div>
+
         </article>
+
 
         <article
           class="product-card"
@@ -777,30 +1005,56 @@
           data-description="A soft sofa designed for relaxed living spaces."
           data-image="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"
         >
+
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80" alt="Cloud Sofa">
+
+            <img
+              src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"
+              alt="Cloud Sofa"
+            >
+
             <button class="heart">♡</button>
+
           </div>
 
           <div class="product-info">
+
             <h3>Cloud Sofa</h3>
+
             <p>Furniture · Living</p>
 
             <div class="product-bottom">
+
               <span class="price">899€</span>
 
               <div class="actions">
-                <button class="collection-btn">+ Collection</button>
-                <button class="save-btn">Save</button>
+
+                <button class="collection-btn">
+                  + Collection
+                </button>
+
+                <button class="save-btn">
+                  Save
+                </button>
+
               </div>
+
             </div>
+
           </div>
+
         </article>
 
       </div>
+
     </section>
 
-    <section class="section" id="inspiration">
+
+    <section
+      class="section"
+      id="inspiration"
+    >
+
       <div class="section-header">
         <h2>Inspiration</h2>
         <span>Build your world</span>
@@ -809,75 +1063,168 @@
       <div class="empty">
         More visual inspiration is coming to Veylo.
       </div>
+
     </section>
 
-    <section class="section" id="my-space">
+
+    <section
+      class="section"
+      id="my-space"
+    >
 
       <div class="section-header">
+
         <h2>My Space</h2>
+
         <span>Your saved world</span>
+
       </div>
 
-      <h3 style="margin-bottom:18px;">Saved products</h3>
 
-      <div class="saved-grid" id="savedGrid"></div>
+      <h3 style="margin-bottom:18px;">
+        Saved products
+      </h3>
+
+
+      <div
+        class="saved-grid"
+        id="savedGrid"
+      ></div>
+
 
       <div style="height:55px;"></div>
 
+
       <div class="collections-header">
+
         <div>
+
           <h3>My collections</h3>
-          <p style="color:#888;font-size:13px;margin-top:6px;">
+
+          <p
+            style="
+              color:#888;
+              font-size:13px;
+              margin-top:6px;
+            "
+          >
             Turn your ideas into visual worlds.
           </p>
+
         </div>
 
-        <button class="new-collection" id="newCollectionBtn">
+
+        <button
+          class="new-collection"
+          id="newCollectionBtn"
+        >
           + New collection
         </button>
+
       </div>
 
-      <div class="collections-grid" id="collectionsGrid"></div>
+
+      <div
+        class="collections-grid"
+        id="collectionsGrid"
+      ></div>
 
     </section>
 
   </main>
 
+
   <!-- PRODUCT MODAL -->
-  <div class="modal" id="productModal">
+
+  <div
+    class="modal"
+    id="productModal"
+  >
+
     <div class="modal-box">
 
       <div class="modal-header">
+
         <h2 id="modalProductName"></h2>
-        <button class="close" data-close="productModal">×</button>
+
+        <button
+          class="close"
+          data-close="productModal"
+        >
+          ×
+        </button>
+
       </div>
+
 
       <img
         id="modalProductImage"
         src=""
         alt=""
-        style="width:100%;height:280px;object-fit:cover;border-radius:18px;margin-bottom:18px;"
+        style="
+          width:100%;
+          height:280px;
+          object-fit:cover;
+          border-radius:18px;
+          margin-bottom:18px;
+        "
       >
 
-      <p id="modalProductDescription" style="color:#777;line-height:1.6;margin-bottom:12px;"></p>
 
-      <div style="font-size:20px;font-weight:700;margin-bottom:20px;" id="modalProductPrice"></div>
+      <p
+        id="modalProductDescription"
+        style="
+          color:#777;
+          line-height:1.6;
+          margin-bottom:12px;
+        "
+      ></p>
 
-      <h3 style="margin-bottom:15px;">Find me better</h3>
+
+      <div
+        style="
+          font-size:20px;
+          font-weight:700;
+          margin-bottom:20px;
+        "
+        id="modalProductPrice"
+      ></div>
+
+
+      <h3 style="margin-bottom:15px;">
+        Find me better
+      </h3>
+
 
       <div id="alternatives"></div>
 
     </div>
+
   </div>
 
-  <!-- CREATE COLLECTION MODAL -->
-  <div class="modal" id="collectionModal">
+
+  <!-- CREATE COLLECTION -->
+
+  <div
+    class="modal"
+    id="collectionModal"
+  >
+
     <div class="modal-box">
 
       <div class="modal-header">
+
         <h2>Create collection</h2>
-        <button class="close" data-close="collectionModal">×</button>
+
+        <button
+          class="close"
+          data-close="collectionModal"
+        >
+          ×
+        </button>
+
       </div>
+
 
       <input
         type="text"
@@ -886,43 +1233,89 @@
         placeholder="Ex. Mon futur appart"
       >
 
-      <button class="modal-main-btn" id="createCollectionBtn">
+
+      <button
+        class="modal-main-btn"
+        id="createCollectionBtn"
+      >
         Create collection
       </button>
 
     </div>
+
   </div>
 
-  <!-- ADD TO COLLECTION MODAL -->
-  <div class="modal" id="addCollectionModal">
+
+  <!-- ADD TO COLLECTION -->
+
+  <div
+    class="modal"
+    id="addCollectionModal"
+  >
+
     <div class="modal-box">
 
       <div class="modal-header">
+
         <h2>Add to collection</h2>
-        <button class="close" data-close="addCollectionModal">×</button>
+
+        <button
+          class="close"
+          data-close="addCollectionModal"
+        >
+          ×
+        </button>
+
       </div>
+
 
       <div id="collectionChoices"></div>
 
     </div>
+
   </div>
 
-  <!-- COLLECTION DETAIL MODAL -->
-  <div class="modal" id="collectionDetailModal">
 
-    <div class="modal-box">
+  <!-- COLLECTION MOODBOARD -->
+
+  <div
+    class="modal"
+    id="collectionDetailModal"
+  >
+
+    <div
+      class="modal-box collection-detail-box"
+    >
 
       <div class="modal-header">
+
         <div>
-          <h2 id="collectionDetailTitle">Collection</h2>
+
+          <h2 id="collectionDetailTitle">
+            Collection
+          </h2>
+
           <p
             id="collectionDetailCount"
-            style="color:#888;font-size:13px;margin-top:5px;"
+            style="
+              color:#888;
+              font-size:13px;
+              margin-top:5px;
+            "
           ></p>
+
         </div>
 
-        <button class="close" data-close="collectionDetailModal">×</button>
+
+        <button
+          class="close"
+          data-close="collectionDetailModal"
+        >
+          ×
+        </button>
+
       </div>
+
 
       <div
         class="collection-detail-grid"
@@ -932,6 +1325,7 @@
     </div>
 
   </div>
+
 
   <script>
 
@@ -950,58 +1344,84 @@
     let productToAdd = null;
     let currentCollectionId = null;
 
+
     const alternativesData = {
+
       chair: [
+
         {
           name: "Soft Minimal Chair",
           price: "89€",
-          image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=300&q=80"
+          image:
+            "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=300&q=80"
         },
+
         {
           name: "Nordic Lounge Chair",
           price: "109€",
-          image: "https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=300&q=80"
+          image:
+            "https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=300&q=80"
         }
+
       ],
 
+
       lamp: [
+
         {
           name: "Glow Table Lamp",
           price: "29€",
-          image: "https://images.unsplash.com/photo-1543198126-a8ad8e47fb22?auto=format&fit=crop&w=300&q=80"
+          image:
+            "https://images.unsplash.com/photo-1543198126-a8ad8e47fb22?auto=format&fit=crop&w=300&q=80"
         },
+
         {
           name: "Round Light",
           price: "39€",
-          image: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=300&q=80"
+          image:
+            "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=300&q=80"
         }
+
       ],
 
+
       display: [
+
         {
           name: "Clean Desk Monitor",
           price: "229€",
-          image: "https://images.unsplash.com/photo-1616763355548-1b606f439f86?auto=format&fit=crop&w=300&q=80"
+          image:
+            "https://images.unsplash.com/photo-1616763355548-1b606f439f86?auto=format&fit=crop&w=300&q=80"
         },
+
         {
           name: "Studio Screen",
           price: "259€",
-          image: "https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?auto=format&fit=crop&w=300&q=80"
+          image:
+            "https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?auto=format&fit=crop&w=300&q=80"
         }
+
       ],
 
+
       sofa: [
+
         {
           name: "Soft Cloud Sofa",
           price: "499€",
-          image: "https://images.unsplash.com/photo-1550254478-ead40cc54513?auto=format&fit=crop&w=300&q=80"
+          image:
+            "https://images.unsplash.com/photo-1550254478-ead40cc54513?auto=format&fit=crop&w=300&q=80"
         },
+
         {
           name: "Minimal Lounge Sofa",
           price: "579€",
-          image: "https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=300&q=80"
+          image:
+            "https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=300&q=80"
         }
+
       ]
+
     };
 
 
@@ -1016,17 +1436,24 @@
         collectionsKey,
         JSON.stringify(collections)
       );
+
     }
 
 
     function getProductData(card) {
 
       return {
+
         id: card.dataset.id,
+
         name: card.dataset.name,
+
         price: card.dataset.price,
+
         description: card.dataset.description,
+
         image: card.dataset.image
+
       };
 
     }
@@ -1034,62 +1461,82 @@
 
     function getAllProducts() {
 
-      return [...document.querySelectorAll(".product-card")];
+      return [
+        ...document.querySelectorAll(
+          ".product-card"
+        )
+      ];
 
     }
 
 
     function renderSaved() {
 
-      const grid = document.getElementById("savedGrid");
+      const grid =
+        document.getElementById(
+          "savedGrid"
+        );
+
 
       if (savedProducts.length === 0) {
 
         grid.innerHTML = `
-          <div class="empty" style="grid-column:1/-1;">
+          <div
+            class="empty"
+            style="grid-column:1/-1;"
+          >
             Aucun produit sauvegardé pour le moment.
           </div>
         `;
 
         return;
+
       }
 
-      grid.innerHTML = savedProducts.map(product => `
 
-        <div class="saved-card">
+      grid.innerHTML =
+        savedProducts.map(product => `
 
-          <img src="${product.image}" alt="${product.name}">
+          <div class="saved-card">
 
-          <div class="saved-card-content">
-
-            <h4>${product.name}</h4>
-
-            <p>${product.price}</p>
-
-            <button
-              class="remove-btn"
-              onclick="removeSaved('${product.id}')"
+            <img
+              src="${product.image}"
+              alt="${product.name}"
             >
-              Remove
-            </button>
+
+            <div class="saved-card-content">
+
+              <h4>${product.name}</h4>
+
+              <p>${product.price}</p>
+
+              <button
+                class="remove-btn"
+                onclick="removeSaved('${product.id}')"
+              >
+                Remove
+              </button>
+
+            </div>
 
           </div>
 
-        </div>
-
-      `).join("");
+        `).join("");
 
     }
 
 
     function removeSaved(id) {
 
-      savedProducts = savedProducts.filter(
-        product => product.id !== id
-      );
+      savedProducts =
+        savedProducts.filter(
+          product => product.id !== id
+        );
 
       saveStorage();
+
       renderSaved();
+
       updateHearts();
 
     }
@@ -1097,40 +1544,53 @@
 
     function updateHearts() {
 
-      document.querySelectorAll(".product-card").forEach(card => {
+      document
+        .querySelectorAll(".product-card")
+        .forEach(card => {
 
-        const heart = card.querySelector(".heart");
+          const heart =
+            card.querySelector(".heart");
 
-        const exists = savedProducts.some(
-          product => product.id === card.dataset.id
-        );
+          const exists =
+            savedProducts.some(
+              product =>
+                product.id === card.dataset.id
+            );
 
-        if (exists) {
-          heart.classList.add("saved");
-          heart.textContent = "♥";
-        } else {
-          heart.classList.remove("saved");
-          heart.textContent = "♡";
-        }
+          if (exists) {
 
-      });
+            heart.classList.add("saved");
+            heart.textContent = "♥";
+
+          } else {
+
+            heart.classList.remove("saved");
+            heart.textContent = "♡";
+
+          }
+
+        });
 
     }
 
 
     function toggleSave(card) {
 
-      const product = getProductData(card);
+      const product =
+        getProductData(card);
 
-      const exists = savedProducts.some(
-        item => item.id === product.id
-      );
+      const exists =
+        savedProducts.some(
+          item => item.id === product.id
+        );
+
 
       if (exists) {
 
-        savedProducts = savedProducts.filter(
-          item => item.id !== product.id
-        );
+        savedProducts =
+          savedProducts.filter(
+            item => item.id !== product.id
+          );
 
       } else {
 
@@ -1138,8 +1598,11 @@
 
       }
 
+
       saveStorage();
+
       renderSaved();
+
       updateHearts();
 
     }
@@ -1147,83 +1610,181 @@
 
     function renderCollections() {
 
-      const grid = document.getElementById("collectionsGrid");
+      const grid =
+        document.getElementById(
+          "collectionsGrid"
+        );
+
 
       if (collections.length === 0) {
 
         grid.innerHTML = `
-          <div class="empty" style="grid-column:1/-1;">
+          <div
+            class="empty"
+            style="grid-column:1/-1;"
+          >
             Aucune collection pour le moment.<br>
             Crée ta première collection.
           </div>
         `;
 
         return;
+
       }
 
-      grid.innerHTML = collections.map(collection => `
 
-        <div class="collection-card">
+      grid.innerHTML =
+        collections.map(collection => {
 
-          <div class="collection-icon">
-            ${collection.icon}
-          </div>
+          const products =
+            collection.products || [];
 
-          <h3>${collection.name}</h3>
+          let preview = "";
 
-          <p>
-            ${collection.products.length}
-            ${collection.products.length > 1 ? "produits" : "produit"}
-          </p>
+          if (products.length === 0) {
 
-          <div class="collection-actions">
+            preview = `
+              <div class="preview-empty">
+                Ta collection est vide.<br>
+                Ajoute des produits pour créer ton moodboard.
+              </div>
+            `;
 
-            <button
-              class="open-collection-btn"
-              onclick="openCollection('${collection.id}')"
-            >
-              Open moodboard
-            </button>
+          } else {
 
-            <button
-              class="delete-collection-btn"
-              onclick="deleteCollection('${collection.id}')"
-            >
-              Delete
-            </button>
+            const previewProducts =
+              products.slice(0, 3);
 
-          </div>
+            preview =
+              previewProducts.map(
+                product => `
 
-        </div>
+                  <div class="preview-image">
 
-      `).join("");
+                    <img
+                      src="${product.image}"
+                      alt="${product.name}"
+                    >
+
+                  </div>
+
+                `
+              ).join("");
+
+          }
+
+
+          return `
+
+            <div class="collection-card">
+
+              <div class="collection-preview">
+
+                ${preview}
+
+              </div>
+
+
+              <div class="collection-content">
+
+                <div class="collection-top">
+
+                  <div>
+
+                    <h3>
+                      ${collection.name}
+                    </h3>
+
+                    <p>
+                      ${products.length}
+                      ${
+                        products.length > 1
+                          ? "produits"
+                          : "produit"
+                      }
+                    </p>
+
+                  </div>
+
+                  <div class="collection-icon">
+                    ${collection.icon}
+                  </div>
+
+                </div>
+
+
+                <div class="collection-actions">
+
+                  <button
+                    class="open-collection-btn"
+                    onclick="openCollection('${collection.id}')"
+                  >
+                    Open moodboard
+                  </button>
+
+                  <button
+                    class="delete-collection-btn"
+                    onclick="deleteCollection('${collection.id}')"
+                  >
+                    Delete
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          `;
+
+        }).join("");
 
     }
 
 
     function createCollection() {
 
-      const input = document.getElementById("collectionName");
+      const input =
+        document.getElementById(
+          "collectionName"
+        );
 
-      const name = input.value.trim();
+      const name =
+        input.value.trim();
+
 
       if (!name) return;
 
-      const icons = ["✦", "◌", "◇", "☼", "✧", "⌂"];
+
+      const icons = [
+        "✦",
+        "◌",
+        "◇",
+        "☼",
+        "✧",
+        "⌂"
+      ];
+
 
       const collection = {
 
-        id: Date.now().toString(),
+        id:
+          Date.now().toString(),
 
         name: name,
 
-        icon: icons[
-          Math.floor(Math.random() * icons.length)
-        ],
+        icon:
+          icons[
+            Math.floor(
+              Math.random() *
+              icons.length
+            )
+          ],
 
         products: []
 
       };
+
 
       collections.push(collection);
 
@@ -1231,7 +1792,9 @@
 
       input.value = "";
 
-      closeModal("collectionModal");
+      closeModal(
+        "collectionModal"
+      );
 
       renderCollections();
 
@@ -1240,9 +1803,11 @@
 
     function deleteCollection(id) {
 
-      collections = collections.filter(
-        collection => collection.id !== id
-      );
+      collections =
+        collections.filter(
+          collection =>
+            collection.id !== id
+        );
 
       saveStorage();
 
@@ -1256,7 +1821,10 @@
       productToAdd = product;
 
       const choices =
-        document.getElementById("collectionChoices");
+        document.getElementById(
+          "collectionChoices"
+        );
+
 
       if (collections.length === 0) {
 
@@ -1268,61 +1836,91 @@
 
       } else {
 
-        choices.innerHTML = collections.map(collection => `
+        choices.innerHTML =
+          collections.map(
+            collection => `
 
-          <div
-            class="collection-choice"
-            onclick="addProductToCollection('${collection.id}')"
-          >
+              <div
+                class="collection-choice"
+                onclick="addProductToCollection('${collection.id}')"
+              >
 
-            <div>
-              <strong>
-                ${collection.icon} ${collection.name}
-              </strong>
+                <div>
 
-              <div style="font-size:12px;color:#888;margin-top:4px;">
-                ${collection.products.length} produits
+                  <strong>
+                    ${collection.icon}
+                    ${collection.name}
+                  </strong>
+
+                  <div
+                    style="
+                      font-size:12px;
+                      color:#888;
+                      margin-top:4px;
+                    "
+                  >
+                    ${collection.products.length}
+                    produits
+                  </div>
+
+                </div>
+
+                <span>→</span>
+
               </div>
-            </div>
 
-            <span>→</span>
-
-          </div>
-
-        `).join("");
+            `
+          ).join("");
 
       }
 
-      openModal("addCollectionModal");
+
+      openModal(
+        "addCollectionModal"
+      );
 
     }
 
 
-    function addProductToCollection(collectionId) {
+    function addProductToCollection(
+      collectionId
+    ) {
 
       if (!productToAdd) return;
 
+
       const collection =
         collections.find(
-          item => item.id === collectionId
+          item =>
+            item.id === collectionId
         );
+
 
       if (!collection) return;
 
+
       const alreadyExists =
         collection.products.some(
-          product => product.id === productToAdd.id
+          product =>
+            product.id ===
+            productToAdd.id
         );
+
 
       if (!alreadyExists) {
 
-        collection.products.push(productToAdd);
+        collection.products.push(
+          productToAdd
+        );
 
         saveStorage();
 
       }
 
-      closeModal("addCollectionModal");
+
+      closeModal(
+        "addCollectionModal"
+      );
 
       renderCollections();
 
@@ -1336,45 +1934,81 @@
           item => item.id === id
         );
 
+
       if (!collection) return;
 
+
       currentCollectionId = id;
+
 
       document.getElementById(
         "collectionDetailTitle"
       ).textContent =
         `${collection.icon} ${collection.name}`;
 
-      document.getElementById(
-        "collectionDetailCount"
-      ).textContent =
-        `${collection.products.length} ${
-          collection.products.length > 1
-            ? "produits"
-            : "produit"
-        }`;
 
-      renderCollectionProducts(collection);
+      updateCollectionCount(
+        collection
+      );
 
-      openModal("collectionDetailModal");
+
+      renderCollectionProducts(
+        collection
+      );
+
+
+      openModal(
+        "collectionDetailModal"
+      );
 
     }
 
 
-    function renderCollectionProducts(collection) {
+    function updateCollectionCount(
+      collection
+    ) {
+
+      const count =
+        collection.products.length;
+
+
+      document.getElementById(
+        "collectionDetailCount"
+      ).textContent =
+        `${count} ${
+          count > 1
+            ? "produits"
+            : "produit"
+        }`;
+
+    }
+
+
+    function renderCollectionProducts(
+      collection
+    ) {
 
       const grid =
         document.getElementById(
           "collectionDetailGrid"
         );
 
-      if (collection.products.length === 0) {
+
+      if (
+        !collection.products ||
+        collection.products.length === 0
+      ) {
 
         grid.innerHTML = `
           <div class="collection-empty">
-            Cette collection est encore vide.<br><br>
+
+            Cette collection est encore vide.
+
+            <br><br>
+
             Ajoute des produits avec
             <strong>+ Collection</strong>.
+
           </div>
         `;
 
@@ -1382,37 +2016,55 @@
 
       }
 
+
       grid.innerHTML =
-        collection.products.map(product => `
+        collection.products.map(
+          product => `
 
-          <div class="collection-product">
+            <div class="collection-product">
 
-            <img
-              src="${product.image}"
-              alt="${product.name}"
-            >
+              <div class="collection-product-image">
 
-            <div class="collection-product-info">
+                <img
+                  src="${product.image}"
+                  alt="${product.name}"
+                >
 
-              <h4>${product.name}</h4>
+                <div class="collection-product-overlay"></div>
 
-              <p>${product.price}</p>
 
-              <button
-                class="collection-remove"
-                onclick="removeFromCollection(
-                  '${collection.id}',
-                  '${product.id}'
-                )"
-              >
-                Remove from collection
-              </button>
+                <button
+                  class="collection-remove"
+                  onclick="
+                    removeFromCollection(
+                      '${collection.id}',
+                      '${product.id}'
+                    )
+                  "
+                  title="Retirer"
+                >
+                  ×
+                </button>
+
+
+                <div class="collection-product-label">
+
+                  <h4>
+                    ${product.name}
+                  </h4>
+
+                  <p>
+                    ${product.price}
+                  </p>
+
+                </div>
+
+              </div>
 
             </div>
 
-          </div>
-
-        `).join("");
+          `
+        ).join("");
 
     }
 
@@ -1424,82 +2076,106 @@
 
       const collection =
         collections.find(
-          item => item.id === collectionId
+          item =>
+            item.id === collectionId
         );
+
 
       if (!collection) return;
 
+
       collection.products =
         collection.products.filter(
-          product => product.id !== productId
+          product =>
+            product.id !== productId
         );
+
 
       saveStorage();
 
       renderCollections();
 
-      renderCollectionProducts(collection);
+      renderCollectionProducts(
+        collection
+      );
 
-      document.getElementById(
-        "collectionDetailCount"
-      ).textContent =
-        `${collection.products.length} ${
-          collection.products.length > 1
-            ? "produits"
-            : "produit"
-        }`;
+      updateCollectionCount(
+        collection
+      );
 
     }
 
 
     function openProductModal(card) {
 
-      const product = getProductData(card);
+      const product =
+        getProductData(card);
+
 
       document.getElementById(
         "modalProductName"
-      ).textContent = product.name;
+      ).textContent =
+        product.name;
+
 
       document.getElementById(
         "modalProductImage"
-      ).src = product.image;
+      ).src =
+        product.image;
+
 
       document.getElementById(
         "modalProductDescription"
-      ).textContent = product.description;
+      ).textContent =
+        product.description;
+
 
       document.getElementById(
         "modalProductPrice"
-      ).textContent = product.price;
+      ).textContent =
+        product.price;
+
 
       const alternatives =
-        alternativesData[product.id] || [];
+        alternativesData[
+          product.id
+        ] || [];
+
 
       document.getElementById(
         "alternatives"
       ).innerHTML =
-        alternatives.map(item => `
+        alternatives.map(
+          item => `
 
-          <div class="alternative">
+            <div class="alternative">
 
-            <img
-              src="${item.image}"
-              alt="${item.name}"
-            >
+              <img
+                src="${item.image}"
+                alt="${item.name}"
+              >
 
-            <div class="alternative-info">
+              <div class="alternative-info">
 
-              <h4>${item.name}</h4>
+                <h4>
+                  ${item.name}
+                </h4>
 
-              <p>${item.price}</p>
+                <p>
+                  ${item.price}
+                </p>
+
+              </div>
 
             </div>
 
-          </div>
+          `
+        ).join("");
 
-        `).join("");
 
-      openModal("productModal");
+      openModal(
+        "productModal"
+      );
 
     }
 
@@ -1526,41 +2202,55 @@
 
       const search =
         document
-          .getElementById("searchInput")
+          .getElementById(
+            "searchInput"
+          )
           .value
           .toLowerCase()
           .trim();
 
+
       let visible = 0;
 
-      getAllProducts().forEach(card => {
 
-        const category =
-          card.dataset.category;
+      getAllProducts()
+        .forEach(card => {
 
-        const searchable =
-          card.dataset.search;
+          const category =
+            card.dataset.category;
 
-        const categoryMatch =
-          currentCategory === "all" ||
-          category === currentCategory;
+          const searchable =
+            card.dataset.search;
 
-        const searchMatch =
-          !search ||
-          searchable.includes(search);
 
-        if (categoryMatch && searchMatch) {
+          const categoryMatch =
+            currentCategory === "all" ||
+            category === currentCategory;
 
-          card.style.display = "";
-          visible++;
 
-        } else {
+          const searchMatch =
+            !search ||
+            searchable.includes(search);
 
-          card.style.display = "none";
 
-        }
+          if (
+            categoryMatch &&
+            searchMatch
+          ) {
 
-      });
+            card.style.display = "";
+
+            visible++;
+
+          } else {
+
+            card.style.display =
+              "none";
+
+          }
+
+        });
+
 
       document.getElementById(
         "resultCount"
@@ -1578,28 +2268,42 @@
       .querySelectorAll(".category")
       .forEach(button => {
 
-        button.addEventListener("click", () => {
+        button.addEventListener(
+          "click",
+          () => {
 
-          document
-            .querySelectorAll(".category")
-            .forEach(item =>
-              item.classList.remove("active")
+            document
+              .querySelectorAll(
+                ".category"
+              )
+              .forEach(item =>
+                item.classList.remove(
+                  "active"
+                )
+              );
+
+
+            button.classList.add(
+              "active"
             );
 
-          button.classList.add("active");
 
-          currentCategory =
-            button.dataset.category;
+            currentCategory =
+              button.dataset.category;
 
-          filterProducts();
 
-        });
+            filterProducts();
+
+          }
+        );
 
       });
 
 
     document
-      .getElementById("searchInput")
+      .getElementById(
+        "searchInput"
+      )
       .addEventListener(
         "input",
         filterProducts
@@ -1607,24 +2311,36 @@
 
 
     document
-      .getElementById("newCollectionBtn")
-      .addEventListener("click", () => {
+      .getElementById(
+        "newCollectionBtn"
+      )
+      .addEventListener(
+        "click",
+        () => {
 
-        openModal("collectionModal");
+          openModal(
+            "collectionModal"
+          );
 
-        setTimeout(() => {
 
-          document
-            .getElementById("collectionName")
-            .focus();
+          setTimeout(() => {
 
-        }, 100);
+            document
+              .getElementById(
+                "collectionName"
+              )
+              .focus();
 
-      });
+          }, 100);
+
+        }
+      );
 
 
     document
-      .getElementById("createCollectionBtn")
+      .getElementById(
+        "createCollectionBtn"
+      )
       .addEventListener(
         "click",
         createCollection
@@ -1632,27 +2348,39 @@
 
 
     document
-      .getElementById("collectionName")
-      .addEventListener("keydown", event => {
+      .getElementById(
+        "collectionName"
+      )
+      .addEventListener(
+        "keydown",
+        event => {
 
-        if (event.key === "Enter") {
-          createCollection();
+          if (
+            event.key === "Enter"
+          ) {
+
+            createCollection();
+
+          }
+
         }
-
-      });
+      );
 
 
     document
       .querySelectorAll(".close")
       .forEach(button => {
 
-        button.addEventListener("click", () => {
+        button.addEventListener(
+          "click",
+          () => {
 
-          closeModal(
-            button.dataset.close
-          );
+            closeModal(
+              button.dataset.close
+            );
 
-        });
+          }
+        );
 
       });
 
@@ -1665,9 +2393,13 @@
           "click",
           event => {
 
-            if (event.target === modal) {
+            if (
+              event.target === modal
+            ) {
 
-              modal.classList.remove("active");
+              modal.classList.remove(
+                "active"
+              );
 
             }
 
@@ -1677,64 +2409,92 @@
       });
 
 
-    getAllProducts().forEach(card => {
+    getAllProducts()
+      .forEach(card => {
 
-      const heart =
-        card.querySelector(".heart");
-
-      const saveButton =
-        card.querySelector(".save-btn");
-
-      const collectionButton =
-        card.querySelector(".collection-btn");
-
-      heart.addEventListener("click", event => {
-
-        event.stopPropagation();
-
-        toggleSave(card);
-
-      });
-
-
-      saveButton.addEventListener("click", event => {
-
-        event.stopPropagation();
-
-        toggleSave(card);
-
-      });
-
-
-      collectionButton.addEventListener(
-        "click",
-        event => {
-
-          event.stopPropagation();
-
-          openAddCollection(
-            getProductData(card)
+        const heart =
+          card.querySelector(
+            ".heart"
           );
 
-        }
-      );
+
+        const saveButton =
+          card.querySelector(
+            ".save-btn"
+          );
 
 
-      card.addEventListener("click", event => {
+        const collectionButton =
+          card.querySelector(
+            ".collection-btn"
+          );
 
-        if (
-          event.target.closest(".heart") ||
-          event.target.closest(".save-btn") ||
-          event.target.closest(".collection-btn")
-        ) {
-          return;
-        }
 
-        openProductModal(card);
+        heart.addEventListener(
+          "click",
+          event => {
+
+            event.stopPropagation();
+
+            toggleSave(card);
+
+          }
+        );
+
+
+        saveButton.addEventListener(
+          "click",
+          event => {
+
+            event.stopPropagation();
+
+            toggleSave(card);
+
+          }
+        );
+
+
+        collectionButton.addEventListener(
+          "click",
+          event => {
+
+            event.stopPropagation();
+
+            openAddCollection(
+              getProductData(card)
+            );
+
+          }
+        );
+
+
+        card.addEventListener(
+          "click",
+          event => {
+
+            if (
+              event.target.closest(
+                ".heart"
+              ) ||
+              event.target.closest(
+                ".save-btn"
+              ) ||
+              event.target.closest(
+                ".collection-btn"
+              )
+            ) {
+
+              return;
+
+            }
+
+
+            openProductModal(card);
+
+          }
+        );
 
       });
-
-    });
 
 
     renderSaved();
