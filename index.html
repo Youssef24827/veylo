@@ -483,49 +483,73 @@
   </footer>
 
   <script>
-    const hearts = document.querySelectorAll(".heart");
+    <script>
+  const hearts = document.querySelectorAll(".heart");
 
-    hearts.forEach(heart => {
-      heart.addEventListener("click", () => {
-
-        if (heart.textContent === "♡") {
-          heart.textContent = "♥";
-          heart.style.background = "#111";
-          heart.style.color = "white";
-        } else {
-          heart.textContent = "♡";
-          heart.style.background = "white";
-          heart.style.color = "#111";
-        }
-
-      });
+  hearts.forEach(heart => {
+    heart.addEventListener("click", () => {
+      if (heart.textContent === "♡") {
+        heart.textContent = "♥";
+        heart.style.background = "#111";
+        heart.style.color = "white";
+      } else {
+        heart.textContent = "♡";
+        heart.style.background = "white";
+        heart.style.color = "#111";
+      }
     });
+  });
 
-    const saveButtons = document.querySelectorAll(".save");
+  const saveButtons = document.querySelectorAll(".save");
+  const spaceBox = document.querySelector(".space-box");
 
-    saveButtons.forEach(button => {
-      button.addEventListener("click", () => {
+  saveButtons.forEach(button => {
+    button.addEventListener("click", () => {
 
-        button.textContent = "✓ Saved";
-        button.style.background = "#e8e8e5";
-        button.style.color = "#111";
+      const product = button.closest(".product");
+      const name = product.querySelector("h2").textContent;
+      const price = product.querySelector(".price").textContent;
+      const image = product.querySelector(".product-image").textContent;
 
-      });
+      button.textContent = "✓ Saved";
+      button.style.background = "#e8e8e5";
+      button.style.color = "#111";
+
+      spaceBox.innerHTML = `
+        <div style="display:flex;align-items:center;gap:20px;width:100%;">
+          <div style="font-size:55px;">
+            ${image}
+          </div>
+
+          <div>
+            <strong style="font-size:18px;">
+              ${name}
+            </strong>
+
+            <div style="color:#aaa;margin-top:6px;">
+              ${price}
+            </div>
+          </div>
+        </div>
+      `;
+
     });
+  });
 
-    const categories = document.querySelectorAll(".category");
+  const categories = document.querySelectorAll(".category");
 
-    categories.forEach(category => {
-      category.addEventListener("click", () => {
+  categories.forEach(category => {
+    category.addEventListener("click", () => {
 
-        categories.forEach(item => {
-          item.classList.remove("active");
-        });
-
-        category.classList.add("active");
-
+      categories.forEach(item => {
+        item.classList.remove("active");
       });
+
+      category.classList.add("active");
+
     });
+  });
+</script>
   </script>
 
 </body>
