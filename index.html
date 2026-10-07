@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veylo — Discover what fits your world</title>
+
+  <title>Veylo — Discover your world</title>
 
   <style>
     * {
@@ -14,128 +15,240 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #f7f7f5;
+      background: #f5f5f2;
       color: #111;
     }
 
     nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
       height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 40px;
-      background: white;
-      border-bottom: 1px solid #eee;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e8e8e8;
     }
 
     .logo {
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: -1px;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
     }
 
     .nav-links {
       display: flex;
-      gap: 30px;
-      font-size: 14px;
+      gap: 32px;
     }
 
     .nav-links a {
       text-decoration: none;
-      color: #555;
+      color: #777;
+      font-size: 14px;
+      font-weight: 600;
     }
 
     .nav-links a:first-child {
       color: #111;
-      font-weight: 600;
+    }
+
+    .profile {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #111;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
     }
 
     .hero {
-      padding: 70px 40px 35px;
-      max-width: 1300px;
+      max-width: 1400px;
       margin: auto;
+      padding: 75px 40px 30px;
+    }
+
+    .hero small {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+    }
+
+    .hero h1 {
+      margin-top: 14px;
+      font-size: clamp(40px, 6vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -4px;
+      max-width: 850px;
     }
 
     .hero p {
+      margin-top: 22px;
       color: #777;
-      margin-top: 10px;
-      font-size: 16px;
+      font-size: 17px;
+      max-width: 560px;
+      line-height: 1.6;
+    }
+
+    .search {
+      max-width: 1400px;
+      margin: 10px auto 0;
+      padding: 0 40px 25px;
+    }
+
+    .search-box {
+      background: white;
+      border: 1px solid #e7e7e7;
+      border-radius: 16px;
+      padding: 17px 20px;
+      width: 100%;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .categories {
+      max-width: 1400px;
+      margin: auto;
+      padding: 0 40px 20px;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+    }
+
+    .category {
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 13px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .category.active {
+      background: #111;
+      color: white;
+      border-color: #111;
     }
 
     .feed {
-      max-width: 1300px;
+      max-width: 1400px;
       margin: auto;
       padding: 20px 40px 80px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
+      gap: 20px;
     }
 
     .product {
       background: white;
-      border-radius: 20px;
+      border-radius: 22px;
       overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      transition: 0.25s ease;
     }
 
     .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.09);
     }
 
     .product-image {
-      height: 280px;
-      background: #eee;
+      height: 330px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 70px;
+      font-size: 90px;
+      background: #e9e9e6;
+    }
+
+    .product:nth-child(2) .product-image {
+      background: #dedbd4;
+    }
+
+    .product:nth-child(3) .product-image {
+      background: #e4e4e4;
+    }
+
+    .product:nth-child(4) .product-image {
+      background: #ddd8d1;
+    }
+
+    .heart {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      background: white;
+      font-size: 18px;
+      cursor: pointer;
     }
 
     .product-info {
-      padding: 18px;
+      padding: 20px;
     }
 
-    .category {
+    .tag {
       color: #999;
-      font-size: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
     .product h2 {
-      font-size: 18px;
-      margin: 8px 0;
+      font-size: 19px;
+      margin: 9px 0;
+    }
+
+    .description {
+      color: #888;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .price {
-      font-weight: 700;
+      font-weight: 800;
       font-size: 17px;
     }
 
     .save {
-      margin-top: 15px;
-      width: 100%;
-      padding: 11px;
       border: none;
-      border-radius: 10px;
       background: #111;
       color: white;
+      border-radius: 10px;
+      padding: 10px 13px;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .save:hover {
       background: #333;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1000px) {
       .feed {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 650px) {
       nav {
         padding: 0 20px;
       }
@@ -145,12 +258,26 @@
       }
 
       .hero {
-        padding: 45px 20px 20px;
+        padding: 50px 20px 25px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .search,
+      .categories,
+      .feed {
+        padding-left: 20px;
+        padding-right: 20px;
       }
 
       .feed {
-        padding: 20px;
         grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 300px;
       }
     }
   </style>
@@ -167,53 +294,104 @@
       <a href="#">My Space</a>
     </div>
 
-    <div>♡</div>
+    <div class="profile">V</div>
   </nav>
 
   <section class="hero">
+    <small>Discover · Save · Build</small>
+
     <h1>Find things that fit your world.</h1>
-    <p>Discover products. Build your ideas. Make them yours.</p>
+
+    <p>
+      Discover products, collect your ideas and build the things you actually want.
+    </p>
   </section>
+
+  <div class="search">
+    <input
+      class="search-box"
+      type="text"
+      placeholder="Search products, styles, ideas..."
+    >
+  </div>
+
+  <div class="categories">
+    <button class="category active">All</button>
+    <button class="category">Furniture</button>
+    <button class="category">Tech</button>
+    <button class="category">Fashion</button>
+    <button class="category">Home</button>
+    <button class="category">Setup</button>
+    <button class="category">Lifestyle</button>
+  </div>
 
   <main class="feed">
 
     <article class="product">
+      <button class="heart">♡</button>
+
       <div class="product-image">🪑</div>
+
       <div class="product-info">
-        <span class="category">Furniture</span>
+        <span class="tag">Furniture</span>
         <h2>Minimal Chair</h2>
-        <div class="price">129 €</div>
-        <button class="save">＋ Add to my space</button>
+        <p class="description">Clean design for a calm space.</p>
+
+        <div class="bottom">
+          <span class="price">129 €</span>
+          <button class="save">＋ Save</button>
+        </div>
       </div>
     </article>
 
     <article class="product">
+      <button class="heart">♡</button>
+
       <div class="product-image">💡</div>
+
       <div class="product-info">
-        <span class="category">Lighting</span>
+        <span class="tag">Lighting</span>
         <h2>Orbit Lamp</h2>
-        <div class="price">49 €</div>
-        <button class="save">＋ Add to my space</button>
+        <p class="description">Soft light. Simple shape.</p>
+
+        <div class="bottom">
+          <span class="price">49 €</span>
+          <button class="save">＋ Save</button>
+        </div>
       </div>
     </article>
 
     <article class="product">
+      <button class="heart">♡</button>
+
       <div class="product-image">🖥️</div>
+
       <div class="product-info">
-        <span class="category">Setup</span>
+        <span class="tag">Setup</span>
         <h2>Studio Display</h2>
-        <div class="price">299 €</div>
-        <button class="save">＋ Add to my space</button>
+        <p class="description">A cleaner way to work.</p>
+
+        <div class="bottom">
+          <span class="price">299 €</span>
+          <button class="save">＋ Save</button>
+        </div>
       </div>
     </article>
 
     <article class="product">
+      <button class="heart">♡</button>
+
       <div class="product-image">🛋️</div>
+
       <div class="product-info">
-        <span class="category">Furniture</span>
+        <span class="tag">Furniture</span>
         <h2>Cloud Sofa</h2>
-        <div class="price">699 €</div>
-        <button class="save">＋ Add to my space</button>
+        <p class="description">Comfort made minimal.</p>
+
+        <div class="bottom">
+          <span class="price">699 €</span>
+          <button class="save">＋ Save</button>
+        </div>
       </div>
     </article>
 
