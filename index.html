@@ -175,20 +175,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 90px;
       background: #e9e9e6;
+      overflow: hidden;
     }
 
-    .product:nth-child(2) .product-image {
-      background: #dedbd4;
-    }
-
-    .product:nth-child(3) .product-image {
-      background: #e4e4e4;
-    }
-
-    .product:nth-child(4) .product-image {
-      background: #ddd8d1;
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .heart {
@@ -253,9 +248,7 @@
       background: #333;
     }
 
-    /* =========================
-       INSPIRATION
-    ========================= */
+    /* INSPIRATION */
 
     .inspiration {
       max-width: 1400px;
@@ -316,18 +309,6 @@
       background: #e8e5df;
     }
 
-    .inspiration-card:nth-child(2) .inspiration-image {
-      background: #dedede;
-    }
-
-    .inspiration-card:nth-child(3) .inspiration-image {
-      background: #e2ddd5;
-    }
-
-    .inspiration-card:nth-child(4) .inspiration-image {
-      background: #ddd8d2;
-    }
-
     .inspiration-card.large .inspiration-image {
       height: 520px;
       font-size: 120px;
@@ -350,9 +331,7 @@
       font-size: 20px;
     }
 
-    /* =========================
-       MY SPACE
-    ========================= */
+    /* MY SPACE */
 
     .my-space {
       max-width: 1400px;
@@ -412,7 +391,17 @@
     }
 
     .saved-image {
-      font-size: 50px;
+      width: 70px;
+      height: 70px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .saved-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .saved-name {
@@ -444,10 +433,6 @@
       color: #999;
       font-size: 13px;
     }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
 
     @media (max-width: 1000px) {
 
@@ -533,7 +518,8 @@
       }
 
       .saved-image {
-        font-size: 35px;
+        width: 55px;
+        height: 55px;
       }
 
       .saved-name {
@@ -544,8 +530,6 @@
 </head>
 
 <body>
-
-  <!-- NAVIGATION -->
 
   <nav>
 
@@ -576,8 +560,6 @@
   </nav>
 
 
-  <!-- HERO -->
-
   <section class="hero">
 
     <small>
@@ -595,8 +577,6 @@
   </section>
 
 
-  <!-- SEARCH -->
-
   <div class="search">
 
     <input
@@ -607,8 +587,6 @@
 
   </div>
 
-
-  <!-- CATEGORIES -->
 
   <div class="categories">
 
@@ -621,29 +599,15 @@
     </button>
 
     <button class="category">
-      Tech
-    </button>
-
-    <button class="category">
-      Fashion
-    </button>
-
-    <button class="category">
-      Home
+      Lighting
     </button>
 
     <button class="category">
       Setup
     </button>
 
-    <button class="category">
-      Lifestyle
-    </button>
-
   </div>
 
-
-  <!-- PRODUCT FEED -->
 
   <main class="feed">
 
@@ -654,7 +618,10 @@
       </button>
 
       <div class="product-image">
-        🪑
+        <img
+          src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=900&q=80"
+          alt="Minimal Chair"
+        >
       </div>
 
       <div class="product-info">
@@ -695,7 +662,10 @@
       </button>
 
       <div class="product-image">
-        💡
+        <img
+          src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80"
+          alt="Orbit Lamp"
+        >
       </div>
 
       <div class="product-info">
@@ -736,7 +706,10 @@
       </button>
 
       <div class="product-image">
-        🖥️
+        <img
+          src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"
+          alt="Studio Display"
+        >
       </div>
 
       <div class="product-info">
@@ -777,7 +750,10 @@
       </button>
 
       <div class="product-image">
-        🛋️
+        <img
+          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"
+          alt="Cloud Sofa"
+        >
       </div>
 
       <div class="product-info">
@@ -812,8 +788,6 @@
 
   </main>
 
-
-  <!-- INSPIRATION -->
 
   <section class="inspiration" id="inspiration">
 
@@ -924,8 +898,6 @@
   </section>
 
 
-  <!-- MY SPACE -->
-
   <section class="my-space" id="my-space">
 
     <small>
@@ -959,6 +931,14 @@
   <script>
 
     /* =========================
+       PRODUCTS
+    ========================= */
+
+    const products =
+      document.querySelectorAll(".product");
+
+
+    /* =========================
        HEARTS
     ========================= */
 
@@ -973,17 +953,13 @@
         if (heart.textContent.trim() === "♡") {
 
           heart.textContent = "♥";
-
           heart.style.background = "#111";
-
           heart.style.color = "white";
 
         } else {
 
           heart.textContent = "♡";
-
           heart.style.background = "white";
-
           heart.style.color = "#111";
 
         }
@@ -991,14 +967,6 @@
       });
 
     });
-
-
-    /* =========================
-       PRODUCTS
-    ========================= */
-
-    const products =
-      document.querySelectorAll(".product");
 
 
     /* =========================
@@ -1070,7 +1038,7 @@
 
 
         const image =
-          product.querySelector(".product-image").textContent.trim();
+          product.querySelector(".product-image img").src;
 
 
         button.dataset.saved = "true";
@@ -1104,7 +1072,7 @@
           <div class="saved-left">
 
             <div class="saved-image">
-              ${image}
+              <img src="${image}" alt="${name}">
             </div>
 
             <div>
@@ -1138,7 +1106,6 @@
         removeButton.addEventListener("click", () => {
 
           savedProduct.remove();
-
 
           button.dataset.saved = "false";
 
@@ -1218,8 +1185,6 @@
 
         });
 
-
-        /* Réinitialise la recherche */
 
         searchBox.value = "";
 
