@@ -112,7 +112,6 @@
       max-width: 1400px;
       margin: 10px auto 0;
       padding: 0 40px 25px;
-      position: relative;
     }
 
     .search-box {
@@ -297,7 +296,7 @@
     }
 
 
-    /* MODAL */
+    /* PRODUCT MODAL */
 
     .product-modal {
       position: fixed;
@@ -502,6 +501,12 @@
       background: white;
       border-radius: 24px;
       overflow: hidden;
+      transition: 0.25s ease;
+    }
+
+    .inspiration-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.08);
     }
 
     .inspiration-card.large {
@@ -564,18 +569,124 @@
       margin-top: 12px;
     }
 
-    .my-space p {
+    .my-space > p {
       color: #aaa;
       margin-top: 12px;
     }
 
+
+    /* COLLECTIONS */
+
+    .collections-header {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .collections-header span {
+      color: #777;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .collections-header h3 {
+      margin-top: 7px;
+      font-size: 25px;
+    }
+
+    #create-collection {
+      border: none;
+      background: white;
+      color: #111;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #create-collection:hover {
+      background: #e8e8e5;
+    }
+
+    .collections-list {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .collection-card {
+      background: #1b1b1b;
+      border-radius: 18px;
+      padding: 20px;
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: 0.2s ease;
+    }
+
+    .collection-card:hover {
+      transform: translateY(-4px);
+      background: #202020;
+    }
+
+    .collection-icon {
+      font-size: 30px;
+    }
+
+    .collection-name {
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .collection-count {
+      color: #888;
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    .collection-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .collection-action {
+      border: none;
+      background: #303030;
+      color: white;
+      padding: 7px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 11px;
+    }
+
+    .collection-action:hover {
+      background: #444;
+    }
+
+
+    /* SAVED PRODUCTS */
+
     .space-box {
-      margin-top: 35px;
+      margin-top: 25px;
       min-height: 120px;
       border: 1px dashed #444;
       border-radius: 18px;
       padding: 25px;
       color: #777;
+    }
+
+    .saved-title {
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 15px;
     }
 
     .saved-product {
@@ -630,6 +741,96 @@
       cursor: pointer;
     }
 
+    .remove-product:hover {
+      background: #444;
+    }
+
+
+    /* COLLECTION MODAL */
+
+    .collection-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      background: rgba(0,0,0,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.25s ease;
+    }
+
+    .collection-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .collection-modal-content {
+      width: min(500px, 100%);
+      background: white;
+      border-radius: 24px;
+      padding: 30px;
+      position: relative;
+      transform: translateY(20px);
+      transition: 0.25s ease;
+    }
+
+    .collection-modal.active .collection-modal-content {
+      transform: translateY(0);
+    }
+
+    .collection-modal-content h2 {
+      font-size: 30px;
+      letter-spacing: -1px;
+    }
+
+    .collection-modal-content p {
+      color: #888;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .collection-input {
+      width: 100%;
+      margin-top: 22px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .collection-input:focus {
+      border-color: #111;
+    }
+
+    .collection-create-button {
+      width: 100%;
+      border: none;
+      background: #111;
+      color: white;
+      padding: 14px;
+      border-radius: 12px;
+      margin-top: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .collection-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 38px;
+      height: 38px;
+      border: none;
+      border-radius: 50%;
+      background: #f2f2ef;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
 
     footer {
       text-align: center;
@@ -664,6 +865,10 @@
         height: 350px;
       }
 
+      .collections-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
     }
 
 
@@ -679,6 +884,10 @@
 
       .hero {
         padding: 50px 20px 25px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
       }
 
       .search,
@@ -712,6 +921,32 @@
         margin-left: 20px;
         margin-right: 20px;
         padding: 45px 25px;
+      }
+
+      .collections-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .collections-list {
+        grid-template-columns: 1fr;
+      }
+
+      .saved-product {
+        align-items: flex-start;
+      }
+
+      .saved-left {
+        gap: 10px;
+      }
+
+      .saved-image {
+        width: 55px;
+        height: 55px;
+      }
+
+      .saved-name {
+        font-size: 14px;
       }
 
       .product-modal {
@@ -1041,7 +1276,6 @@
 
     </article>
 
-
   </main>
 
 
@@ -1067,7 +1301,7 @@
   </section>
 
 
-  <!-- MODAL -->
+  <!-- PRODUCT MODAL -->
 
   <div
     class="product-modal"
@@ -1184,6 +1418,7 @@
 
       </div>
 
+
       <div class="inspiration-card">
 
         <div class="inspiration-image">
@@ -1204,6 +1439,7 @@
 
       </div>
 
+
       <div class="inspiration-card">
 
         <div class="inspiration-image">
@@ -1223,6 +1459,7 @@
         </div>
 
       </div>
+
 
       <div class="inspiration-card">
 
@@ -1268,7 +1505,45 @@
       Everything you want to keep, in one place.
     </p>
 
+
+    <!-- COLLECTIONS -->
+
+    <div class="collections-header">
+
+      <div>
+
+        <span>
+          Collections
+        </span>
+
+        <h3>
+          Build your world.
+        </h3>
+
+      </div>
+
+      <button
+        id="create-collection"
+      >
+        + New collection
+      </button>
+
+    </div>
+
+
+    <div
+      class="collections-list"
+      id="collections-list"
+    ></div>
+
+
+    <!-- SAVED PRODUCTS -->
+
     <div class="space-box">
+
+      <div class="saved-title">
+        Saved products
+      </div>
 
       <div class="empty-message">
         Your saved products will appear here.
@@ -1277,6 +1552,50 @@
     </div>
 
   </section>
+
+
+  <!-- COLLECTION MODAL -->
+
+  <div
+    class="collection-modal"
+    id="collection-modal"
+  >
+
+    <div class="collection-modal-content">
+
+      <button
+        class="collection-close"
+        id="collection-close"
+      >
+        ×
+      </button>
+
+      <h2>
+        New collection
+      </h2>
+
+      <p>
+        Create a space for the things you want.
+      </p>
+
+      <input
+        class="collection-input"
+        id="collection-input"
+        type="text"
+        maxlength="40"
+        placeholder="Ex: Mon futur appart"
+      >
+
+      <button
+        class="collection-create-button"
+        id="collection-create-button"
+      >
+        Create collection
+      </button>
+
+    </div>
+
+  </div>
 
 
   <footer>
@@ -1302,6 +1621,12 @@
 
     const categories =
       document.querySelectorAll(".category");
+
+    const spaceBox =
+      document.querySelector(".space-box");
+
+    const saveButtons =
+      document.querySelectorAll(".save");
 
 
     /* =========================
@@ -1370,19 +1695,10 @@
       });
 
 
-      if (
+      noResults.style.display =
         visibleProducts === 0
-      ) {
-
-        noResults.style.display =
-          "block";
-
-      } else {
-
-        noResults.style.display =
-          "none";
-
-      }
+          ? "block"
+          : "none";
 
     }
 
@@ -1554,7 +1870,7 @@
 
 
     /* =========================
-       MODAL
+       PRODUCT MODAL
     ========================= */
 
     const productModal =
@@ -1673,15 +1989,13 @@
     });
 
 
-    /* FIND ME BETTER */
+    /* =========================
+       FIND ME BETTER
+    ========================= */
 
     betterButton.addEventListener(
       "click",
       () => {
-
-        const results =
-          alternatives[currentProduct];
-
 
         if (
           betterResults.classList.contains(
@@ -1699,6 +2013,10 @@
           return;
 
         }
+
+
+        const results =
+          alternatives[currentProduct];
 
 
         alternativesList.innerHTML =
@@ -1760,7 +2078,9 @@
     );
 
 
-    /* CLOSE MODAL */
+    /* =========================
+       CLOSE PRODUCT MODAL
+    ========================= */
 
     modalClose.addEventListener(
       "click",
@@ -1792,15 +2112,516 @@
     );
 
 
-    document.addEventListener(
-      "keydown",
+    /* =========================
+       LOCAL STORAGE
+    ========================= */
+
+    const STORAGE_KEY =
+      "veylo_saved_products";
+
+
+    function getSavedProducts() {
+
+      return JSON.parse(
+        localStorage.getItem(
+          STORAGE_KEY
+        ) || "[]"
+      );
+
+    }
+
+
+    function saveProducts(products) {
+
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(products)
+      );
+
+    }
+
+
+    /* =========================
+       RENDER SAVED PRODUCTS
+    ========================= */
+
+    function renderSavedProducts() {
+
+      const savedProducts =
+        getSavedProducts();
+
+
+      spaceBox.innerHTML = `
+
+        <div class="saved-title">
+          Saved products
+        </div>
+
+      `;
+
+
+      if (
+        savedProducts.length === 0
+      ) {
+
+        spaceBox.innerHTML += `
+
+          <div class="empty-message">
+            Your saved products will appear here.
+          </div>
+
+        `;
+
+      }
+
+
+      savedProducts.forEach(item => {
+
+        const savedProduct =
+          document.createElement("div");
+
+
+        savedProduct.className =
+          "saved-product";
+
+
+        savedProduct.innerHTML = `
+
+          <div class="saved-left">
+
+            <div class="saved-image">
+
+              <img
+                src="${item.image}"
+                alt="${item.name}"
+              >
+
+            </div>
+
+            <div>
+
+              <div class="saved-name">
+                ${item.name}
+              </div>
+
+              <div class="saved-price">
+                ${item.price}
+              </div>
+
+            </div>
+
+          </div>
+
+          <button
+            class="remove-product"
+            data-product="${item.id}"
+          >
+            Remove
+          </button>
+
+        `;
+
+
+        spaceBox.appendChild(
+          savedProduct
+        );
+
+      });
+
+
+      updateSaveButtons();
+
+    }
+
+
+    /* =========================
+       UPDATE SAVE BUTTONS
+    ========================= */
+
+    function updateSaveButtons() {
+
+      const savedProducts =
+        getSavedProducts();
+
+
+      saveButtons.forEach(button => {
+
+        const product =
+          button.closest(".product");
+
+
+        const id =
+          product.dataset.product;
+
+
+        const isSaved =
+          savedProducts.some(
+            item => item.id === id
+          );
+
+
+        if (isSaved) {
+
+          button.dataset.saved =
+            "true";
+
+          button.textContent =
+            "✓ Saved";
+
+          button.style.background =
+            "#e8e8e5";
+
+          button.style.color =
+            "#111";
+
+        } else {
+
+          button.dataset.saved =
+            "false";
+
+          button.textContent =
+            "＋ Save";
+
+          button.style.background =
+            "#111";
+
+          button.style.color =
+            "white";
+
+        }
+
+      });
+
+    }
+
+
+    /* =========================
+       SAVE BUTTONS
+    ========================= */
+
+    saveButtons.forEach(button => {
+
+      button.addEventListener(
+        "click",
+        event => {
+
+          event.stopPropagation();
+
+
+          const product =
+            button.closest(".product");
+
+
+          const id =
+            product.dataset.product;
+
+
+          let savedProducts =
+            getSavedProducts();
+
+
+          const alreadySaved =
+            savedProducts.some(
+              item => item.id === id
+            );
+
+
+          if (alreadySaved) {
+            return;
+          }
+
+
+          savedProducts.push({
+
+            id: id,
+
+            name:
+              product
+                .querySelector("h2")
+                .textContent
+                .trim(),
+
+            price:
+              product
+                .querySelector(".price")
+                .textContent
+                .trim(),
+
+            image:
+              product
+                .querySelector(".product-image img")
+                .src
+
+          });
+
+
+          saveProducts(
+            savedProducts
+          );
+
+
+          renderSavedProducts();
+
+        }
+      );
+
+    });
+
+
+    /* =========================
+       REMOVE SAVED PRODUCT
+    ========================= */
+
+    spaceBox.addEventListener(
+      "click",
+      event => {
+
+        const button =
+          event.target.closest(
+            ".remove-product"
+          );
+
+
+        if (!button) {
+          return;
+        }
+
+
+        const id =
+          button.dataset.product;
+
+
+        let savedProducts =
+          getSavedProducts();
+
+
+        savedProducts =
+          savedProducts.filter(
+            item => item.id !== id
+          );
+
+
+        saveProducts(
+          savedProducts
+        );
+
+
+        renderSavedProducts();
+
+      }
+    );
+
+
+    /* =========================
+       COLLECTIONS
+    ========================= */
+
+    const COLLECTIONS_KEY =
+      "veylo_collections";
+
+
+    const collectionsList =
+      document.querySelector(
+        "#collections-list"
+      );
+
+
+    const createCollectionButton =
+      document.querySelector(
+        "#create-collection"
+      );
+
+
+    const collectionModal =
+      document.querySelector(
+        "#collection-modal"
+      );
+
+
+    const collectionClose =
+      document.querySelector(
+        "#collection-close"
+      );
+
+
+    const collectionInput =
+      document.querySelector(
+        "#collection-input"
+      );
+
+
+    const collectionCreateButton =
+      document.querySelector(
+        "#collection-create-button"
+      );
+
+
+    function getCollections() {
+
+      return JSON.parse(
+        localStorage.getItem(
+          COLLECTIONS_KEY
+        ) || "[]"
+      );
+
+    }
+
+
+    function saveCollections(
+      collections
+    ) {
+
+      localStorage.setItem(
+        COLLECTIONS_KEY,
+        JSON.stringify(collections)
+      );
+
+    }
+
+
+    /* =========================
+       RENDER COLLECTIONS
+    ========================= */
+
+    function renderCollections() {
+
+      const collections =
+        getCollections();
+
+
+      collectionsList.innerHTML =
+        "";
+
+
+      if (
+        collections.length === 0
+      ) {
+
+        collectionsList.innerHTML = `
+
+          <div
+            style="
+              grid-column: 1 / -1;
+              color: #777;
+              padding: 25px 0;
+            "
+          >
+            No collections yet. Create your first one.
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      collections.forEach(
+        collection => {
+
+          const card =
+            document.createElement("div");
+
+
+          card.className =
+            "collection-card";
+
+
+          card.innerHTML = `
+
+            <div>
+
+              <div class="collection-icon">
+                ${collection.icon}
+              </div>
+
+              <div
+                class="collection-name"
+                style="margin-top: 15px;"
+              >
+                ${collection.name}
+              </div>
+
+              <div class="collection-count">
+                ${collection.products.length}
+                ${collection.products.length === 1 ? "product" : "products"}
+              </div>
+
+            </div>
+
+            <div class="collection-actions">
+
+              <button
+                class="collection-action delete-collection"
+                data-id="${collection.id}"
+              >
+                Delete
+              </button>
+
+            </div>
+
+          `;
+
+
+          collectionsList.appendChild(
+            card
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =========================
+       OPEN COLLECTION MODAL
+    ========================= */
+
+    createCollectionButton.addEventListener(
+      "click",
+      () => {
+
+        collectionInput.value =
+          "";
+
+        collectionModal.classList.add(
+          "active"
+        );
+
+        setTimeout(
+          () => collectionInput.focus(),
+          100
+        );
+
+      }
+    );
+
+
+    /* =========================
+       CLOSE COLLECTION MODAL
+    ========================= */
+
+    collectionClose.addEventListener(
+      "click",
+      () => {
+
+        collectionModal.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+
+    collectionModal.addEventListener(
+      "click",
       event => {
 
         if (
-          event.key === "Escape"
+          event.target === collectionModal
         ) {
 
-          productModal.classList.remove(
+          collectionModal.classList.remove(
             "active"
           );
 
@@ -1811,325 +2632,154 @@
 
 
     /* =========================
-       SAVE
+       CREATE COLLECTION
     ========================= */
 
-  /* =========================
-   SAVE + LOCAL STORAGE
-========================= */
+    function createCollection() {
 
-const saveButtons =
-  document.querySelectorAll(".save");
+      const name =
+        collectionInput.value.trim();
 
-const spaceBox =
-  document.querySelector(".space-box");
 
-const STORAGE_KEY =
-  "veylo_saved_products";
+      if (!name) {
 
+        collectionInput.focus();
 
-/* =========================
-   GET SAVED PRODUCTS
-========================= */
-
-function getSavedProducts() {
-
-  return JSON.parse(
-    localStorage.getItem(STORAGE_KEY) || "[]"
-  );
-
-}
-
-
-/* =========================
-   SAVE PRODUCTS
-========================= */
-
-function saveProducts(products) {
-
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(products)
-  );
-
-}
-
-
-/* =========================
-   RENDER MY SPACE
-========================= */
-
-function renderSavedProducts() {
-
-  const savedProducts =
-    getSavedProducts();
-
-
-  spaceBox.innerHTML = "";
-
-
-  if (savedProducts.length === 0) {
-
-    spaceBox.innerHTML = `
-
-      <div class="empty-message">
-        Your saved products will appear here.
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  savedProducts.forEach(item => {
-
-    const savedProduct =
-      document.createElement("div");
-
-
-    savedProduct.className =
-      "saved-product";
-
-
-    savedProduct.innerHTML = `
-
-      <div class="saved-left">
-
-        <div class="saved-image">
-
-          <img
-            src="${item.image}"
-            alt="${item.name}"
-          >
-
-        </div>
-
-        <div>
-
-          <div class="saved-name">
-            ${item.name}
-          </div>
-
-          <div class="saved-price">
-            ${item.price}
-          </div>
-
-        </div>
-
-      </div>
-
-      <button
-        class="remove-product"
-        data-product="${item.id}"
-      >
-        Remove
-      </button>
-
-    `;
-
-
-    spaceBox.appendChild(
-      savedProduct
-    );
-
-  });
-
-
-  updateSaveButtons();
-
-}
-
-
-/* =========================
-   UPDATE SAVE BUTTONS
-========================= */
-
-function updateSaveButtons() {
-
-  const savedProducts =
-    getSavedProducts();
-
-
-  saveButtons.forEach(button => {
-
-    const product =
-      button.closest(".product");
-
-
-    const id =
-      product.dataset.product;
-
-
-    const isSaved =
-      savedProducts.some(
-        item => item.id === id
-      );
-
-
-    if (isSaved) {
-
-      button.dataset.saved =
-        "true";
-
-      button.textContent =
-        "✓ Saved";
-
-      button.style.background =
-        "#e8e8e5";
-
-      button.style.color =
-        "#111";
-
-    } else {
-
-      button.dataset.saved =
-        "false";
-
-      button.textContent =
-        "＋ Save";
-
-      button.style.background =
-        "#111";
-
-      button.style.color =
-        "white";
-
-    }
-
-  });
-
-}
-
-
-/* =========================
-   SAVE BUTTON CLICK
-========================= */
-
-saveButtons.forEach(button => {
-
-  button.addEventListener(
-    "click",
-    event => {
-
-      event.stopPropagation();
-
-
-      const product =
-        button.closest(".product");
-
-
-      const id =
-        product.dataset.product;
-
-
-      let savedProducts =
-        getSavedProducts();
-
-
-      const alreadySaved =
-        savedProducts.some(
-          item => item.id === id
-        );
-
-
-      if (alreadySaved) {
         return;
+
       }
 
 
-      const productData = {
+      const collections =
+        getCollections();
 
-        id: id,
+
+      const icons = [
+        "🏠",
+        "🖥️",
+        "👕",
+        "🛋️",
+        "✈️",
+        "✨",
+        "🎨",
+        "💡"
+      ];
+
+
+      const newCollection = {
+
+        id:
+          Date.now().toString(),
 
         name:
-          product
-            .querySelector("h2")
-            .textContent
-            .trim(),
+          name,
 
-        price:
-          product
-            .querySelector(".price")
-            .textContent
-            .trim(),
+        icon:
+          icons[
+            collections.length %
+            icons.length
+          ],
 
-        image:
-          product
-            .querySelector(".product-image img")
-            .src
+        products: []
 
       };
 
 
-      savedProducts.push(
-        productData
+      collections.push(
+        newCollection
       );
 
 
-      saveProducts(
-        savedProducts
+      saveCollections(
+        collections
       );
 
 
-      renderSavedProducts();
-
-    }
-  );
-
-});
+      renderCollections();
 
 
-/* =========================
-   REMOVE PRODUCT
-========================= */
-
-spaceBox.addEventListener(
-  "click",
-  event => {
-
-    const button =
-      event.target.closest(
-        ".remove-product"
+      collectionModal.classList.remove(
+        "active"
       );
 
-
-    if (!button) {
-      return;
     }
 
 
-    const id =
-      button.dataset.product;
-
-
-    let savedProducts =
-      getSavedProducts();
-
-
-    savedProducts =
-      savedProducts.filter(
-        item => item.id !== id
-      );
-
-
-    saveProducts(
-      savedProducts
+    collectionCreateButton.addEventListener(
+      "click",
+      createCollection
     );
 
 
+    collectionInput.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "Enter"
+        ) {
+
+          createCollection();
+
+        }
+
+      }
+    );
+
+
+    /* =========================
+       DELETE COLLECTION
+    ========================= */
+
+    collectionsList.addEventListener(
+      "click",
+      event => {
+
+        const deleteButton =
+          event.target.closest(
+            ".delete-collection"
+          );
+
+
+        if (!deleteButton) {
+          return;
+        }
+
+
+        const id =
+          deleteButton.dataset.id;
+
+
+        const collections =
+          getCollections();
+
+
+        const updated =
+          collections.filter(
+            collection =>
+              collection.id !== id
+          );
+
+
+        saveCollections(
+          updated
+        );
+
+
+        renderCollections();
+
+      }
+    );
+
+
+    /* =========================
+       INITIAL LOAD
+    ========================= */
+
     renderSavedProducts();
 
-  }
-);
+    renderCollections();
 
-
-/* =========================
-   INITIAL LOAD
-========================= */
-
-renderSavedProducts();
 
   </script>
 
