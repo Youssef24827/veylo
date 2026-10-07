@@ -951,8 +951,6 @@
   </section>
 
 
-  <!-- FOOTER -->
-
   <footer>
     © 2026 Veylo — Discover. Save. Build.
   </footer>
@@ -996,6 +994,49 @@
 
 
     /* =========================
+       PRODUCTS
+    ========================= */
+
+    const products =
+      document.querySelectorAll(".product");
+
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    const searchBox =
+      document.querySelector(".search-box");
+
+
+    searchBox.addEventListener("input", () => {
+
+      const search =
+        searchBox.value.toLowerCase().trim();
+
+
+      products.forEach(product => {
+
+        const text =
+          product.textContent.toLowerCase();
+
+
+        if (text.includes(search)) {
+
+          product.style.display = "";
+
+        } else {
+
+          product.style.display = "none";
+
+        }
+
+      });
+
+    });
+
+
+    /* =========================
        SAVE PRODUCTS
     ========================= */
 
@@ -1010,8 +1051,6 @@
     saveButtons.forEach(button => {
 
       button.addEventListener("click", () => {
-
-        /* Empêche les doublons */
 
         if (button.dataset.saved === "true") {
           return;
@@ -1034,8 +1073,6 @@
           product.querySelector(".product-image").textContent.trim();
 
 
-        /* Marque le produit comme sauvegardé */
-
         button.dataset.saved = "true";
 
         button.textContent = "✓ Saved";
@@ -1045,8 +1082,6 @@
         button.style.color = "#111";
 
 
-        /* Supprime le message vide */
-
         const emptyMessage =
           spaceBox.querySelector(".empty-message");
 
@@ -1055,8 +1090,6 @@
           emptyMessage.remove();
         }
 
-
-        /* Crée le produit dans My Space */
 
         const savedProduct =
           document.createElement("div");
@@ -1098,8 +1131,6 @@
         spaceBox.appendChild(savedProduct);
 
 
-        /* Bouton Remove */
-
         const removeButton =
           savedProduct.querySelector(".remove-product");
 
@@ -1109,8 +1140,6 @@
           savedProduct.remove();
 
 
-          /* Le produit peut être sauvegardé à nouveau */
-
           button.dataset.saved = "false";
 
           button.textContent = "＋ Save";
@@ -1119,8 +1148,6 @@
 
           button.style.color = "white";
 
-
-          /* Remet le message si My Space est vide */
 
           if (spaceBox.children.length === 0) {
 
@@ -1140,42 +1167,7 @@
 
     });
 
-/* =========================
-   SEARCH
-========================= */
 
-const searchBox =
-  document.querySelector(".search-box");
-
-const products =
-  document.querySelectorAll(".product");
-
-
-searchBox.addEventListener("input", () => {
-
-  const search =
-    searchBox.value.toLowerCase().trim();
-
-
-  products.forEach(product => {
-
-    const text =
-      product.textContent.toLowerCase();
-
-
-    if (text.includes(search)) {
-
-      product.style.display = "";
-
-    } else {
-
-      product.style.display = "none";
-
-    }
-
-  });
-
-});
     /* =========================
        CATEGORIES
     ========================= */
@@ -1189,13 +1181,47 @@ searchBox.addEventListener("input", () => {
       category.addEventListener("click", () => {
 
         categories.forEach(item => {
-
           item.classList.remove("active");
-
         });
 
 
         category.classList.add("active");
+
+
+        const selectedCategory =
+          category.textContent
+            .trim()
+            .toLowerCase();
+
+
+        products.forEach(product => {
+
+          const tag =
+            product.querySelector(".tag")
+              .textContent
+              .trim()
+              .toLowerCase();
+
+
+          if (
+            selectedCategory === "all" ||
+            tag === selectedCategory
+          ) {
+
+            product.style.display = "";
+
+          } else {
+
+            product.style.display = "none";
+
+          }
+
+        });
+
+
+        /* Réinitialise la recherche */
+
+        searchBox.value = "";
 
       });
 
