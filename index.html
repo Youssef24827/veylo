@@ -286,12 +286,54 @@
       min-height: 120px;
       border: 1px dashed #444;
       border-radius: 18px;
+      padding: 25px;
+      color: #777;
+    }
+
+    .saved-product {
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: #777;
-      text-align: center;
-      padding: 25px;
+      justify-content: space-between;
+      gap: 20px;
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 12px;
+      background: #1b1b1b;
+      border-radius: 16px;
+      color: white;
+    }
+
+    .saved-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .saved-image {
+      font-size: 50px;
+    }
+
+    .saved-name {
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .saved-price {
+      color: #aaa;
+      margin-top: 6px;
+    }
+
+    .remove-product {
+      border: none;
+      background: #333;
+      color: white;
+      padding: 9px 13px;
+      border-radius: 9px;
+      cursor: pointer;
+    }
+
+    .remove-product:hover {
+      background: #444;
     }
 
     footer {
@@ -344,6 +386,22 @@
         margin-right: 20px;
         padding: 45px 25px;
       }
+
+      .saved-product {
+        align-items: flex-start;
+      }
+
+      .saved-left {
+        gap: 10px;
+      }
+
+      .saved-image {
+        font-size: 35px;
+      }
+
+      .saved-name {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -362,241 +420,453 @@
     <div class="profile">V</div>
   </nav>
 
+
   <section class="hero">
+
     <small>Discover · Save · Build</small>
 
-    <h1>Find things that fit your world.</h1>
+    <h1>
+      Find things that fit your world.
+    </h1>
 
     <p>
       Discover products, collect your ideas and build the things you actually want.
     </p>
+
   </section>
 
+
   <div class="search">
+
     <input
       class="search-box"
       type="text"
       placeholder="Search products, styles, ideas..."
     >
+
   </div>
 
+
   <div class="categories">
-    <button class="category active">All</button>
-    <button class="category">Furniture</button>
-    <button class="category">Tech</button>
-    <button class="category">Fashion</button>
-    <button class="category">Home</button>
-    <button class="category">Setup</button>
-    <button class="category">Lifestyle</button>
+
+    <button class="category active">
+      All
+    </button>
+
+    <button class="category">
+      Furniture
+    </button>
+
+    <button class="category">
+      Tech
+    </button>
+
+    <button class="category">
+      Fashion
+    </button>
+
+    <button class="category">
+      Home
+    </button>
+
+    <button class="category">
+      Setup
+    </button>
+
+    <button class="category">
+      Lifestyle
+    </button>
+
   </div>
+
 
   <main class="feed">
 
     <article class="product">
-      <button class="heart">♡</button>
 
-      <div class="product-image">🪑</div>
+      <button class="heart">
+        ♡
+      </button>
+
+      <div class="product-image">
+        🪑
+      </div>
 
       <div class="product-info">
-        <span class="tag">Furniture</span>
-        <h2>Minimal Chair</h2>
-        <p class="description">Clean design for a calm space.</p>
+
+        <span class="tag">
+          Furniture
+        </span>
+
+        <h2>
+          Minimal Chair
+        </h2>
+
+        <p class="description">
+          Clean design for a calm space.
+        </p>
 
         <div class="bottom">
-          <span class="price">129 €</span>
-          <button class="save">＋ Save</button>
+
+          <span class="price">
+            129 €
+          </span>
+
+          <button class="save">
+            ＋ Save
+          </button>
+
         </div>
+
       </div>
+
     </article>
 
-    <article class="product">
-      <button class="heart">♡</button>
 
-      <div class="product-image">💡</div>
+    <article class="product">
+
+      <button class="heart">
+        ♡
+      </button>
+
+      <div class="product-image">
+        💡
+      </div>
 
       <div class="product-info">
-        <span class="tag">Lighting</span>
-        <h2>Orbit Lamp</h2>
-        <p class="description">Soft light. Simple shape.</p>
+
+        <span class="tag">
+          Lighting
+        </span>
+
+        <h2>
+          Orbit Lamp
+        </h2>
+
+        <p class="description">
+          Soft light. Simple shape.
+        </p>
 
         <div class="bottom">
-          <span class="price">49 €</span>
-          <button class="save">＋ Save</button>
+
+          <span class="price">
+            49 €
+          </span>
+
+          <button class="save">
+            ＋ Save
+          </button>
+
         </div>
+
       </div>
+
     </article>
 
-    <article class="product">
-      <button class="heart">♡</button>
 
-      <div class="product-image">🖥️</div>
+    <article class="product">
+
+      <button class="heart">
+        ♡
+      </button>
+
+      <div class="product-image">
+        🖥️
+      </div>
 
       <div class="product-info">
-        <span class="tag">Setup</span>
-        <h2>Studio Display</h2>
-        <p class="description">A cleaner way to work.</p>
+
+        <span class="tag">
+          Setup
+        </span>
+
+        <h2>
+          Studio Display
+        </h2>
+
+        <p class="description">
+          A cleaner way to work.
+        </p>
 
         <div class="bottom">
-          <span class="price">299 €</span>
-          <button class="save">＋ Save</button>
+
+          <span class="price">
+            299 €
+          </span>
+
+          <button class="save">
+            ＋ Save
+          </button>
+
         </div>
+
       </div>
+
     </article>
 
-    <article class="product">
-      <button class="heart">♡</button>
 
-      <div class="product-image">🛋️</div>
+    <article class="product">
+
+      <button class="heart">
+        ♡
+      </button>
+
+      <div class="product-image">
+        🛋️
+      </div>
 
       <div class="product-info">
-        <span class="tag">Furniture</span>
-        <h2>Cloud Sofa</h2>
-        <p class="description">Comfort made minimal.</p>
+
+        <span class="tag">
+          Furniture
+        </span>
+
+        <h2>
+          Cloud Sofa
+        </h2>
+
+        <p class="description">
+          Comfort made minimal.
+        </p>
 
         <div class="bottom">
-          <span class="price">699 €</span>
-          <button class="save">＋ Save</button>
+
+          <span class="price">
+            699 €
+          </span>
+
+          <button class="save">
+            ＋ Save
+          </button>
+
         </div>
+
       </div>
+
     </article>
 
   </main>
 
+
   <section class="my-space" id="my-space">
 
-    <small>My Space</small>
+    <small>
+      My Space
+    </small>
 
-    <h2>Your saved world.</h2>
+    <h2>
+      Your saved world.
+    </h2>
 
     <p>
       Everything you want to keep, in one place.
     </p>
 
     <div class="space-box">
-      Your saved products will appear here.
+
+      <div class="empty-message">
+        Your saved products will appear here.
+      </div>
+
     </div>
 
   </section>
+
 
   <footer>
     © 2026 Veylo — Discover. Save. Build.
   </footer>
 
-<script>
-  const hearts = document.querySelectorAll(".heart");
 
-  hearts.forEach(heart => {
-    heart.addEventListener("click", () => {
-      if (heart.textContent === "♡") {
-        heart.textContent = "♥";
-        heart.style.background = "#111";
-        heart.style.color = "white";
-      } else {
-        heart.textContent = "♡";
-        heart.style.background = "white";
-        heart.style.color = "#111";
-      }
+  <script>
+
+    /* =========================
+       HEARTS
+    ========================= */
+
+    const hearts = document.querySelectorAll(".heart");
+
+    hearts.forEach(heart => {
+
+      heart.addEventListener("click", () => {
+
+        if (heart.textContent.trim() === "♡") {
+
+          heart.textContent = "♥";
+          heart.style.background = "#111";
+          heart.style.color = "white";
+
+        } else {
+
+          heart.textContent = "♡";
+          heart.style.background = "white";
+          heart.style.color = "#111";
+
+        }
+
+      });
+
     });
-  });
 
 
-  const saveButtons = document.querySelectorAll(".save");
-  const spaceBox = document.querySelector(".space-box");
+    /* =========================
+       SAVE PRODUCTS
+    ========================= */
 
-  saveButtons.forEach(button => {
+    const saveButtons = document.querySelectorAll(".save");
 
-    button.addEventListener("click", () => {
+    const spaceBox = document.querySelector(".space-box");
 
-      const product = button.closest(".product");
 
-      const name = product.querySelector("h2").textContent;
-      const price = product.querySelector(".price").textContent;
-      const image = product.querySelector(".product-image").textContent;
+    saveButtons.forEach(button => {
 
-      button.textContent = "✓ Saved";
-      button.style.background = "#e8e8e5";
-      button.style.color = "#111";
+      button.addEventListener("click", () => {
 
-      const savedProduct = document.createElement("div");
+        /* Empêche les doublons */
 
-      savedProduct.style.display = "flex";
-      savedProduct.style.alignItems = "center";
-      savedProduct.style.justifyContent = "space-between";
-      savedProduct.style.gap = "20px";
-      savedProduct.style.width = "100%";
-      savedProduct.style.padding = "15px";
-      savedProduct.style.marginBottom = "12px";
-      savedProduct.style.background = "#1b1b1b";
-      savedProduct.style.borderRadius = "16px";
+        if (button.dataset.saved === "true") {
+          return;
+        }
 
-      savedProduct.innerHTML = `
-        <div style="display:flex;align-items:center;gap:18px;">
-          
-          <div style="font-size:50px;">
-            ${image}
-          </div>
 
-          <div>
-            <strong style="font-size:17px;">
-              ${name}
-            </strong>
+        const product = button.closest(".product");
 
-            <div style="color:#aaa;margin-top:6px;">
-              ${price}
+        const name =
+          product.querySelector("h2").textContent.trim();
+
+        const price =
+          product.querySelector(".price").textContent.trim();
+
+        const image =
+          product.querySelector(".product-image").textContent.trim();
+
+
+        /* Marque le produit comme sauvegardé */
+
+        button.dataset.saved = "true";
+
+        button.textContent = "✓ Saved";
+
+        button.style.background = "#e8e8e5";
+
+        button.style.color = "#111";
+
+
+        /* Supprime le message vide */
+
+        const emptyMessage =
+          spaceBox.querySelector(".empty-message");
+
+        if (emptyMessage) {
+          emptyMessage.remove();
+        }
+
+
+        /* Crée le produit dans My Space */
+
+        const savedProduct =
+          document.createElement("div");
+
+        savedProduct.className = "saved-product";
+
+
+        savedProduct.innerHTML = `
+
+          <div class="saved-left">
+
+            <div class="saved-image">
+              ${image}
             </div>
+
+            <div>
+
+              <div class="saved-name">
+                ${name}
+              </div>
+
+              <div class="saved-price">
+                ${price}
+              </div>
+
+            </div>
+
           </div>
 
-        </div>
+          <button class="remove-product">
+            Remove
+          </button>
 
-        <button class="remove-product">
-          Remove
-        </button>
-      `;
-
-      spaceBox.appendChild(savedProduct);
+        `;
 
 
-      const removeButton = savedProduct.querySelector(".remove-product");
-
-      removeButton.style.border = "none";
-      removeButton.style.background = "#333";
-      removeButton.style.color = "white";
-      removeButton.style.padding = "9px 13px";
-      removeButton.style.borderRadius = "9px";
-      removeButton.style.cursor = "pointer";
+        spaceBox.appendChild(savedProduct);
 
 
-      removeButton.addEventListener("click", () => {
+        /* Bouton Remove */
 
-        savedProduct.remove();
+        const removeButton =
+          savedProduct.querySelector(".remove-product");
 
-        button.textContent = "＋ Save";
-        button.style.background = "#111";
-        button.style.color = "white";
+
+        removeButton.addEventListener("click", () => {
+
+          savedProduct.remove();
+
+
+          /* Le produit peut être sauvegardé à nouveau */
+
+          button.dataset.saved = "false";
+
+          button.textContent = "＋ Save";
+
+          button.style.background = "#111";
+
+          button.style.color = "white";
+
+
+          /* Remet le message si My Space est vide */
+
+          if (spaceBox.children.length === 0) {
+
+            spaceBox.innerHTML = `
+              <div class="empty-message">
+                Your saved products will appear here.
+              </div>
+            `;
+
+          }
+
+        });
 
       });
 
     });
 
-  });
+
+    /* =========================
+       CATEGORIES
+    ========================= */
+
+    const categories =
+      document.querySelectorAll(".category");
 
 
-  const categories = document.querySelectorAll(".category");
+    categories.forEach(category => {
 
-  categories.forEach(category => {
+      category.addEventListener("click", () => {
 
-    category.addEventListener("click", () => {
+        categories.forEach(item => {
+          item.classList.remove("active");
+        });
 
-      categories.forEach(item => {
-        item.classList.remove("active");
+
+        category.classList.add("active");
+
       });
-
-      category.classList.add("active");
 
     });
 
-  });
-</script>
+  </script>
 
 </body>
 </html>
