@@ -1159,7 +1159,98 @@
 
     });
 
+/* =========================
+   PRODUCT MODAL
+========================= */
 
+const productModal =
+  document.querySelector("#product-modal");
+
+const modalClose =
+  document.querySelector("#modal-close");
+
+const modalImage =
+  document.querySelector("#modal-image");
+
+const modalTag =
+  document.querySelector("#modal-tag");
+
+const modalName =
+  document.querySelector("#modal-name");
+
+const modalDescription =
+  document.querySelector("#modal-description");
+
+const modalPrice =
+  document.querySelector("#modal-price");
+
+
+products.forEach(product => {
+
+  product.addEventListener("click", event => {
+
+    /* Ne pas ouvrir la fiche quand on clique sur Save ou ❤️ */
+
+    if (
+      event.target.closest(".save") ||
+      event.target.closest(".heart")
+    ) {
+      return;
+    }
+
+
+    const image =
+      product.querySelector(".product-image img").src;
+
+    const tag =
+      product.querySelector(".tag").textContent.trim();
+
+    const name =
+      product.querySelector("h2").textContent.trim();
+
+    const description =
+      product.querySelector(".description").textContent.trim();
+
+    const price =
+      product.querySelector(".price").textContent.trim();
+
+
+    modalImage.src = image;
+
+    modalImage.alt = name;
+
+    modalTag.textContent = tag;
+
+    modalName.textContent = name;
+
+    modalDescription.textContent = description;
+
+    modalPrice.textContent = price;
+
+
+    productModal.classList.add("active");
+
+  });
+
+});
+
+
+modalClose.addEventListener("click", () => {
+
+  productModal.classList.remove("active");
+
+});
+
+
+productModal.addEventListener("click", event => {
+
+  if (event.target === productModal) {
+
+    productModal.classList.remove("active");
+
+  }
+
+});
     /* =========================
        SAVE PRODUCTS
     ========================= */
