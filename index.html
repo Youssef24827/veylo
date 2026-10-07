@@ -1814,178 +1814,322 @@
        SAVE
     ========================= */
 
-    const saveButtons =
-      document.querySelectorAll(".save");
+  /* =========================
+   SAVE + LOCAL STORAGE
+========================= */
 
-    const spaceBox =
-      document.querySelector(".space-box");
+const saveButtons =
+  document.querySelectorAll(".save");
 
+const spaceBox =
+  document.querySelector(".space-box");
 
-    saveButtons.forEach(button => {
+const STORAGE_KEY =
+  "veylo_saved_products";
 
-      button.addEventListener(
-        "click",
-        event => {
 
-          event.stopPropagation();
+/* =========================
+   GET SAVED PRODUCTS
+========================= */
 
+function getSavedProducts() {
 
-          if (
-            button.dataset.saved === "true"
-          ) {
-            return;
-          }
+  return JSON.parse(
+    localStorage.getItem(STORAGE_KEY) || "[]"
+  );
 
+}
 
-          const product =
-            button.closest(".product");
 
+/* =========================
+   SAVE PRODUCTS
+========================= */
 
-          const name =
-            product
-              .querySelector("h2")
-              .textContent
-              .trim();
+function saveProducts(products) {
 
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(products)
+  );
 
-          const price =
-            product
-              .querySelector(".price")
-              .textContent
-              .trim();
+}
 
 
-          const image =
-            product
-              .querySelector(".product-image img")
-              .src;
+/* =========================
+   RENDER MY SPACE
+========================= */
 
+function renderSavedProducts() {
 
-          button.dataset.saved =
-            "true";
+  const savedProducts =
+    getSavedProducts();
 
 
-          button.textContent =
-            "✓ Saved";
+  spaceBox.innerHTML = "";
 
 
-          button.style.background =
-            "#e8e8e5";
+  if (savedProducts.length === 0) {
 
+    spaceBox.innerHTML = `
 
-          button.style.color =
-            "#111";
+      <div class="empty-message">
+        Your saved products will appear here.
+      </div>
 
+    `;
 
-          const emptyMessage =
-            spaceBox.querySelector(
-              ".empty-message"
-            );
+    return;
 
+  }
 
-          if (emptyMessage) {
-            emptyMessage.remove();
-          }
 
+  savedProducts.forEach(item => {
 
-          const savedProduct =
-            document.createElement("div");
+    const savedProduct =
+      document.createElement("div");
 
 
-          savedProduct.className =
-            "saved-product";
+    savedProduct.className =
+      "saved-product";
 
 
-          savedProduct.innerHTML = `
+    savedProduct.innerHTML = `
 
-            <div class="saved-left">
+      <div class="saved-left">
 
-              <div class="saved-image">
+        <div class="saved-image">
 
-                <img
-                  src="${image}"
-                  alt="${name}"
-                >
+          <img
+            src="${item.image}"
+            alt="${item.name}"
+          >
 
-              </div>
+        </div>
 
-              <div>
+        <div>
 
-                <div class="saved-name">
-                  ${name}
-                </div>
+          <div class="saved-name">
+            ${item.name}
+          </div>
 
-                <div class="saved-price">
-                  ${price}
-                </div>
+          <div class="saved-price">
+            ${item.price}
+          </div>
 
-              </div>
+        </div>
 
-            </div>
+      </div>
 
-            <button class="remove-product">
-              Remove
-            </button>
+      <button
+        class="remove-product"
+        data-product="${item.id}"
+      >
+        Remove
+      </button>
 
-          `;
+    `;
 
 
-          spaceBox.appendChild(
-            savedProduct
-          );
+    spaceBox.appendChild(
+      savedProduct
+    );
 
+  });
 
-          const removeButton =
-            savedProduct.querySelector(
-              ".remove-product"
-            );
 
+  updateSaveButtons();
 
-          removeButton.addEventListener(
-            "click",
-            () => {
+}
 
-              savedProduct.remove();
 
+/* =========================
+   UPDATE SAVE BUTTONS
+========================= */
 
-              button.dataset.saved =
-                "false";
+function updateSaveButtons() {
 
+  const savedProducts =
+    getSavedProducts();
 
-              button.textContent =
-                "＋ Save";
 
+  saveButtons.forEach(button => {
 
-              button.style.background =
-                "#111";
+    const product =
+      button.closest(".product");
 
 
-              button.style.color =
-                "white";
+    const id =
+      product.dataset.product;
 
 
-              if (
-                spaceBox.children.length === 0
-              ) {
-
-                spaceBox.innerHTML = `
-
-                  <div class="empty-message">
-                    Your saved products will appear here.
-                  </div>
-
-                `;
-
-              }
-
-            }
-          );
-
-        }
-
+    const isSaved =
+      savedProducts.some(
+        item => item.id === id
       );
 
-    });
+
+    if (isSaved) {
+
+      button.dataset.saved =
+        "true";
+
+      button.textContent =
+        "✓ Saved";
+
+      button.style.background =
+        "#e8e8e5";
+
+      button.style.color =
+        "#111";
+
+    } else {
+
+      button.dataset.saved =
+        "false";
+
+      button.textContent =
+        "＋ Save";
+
+      button.style.background =
+        "#111";
+
+      button.style.color =
+        "white";
+
+    }
+
+  });
+
+}
+
+
+/* =========================
+   SAVE BUTTON CLICK
+========================= */
+
+saveButtons.forEach(button => {
+
+  button.addEventListener(
+    "click",
+    event => {
+
+      event.stopPropagation();
+
+
+      const product =
+        button.closest(".product");
+
+
+      const id =
+        product.dataset.product;
+
+
+      let savedProducts =
+        getSavedProducts();
+
+
+      const alreadySaved =
+        savedProducts.some(
+          item => item.id === id
+        );
+
+
+      if (alreadySaved) {
+        return;
+      }
+
+
+      const productData = {
+
+        id: id,
+
+        name:
+          product
+            .querySelector("h2")
+            .textContent
+            .trim(),
+
+        price:
+          product
+            .querySelector(".price")
+            .textContent
+            .trim(),
+
+        image:
+          product
+            .querySelector(".product-image img")
+            .src
+
+      };
+
+
+      savedProducts.push(
+        productData
+      );
+
+
+      saveProducts(
+        savedProducts
+      );
+
+
+      renderSavedProducts();
+
+    }
+  );
+
+});
+
+
+/* =========================
+   REMOVE PRODUCT
+========================= */
+
+spaceBox.addEventListener(
+  "click",
+  event => {
+
+    const button =
+      event.target.closest(
+        ".remove-product"
+      );
+
+
+    if (!button) {
+      return;
+    }
+
+
+    const id =
+      button.dataset.product;
+
+
+    let savedProducts =
+      getSavedProducts();
+
+
+    savedProducts =
+      savedProducts.filter(
+        item => item.id !== id
+      );
+
+
+    saveProducts(
+      savedProducts
+    );
+
+
+    renderSavedProducts();
+
+  }
+);
+
+
+/* =========================
+   INITIAL LOAD
+========================= */
+
+renderSavedProducts();
 
   </script>
 
