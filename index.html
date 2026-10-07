@@ -1140,7 +1140,42 @@
 
     });
 
+/* =========================
+   SEARCH
+========================= */
 
+const searchBox =
+  document.querySelector(".search-box");
+
+const products =
+  document.querySelectorAll(".product");
+
+
+searchBox.addEventListener("input", () => {
+
+  const search =
+    searchBox.value.toLowerCase().trim();
+
+
+  products.forEach(product => {
+
+    const text =
+      product.textContent.toLowerCase();
+
+
+    if (text.includes(search)) {
+
+      product.style.display = "";
+
+    } else {
+
+      product.style.display = "none";
+
+    }
+
+  });
+
+});
     /* =========================
        CATEGORIES
     ========================= */
