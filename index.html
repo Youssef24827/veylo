@@ -398,6 +398,7 @@
   </main>
 
 </body><script>
+  <script>
   const hearts = document.querySelectorAll(".heart");
 
   hearts.forEach(heart => {
@@ -411,6 +412,16 @@
         heart.style.background = "white";
         heart.style.color = "#111";
       }
+    });
+  });
+
+  const saveButtons = document.querySelectorAll(".save");
+
+  saveButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      button.textContent = "✓ Saved";
+      button.style.background = "#e8e8e5";
+      button.style.color = "#111";
     });
   });
 </script>
