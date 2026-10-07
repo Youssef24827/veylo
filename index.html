@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -252,6 +253,107 @@
       background: #333;
     }
 
+    /* =========================
+       INSPIRATION
+    ========================= */
+
+    .inspiration {
+      max-width: 1400px;
+      margin: 0 auto 80px;
+      padding: 60px 40px;
+    }
+
+    .inspiration-header small {
+      color: #999;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .inspiration-header h2 {
+      font-size: clamp(36px, 5vw, 58px);
+      letter-spacing: -2px;
+      margin-top: 12px;
+      max-width: 750px;
+    }
+
+    .inspiration-header p {
+      color: #888;
+      margin-top: 12px;
+      font-size: 16px;
+    }
+
+    .inspiration-grid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .inspiration-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      transition: 0.25s ease;
+    }
+
+    .inspiration-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+    }
+
+    .inspiration-card.large {
+      grid-row: span 2;
+    }
+
+    .inspiration-image {
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 90px;
+      background: #e8e5df;
+    }
+
+    .inspiration-card:nth-child(2) .inspiration-image {
+      background: #dedede;
+    }
+
+    .inspiration-card:nth-child(3) .inspiration-image {
+      background: #e2ddd5;
+    }
+
+    .inspiration-card:nth-child(4) .inspiration-image {
+      background: #ddd8d2;
+    }
+
+    .inspiration-card.large .inspiration-image {
+      height: 520px;
+      font-size: 120px;
+    }
+
+    .inspiration-info {
+      padding: 20px;
+    }
+
+    .inspiration-info span {
+      color: #999;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .inspiration-info h3 {
+      margin-top: 8px;
+      font-size: 20px;
+    }
+
+    /* =========================
+       MY SPACE
+    ========================= */
+
     .my-space {
       max-width: 1400px;
       margin: 0 auto 80px;
@@ -343,13 +445,32 @@
       font-size: 13px;
     }
 
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
     @media (max-width: 1000px) {
+
       .feed {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .inspiration-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .inspiration-card.large {
+        grid-row: auto;
+        grid-column: span 2;
+      }
+
+      .inspiration-card.large .inspiration-image {
+        height: 350px;
       }
     }
 
     @media (max-width: 650px) {
+
       nav {
         padding: 0 20px;
       }
@@ -381,6 +502,22 @@
         height: 300px;
       }
 
+      .inspiration {
+        padding: 45px 20px;
+      }
+
+      .inspiration-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .inspiration-card.large {
+        grid-column: auto;
+      }
+
+      .inspiration-card.large .inspiration-image {
+        height: 300px;
+      }
+
       .my-space {
         margin-left: 20px;
         margin-right: 20px;
@@ -408,22 +545,44 @@
 
 <body>
 
-  <nav>
-    <div class="logo">veylo</div>
+  <!-- NAVIGATION -->
 
-    <div class="nav-links">
-      <a href="#">Discover</a>
-      <a href="#inspiration">Inspiration</a>
-      <a href="#my-space">My Space</a>
+  <nav>
+
+    <div class="logo">
+      veylo
     </div>
 
-    <div class="profile">V</div>
+    <div class="nav-links">
+
+      <a href="#">
+        Discover
+      </a>
+
+      <a href="#inspiration">
+        Inspiration
+      </a>
+
+      <a href="#my-space">
+        My Space
+      </a>
+
+    </div>
+
+    <div class="profile">
+      V
+    </div>
+
   </nav>
 
 
+  <!-- HERO -->
+
   <section class="hero">
 
-    <small>Discover · Save · Build</small>
+    <small>
+      Discover · Save · Build
+    </small>
 
     <h1>
       Find things that fit your world.
@@ -436,6 +595,8 @@
   </section>
 
 
+  <!-- SEARCH -->
+
   <div class="search">
 
     <input
@@ -446,6 +607,8 @@
 
   </div>
 
+
+  <!-- CATEGORIES -->
 
   <div class="categories">
 
@@ -479,6 +642,8 @@
 
   </div>
 
+
+  <!-- PRODUCT FEED -->
 
   <main class="feed">
 
@@ -648,6 +813,119 @@
   </main>
 
 
+  <!-- INSPIRATION -->
+
+  <section class="inspiration" id="inspiration">
+
+    <div class="inspiration-header">
+
+      <small>
+        Inspiration
+      </small>
+
+      <h2>
+        Build the world you imagine.
+      </h2>
+
+      <p>
+        Discover spaces, styles and ideas worth saving.
+      </p>
+
+    </div>
+
+
+    <div class="inspiration-grid">
+
+      <div class="inspiration-card large">
+
+        <div class="inspiration-image">
+          🏠
+        </div>
+
+        <div class="inspiration-info">
+
+          <span>
+            Interior
+          </span>
+
+          <h3>
+            Warm Minimal Home
+          </h3>
+
+        </div>
+
+      </div>
+
+
+      <div class="inspiration-card">
+
+        <div class="inspiration-image">
+          🖥️
+        </div>
+
+        <div class="inspiration-info">
+
+          <span>
+            Setup
+          </span>
+
+          <h3>
+            Clean Creator Desk
+          </h3>
+
+        </div>
+
+      </div>
+
+
+      <div class="inspiration-card">
+
+        <div class="inspiration-image">
+          👕
+        </div>
+
+        <div class="inspiration-info">
+
+          <span>
+            Style
+          </span>
+
+          <h3>
+            Everyday Essentials
+          </h3>
+
+        </div>
+
+      </div>
+
+
+      <div class="inspiration-card">
+
+        <div class="inspiration-image">
+          🛋️
+        </div>
+
+        <div class="inspiration-info">
+
+          <span>
+            Living
+          </span>
+
+          <h3>
+            Soft Neutral Space
+          </h3>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MY SPACE -->
+
   <section class="my-space" id="my-space">
 
     <small>
@@ -673,6 +951,8 @@
   </section>
 
 
+  <!-- FOOTER -->
+
   <footer>
     © 2026 Veylo — Discover. Save. Build.
   </footer>
@@ -684,7 +964,9 @@
        HEARTS
     ========================= */
 
-    const hearts = document.querySelectorAll(".heart");
+    const hearts =
+      document.querySelectorAll(".heart");
+
 
     hearts.forEach(heart => {
 
@@ -693,13 +975,17 @@
         if (heart.textContent.trim() === "♡") {
 
           heart.textContent = "♥";
+
           heart.style.background = "#111";
+
           heart.style.color = "white";
 
         } else {
 
           heart.textContent = "♡";
+
           heart.style.background = "white";
+
           heart.style.color = "#111";
 
         }
@@ -713,9 +999,12 @@
        SAVE PRODUCTS
     ========================= */
 
-    const saveButtons = document.querySelectorAll(".save");
+    const saveButtons =
+      document.querySelectorAll(".save");
 
-    const spaceBox = document.querySelector(".space-box");
+
+    const spaceBox =
+      document.querySelector(".space-box");
 
 
     saveButtons.forEach(button => {
@@ -729,13 +1018,17 @@
         }
 
 
-        const product = button.closest(".product");
+        const product =
+          button.closest(".product");
+
 
         const name =
           product.querySelector("h2").textContent.trim();
 
+
         const price =
           product.querySelector(".price").textContent.trim();
+
 
         const image =
           product.querySelector(".product-image").textContent.trim();
@@ -757,6 +1050,7 @@
         const emptyMessage =
           spaceBox.querySelector(".empty-message");
 
+
         if (emptyMessage) {
           emptyMessage.remove();
         }
@@ -767,7 +1061,9 @@
         const savedProduct =
           document.createElement("div");
 
-        savedProduct.className = "saved-product";
+
+        savedProduct.className =
+          "saved-product";
 
 
         savedProduct.innerHTML = `
@@ -829,9 +1125,11 @@
           if (spaceBox.children.length === 0) {
 
             spaceBox.innerHTML = `
+
               <div class="empty-message">
                 Your saved products will appear here.
               </div>
+
             `;
 
           }
@@ -856,7 +1154,9 @@
       category.addEventListener("click", () => {
 
         categories.forEach(item => {
+
           item.classList.remove("active");
+
         });
 
 
@@ -870,3 +1170,4 @@
 
 </body>
 </html>
+```
