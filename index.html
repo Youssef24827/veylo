@@ -136,14 +136,14 @@
     }
 
     /* =========================
-       AUTH MODAL
+       MODALS
     ========================= */
 
     .modal-backdrop {
       position: fixed;
       inset: 0;
       background: rgba(0, 0, 0, 0.48);
-      z-index: 900;
+      z-index: 1200;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -175,6 +175,7 @@
       height: 38px;
       border-radius: 50%;
       font-size: 20px;
+      z-index: 5;
     }
 
     .modal h2 {
@@ -585,7 +586,7 @@
     }
 
     /* =========================
-       MY SPACE
+       PAGES
     ========================= */
 
     .page-section {
@@ -1070,6 +1071,7 @@
     ========================= */
 
     @media (max-width: 1000px) {
+
       .product-grid,
       .saved-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -1082,9 +1084,11 @@
       .hero {
         padding: 45px;
       }
+
     }
 
     @media (max-width: 720px) {
+
       main {
         padding: 25px 15px 60px;
       }
@@ -1131,9 +1135,11 @@
       .profile-panel {
         padding: 22px;
       }
+
     }
 
     @media (max-width: 480px) {
+
       .product-grid,
       .saved-grid,
       .collection-grid {
@@ -1151,7 +1157,9 @@
       .collection-detail-grid {
         columns: 2 150px;
       }
+
     }
+
   </style>
 </head>
 
@@ -1210,7 +1218,9 @@
 
     <div class="nav-inner">
 
-      <div class="logo">veylo</div>
+      <div class="logo">
+        veylo
+      </div>
 
       <div class="nav-links">
 
@@ -1275,7 +1285,9 @@
 
       <div class="search-wrap">
 
-        <div class="search-icon">⌕</div>
+        <div class="search-icon">
+          ⌕
+        </div>
 
         <input
           type="text"
@@ -1315,8 +1327,15 @@
       <div class="section-header">
 
         <div>
-          <h2>Trending now</h2>
-          <p>Des pièces que la communauté Veylo aime en ce moment.</p>
+
+          <h2>
+            Trending now
+          </h2>
+
+          <p>
+            Des pièces que la communauté Veylo aime en ce moment.
+          </p>
+
         </div>
 
       </div>
@@ -1324,7 +1343,7 @@
 
       <div class="product-grid" id="productGrid">
 
-        <!-- PRODUCT 1 -->
+        <!-- 1 -->
 
         <article
           class="product-card"
@@ -1387,7 +1406,7 @@
         </article>
 
 
-        <!-- PRODUCT 2 -->
+        <!-- 2 -->
 
         <article
           class="product-card"
@@ -1446,7 +1465,7 @@
         </article>
 
 
-        <!-- PRODUCT 3 -->
+        <!-- 3 -->
 
         <article
           class="product-card"
@@ -1509,7 +1528,7 @@
         </article>
 
 
-        <!-- PRODUCT 4 -->
+        <!-- 4 -->
 
         <article
           class="product-card"
@@ -1568,7 +1587,7 @@
         </article>
 
 
-        <!-- PRODUCT 5 -->
+        <!-- 5 -->
 
         <article
           class="product-card"
@@ -1627,7 +1646,7 @@
         </article>
 
 
-        <!-- PRODUCT 6 -->
+        <!-- 6 -->
 
         <article
           class="product-card"
@@ -1690,7 +1709,7 @@
         </article>
 
 
-        <!-- PRODUCT 7 -->
+        <!-- 7 -->
 
         <article
           class="product-card"
@@ -1749,7 +1768,7 @@
         </article>
 
 
-        <!-- PRODUCT 8 -->
+        <!-- 8 -->
 
         <article
           class="product-card"
@@ -1822,7 +1841,9 @@
 
       <div class="space-header">
 
-        <h1>Inspiration</h1>
+        <h1>
+          Inspiration
+        </h1>
 
         <p>
           Des univers pour t'aider à imaginer ce que tu veux construire.
@@ -1833,39 +1854,110 @@
       <div class="collection-grid">
 
         <div class="collection-card">
+
           <div class="collection-preview">
-            <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=85">
+
+            <img
+              src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=85"
+              alt=""
+            >
+
             <div class="preview-right">
-              <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=600&q=85">
-              <img src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=600&q=85">
+
+              <img
+                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=600&q=85"
+                alt=""
+              >
+
+              <img
+                src="https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=600&q=85"
+                alt=""
+              >
+
             </div>
+
           </div>
-          <div class="collection-name">Minimal Home</div>
-          <div class="collection-count">Calme · naturel · moderne</div>
+
+          <div class="collection-name">
+            Minimal Home
+          </div>
+
+          <div class="collection-count">
+            Calme · naturel · moderne
+          </div>
+
         </div>
 
-        <div class="collection-card">
-          <div class="collection-preview">
-            <img src="https://images.unsplash.com/photo-1593642532400-2682810df593?auto=format&fit=crop&w=900&q=85">
-            <div class="preview-right">
-              <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=85">
-              <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=600&q=85">
-            </div>
-          </div>
-          <div class="collection-name">Creative Setup</div>
-          <div class="collection-count">Focus · design · inspiration</div>
-        </div>
 
         <div class="collection-card">
+
           <div class="collection-preview">
-            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85">
+
+            <img
+              src="https://images.unsplash.com/photo-1593642532400-2682810df593?auto=format&fit=crop&w=900&q=85"
+              alt=""
+            >
+
             <div class="preview-right">
-              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=600&q=85">
-              <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=600&q=85">
+
+              <img
+                src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=85"
+                alt=""
+              >
+
+              <img
+                src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=600&q=85"
+                alt=""
+              >
+
             </div>
+
           </div>
-          <div class="collection-name">Warm Living</div>
-          <div class="collection-count">Confort · lumière · bois</div>
+
+          <div class="collection-name">
+            Creative Setup
+          </div>
+
+          <div class="collection-count">
+            Focus · design · inspiration
+          </div>
+
+        </div>
+
+
+        <div class="collection-card">
+
+          <div class="collection-preview">
+
+            <img
+              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85"
+              alt=""
+            >
+
+            <div class="preview-right">
+
+              <img
+                src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=600&q=85"
+                alt=""
+              >
+
+              <img
+                src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=600&q=85"
+                alt=""
+              >
+
+            </div>
+
+          </div>
+
+          <div class="collection-name">
+            Warm Living
+          </div>
+
+          <div class="collection-count">
+            Confort · lumière · bois
+          </div>
+
         </div>
 
       </div>
@@ -1879,7 +1971,9 @@
 
       <div class="space-header">
 
-        <h1>My Space</h1>
+        <h1>
+          My Space
+        </h1>
 
         <p>
           Tout ce que tu veux garder pour construire ton univers.
@@ -1891,21 +1985,28 @@
       <div class="section-header">
 
         <div>
-          <h2>Saved products</h2>
-          <p>Les produits que tu as sauvegardés.</p>
+
+          <h2>
+            Saved products
+          </h2>
+
+          <p>
+            Les produits que tu as sauvegardés.
+          </p>
+
         </div>
 
       </div>
 
 
-      <div id="savedProductsContainer">
-
-      </div>
+      <div id="savedProductsContainer"></div>
 
 
       <div class="collections-header">
 
-        <h2>Collections</h2>
+        <h2>
+          Collections
+        </h2>
 
         <button class="new-collection" id="newCollectionButton">
           + Collection
@@ -1914,24 +2015,32 @@
       </div>
 
 
-      <div class="collection-grid" id="collectionsContainer">
-
-      </div>
+      <div
+        class="collection-grid"
+        id="collectionsContainer"
+      ></div>
 
     </section>
 
 
     <!-- COLLECTION DETAIL -->
 
-    <section class="page-section" id="collectionDetailPage">
+    <section
+      class="page-section"
+      id="collectionDetailPage"
+    >
 
       <div class="collection-detail-header">
 
-        <button class="back-button" id="backToSpace">
+        <button
+          class="back-button"
+          id="backToSpace"
+        >
           ←
         </button>
 
         <div class="collection-detail-title">
+
           <h2 id="collectionDetailName">
             Collection
           </h2>
@@ -1939,24 +2048,32 @@
           <p id="collectionDetailCount">
             0 produits
           </p>
+
         </div>
 
       </div>
 
-      <div class="collection-detail-grid" id="collectionDetailGrid">
 
-      </div>
+      <div
+        class="collection-detail-grid"
+        id="collectionDetailGrid"
+      ></div>
 
     </section>
 
 
     <!-- PROFILE -->
 
-    <section class="page-section" id="profilePage">
+    <section
+      class="page-section"
+      id="profilePage"
+    >
 
       <div class="space-header">
 
-        <h1>Mon profil</h1>
+        <h1>
+          Mon profil
+        </h1>
 
         <p>
           Gère ton espace Veylo.
@@ -1969,17 +2086,26 @@
 
         <div class="profile-top">
 
-          <div class="profile-avatar" id="profileAvatar">
+          <div
+            class="profile-avatar"
+            id="profileAvatar"
+          >
             V
           </div>
 
           <div>
 
-            <div class="profile-name" id="profileName">
+            <div
+              class="profile-name"
+              id="profileName"
+            >
               Invité
             </div>
 
-            <div class="profile-email" id="profileEmail">
+            <div
+              class="profile-email"
+              id="profileEmail"
+            >
               Mode invité
             </div>
 
@@ -2027,7 +2153,10 @@
         </div>
 
 
-        <button class="logout-button" id="logoutButton">
+        <button
+          class="logout-button"
+          id="logoutButton"
+        >
           Quitter Veylo
         </button>
 
@@ -2042,11 +2171,17 @@
        AUTH MODAL
   ========================== -->
 
-  <div class="modal-backdrop hidden" id="authModal">
+  <div
+    class="modal-backdrop hidden"
+    id="authModal"
+  >
 
     <div class="modal small">
 
-      <button class="close-modal" data-close="authModal">
+      <button
+        class="close-modal"
+        data-close="authModal"
+      >
         ×
       </button>
 
@@ -2054,14 +2189,20 @@
         Créer ton compte
       </h2>
 
-      <p class="modal-description" id="authModalDescription">
+      <p
+        class="modal-description"
+        id="authModalDescription"
+      >
         Rejoins Veylo pour sauvegarder ton univers et bientôt vendre tes propres produits.
       </p>
 
 
       <form id="authForm">
 
-        <div class="form-group">
+        <div
+          class="form-group"
+          id="authNameGroup"
+        >
 
           <label for="authName">
             Nom
@@ -2071,7 +2212,6 @@
             id="authName"
             type="text"
             placeholder="Ton nom"
-            required
           />
 
         </div>
@@ -2109,7 +2249,10 @@
         </div>
 
 
-        <button class="form-submit" type="submit">
+        <button
+          class="form-submit"
+          type="submit"
+        >
           Continuer
         </button>
 
@@ -2137,11 +2280,17 @@
        SELL MODAL
   ========================== -->
 
-  <div class="modal-backdrop hidden" id="sellModal">
+  <div
+    class="modal-backdrop hidden"
+    id="sellModal"
+  >
 
     <div class="modal small">
 
-      <button class="close-modal" data-close="sellModal">
+      <button
+        class="close-modal"
+        data-close="sellModal"
+      >
         ×
       </button>
 
@@ -2160,11 +2309,17 @@
           C'est gratuit et cela te permettra aussi de gérer tes annonces.
         </p>
 
-        <button class="form-submit" id="sellCreateAccount">
+        <button
+          class="form-submit"
+          id="sellCreateAccount"
+        >
           Créer mon compte
         </button>
 
-        <button class="auth-guest-btn" id="sellContinue">
+        <button
+          class="auth-guest-btn"
+          id="sellContinue"
+        >
           Continuer à découvrir
         </button>
 
@@ -2179,11 +2334,17 @@
        CREATE COLLECTION
   ========================== -->
 
-  <div class="modal-backdrop hidden" id="collectionModal">
+  <div
+    class="modal-backdrop hidden"
+    id="collectionModal"
+  >
 
     <div class="modal small">
 
-      <button class="close-modal" data-close="collectionModal">
+      <button
+        class="close-modal"
+        data-close="collectionModal"
+      >
         ×
       </button>
 
@@ -2212,7 +2373,10 @@
 
         </div>
 
-        <button class="form-submit" type="submit">
+        <button
+          class="form-submit"
+          type="submit"
+        >
           Créer la collection
         </button>
 
@@ -2227,11 +2391,17 @@
        ADD TO COLLECTION
   ========================== -->
 
-  <div class="modal-backdrop hidden" id="addCollectionModal">
+  <div
+    class="modal-backdrop hidden"
+    id="addCollectionModal"
+  >
 
     <div class="modal small">
 
-      <button class="close-modal" data-close="addCollectionModal">
+      <button
+        class="close-modal"
+        data-close="addCollectionModal"
+      >
         ×
       </button>
 
@@ -2243,9 +2413,7 @@
         Choisis où sauvegarder ce produit.
       </p>
 
-      <div id="collectionChoices">
-
-      </div>
+      <div id="collectionChoices"></div>
 
     </div>
 
@@ -2256,11 +2424,17 @@
        PRODUCT MODAL
   ========================== -->
 
-  <div class="modal-backdrop hidden" id="productModal">
+  <div
+    class="modal-backdrop hidden"
+    id="productModal"
+  >
 
     <div class="modal">
 
-      <button class="close-modal" data-close="productModal">
+      <button
+        class="close-modal"
+        data-close="productModal"
+      >
         ×
       </button>
 
@@ -2275,7 +2449,10 @@
 
         <div>
 
-          <div class="detail-category" id="detailCategory">
+          <div
+            class="detail-category"
+            id="detailCategory"
+          >
             Catégorie
           </div>
 
@@ -2283,7 +2460,10 @@
             Produit
           </h2>
 
-          <div class="detail-price" id="detailPrice">
+          <div
+            class="detail-price"
+            id="detailPrice"
+          >
             0€
           </div>
 
@@ -2293,15 +2473,24 @@
 
           <div class="detail-actions">
 
-            <button class="detail-main-button" id="detailSaveButton">
+            <button
+              class="detail-main-button"
+              id="detailSaveButton"
+            >
               Sauvegarder
             </button>
 
-            <button class="detail-secondary-button" id="detailCollectionButton">
+            <button
+              class="detail-secondary-button"
+              id="detailCollectionButton"
+            >
               + Collection
             </button>
 
-            <button class="detail-secondary-button" id="detailBetterButton">
+            <button
+              class="detail-secondary-button"
+              id="detailBetterButton"
+            >
               Trouver mieux
             </button>
 
@@ -2318,9 +2507,7 @@
           Alternatives intéressantes
         </h3>
 
-        <div id="alternativesContainer">
-
-        </div>
+        <div id="alternativesContainer"></div>
 
       </div>
 
@@ -2329,11 +2516,12 @@
   </div>
 
 
-  <!-- =========================
-       TOAST
-  ========================== -->
+  <!-- TOAST -->
 
-  <div class="toast" id="toast"></div>
+  <div
+    class="toast"
+    id="toast"
+  ></div>
 
 
   <script>
@@ -2481,14 +2669,11 @@
     let savedProducts =
       JSON.parse(localStorage.getItem(SAVED_KEY)) || [];
 
-
     let collections =
       JSON.parse(localStorage.getItem(COLLECTIONS_KEY)) || [];
 
-
     let currentUser =
       JSON.parse(localStorage.getItem(USER_KEY)) || null;
-
 
     let authMode = "signup";
 
@@ -2515,34 +2700,44 @@
 
 
     /* =====================================================
-       SAVE STORAGE
+       STORAGE FUNCTIONS
     ===================================================== */
 
     function saveSavedProducts() {
+
       localStorage.setItem(
         SAVED_KEY,
         JSON.stringify(savedProducts)
       );
+
     }
 
 
     function saveCollections() {
+
       localStorage.setItem(
         COLLECTIONS_KEY,
         JSON.stringify(collections)
       );
+
     }
 
 
     function saveUser() {
+
       if (currentUser) {
+
         localStorage.setItem(
           USER_KEY,
           JSON.stringify(currentUser)
         );
+
       } else {
+
         localStorage.removeItem(USER_KEY);
+
       }
+
     }
 
 
@@ -2557,7 +2752,9 @@
       toast.classList.add("show");
 
       setTimeout(() => {
+
         toast.classList.remove("show");
+
       }, 2200);
 
     }
@@ -2647,11 +2844,16 @@
       }
 
 
-      document.getElementById("profileSavedCount")
-        .textContent = savedProducts.length;
+      document.getElementById(
+        "profileSavedCount"
+      ).textContent =
+        savedProducts.length;
 
-      document.getElementById("profileCollectionCount")
-        .textContent = collections.length;
+
+      document.getElementById(
+        "profileCollectionCount"
+      ).textContent =
+        collections.length;
 
     }
 
@@ -2660,35 +2862,55 @@
 
       authMode = mode;
 
-      document.getElementById("authModalTitle").textContent =
+
+      document.getElementById(
+        "authModalTitle"
+      ).textContent =
         mode === "signup"
           ? "Créer ton compte"
           : "Se connecter";
 
 
-      document.getElementById("authModalDescription").textContent =
+      document.getElementById(
+        "authModalDescription"
+      ).textContent =
         mode === "signup"
           ? "Rejoins Veylo pour sauvegarder ton univers et bientôt vendre tes propres produits."
           : "Connecte-toi pour retrouver ton espace Veylo.";
 
 
-      document.getElementById("authName").parentElement.style.display =
-        mode === "signup" ? "block" : "none";
+      document.getElementById(
+        "authNameGroup"
+      ).style.display =
+        mode === "signup"
+          ? "block"
+          : "none";
 
 
-      document.getElementById("authSwitchText").textContent =
+      document.getElementById(
+        "authName"
+      ).required =
+        mode === "signup";
+
+
+      document.getElementById(
+        "authSwitchText"
+      ).textContent =
         mode === "signup"
           ? "Déjà un compte ?"
           : "Pas encore de compte ?";
 
 
-      document.getElementById("authSwitchButton").textContent =
+      document.getElementById(
+        "authSwitchButton"
+      ).textContent =
         mode === "signup"
           ? "Se connecter"
           : "Créer un compte";
 
 
-      document.getElementById("authModal")
+      document
+        .getElementById("authModal")
         .classList.remove("hidden");
 
     }
@@ -2709,19 +2931,26 @@
     }
 
 
-    document.getElementById("openSignup")
+    document
+      .getElementById("openSignup")
       .addEventListener("click", () => {
+
         openAuth("signup");
+
       });
 
 
-    document.getElementById("openLogin")
+    document
+      .getElementById("openLogin")
       .addEventListener("click", () => {
+
         openAuth("login");
+
       });
 
 
-    document.getElementById("continueGuest")
+    document
+      .getElementById("continueGuest")
       .addEventListener("click", () => {
 
         enterVeylo({
@@ -2732,7 +2961,8 @@
       });
 
 
-    document.getElementById("authSwitchButton")
+    document
+      .getElementById("authSwitchButton")
       .addEventListener("click", () => {
 
         openAuth(
@@ -2744,38 +2974,66 @@
       });
 
 
-    document.getElementById("authForm")
+    document
+      .getElementById("authForm")
       .addEventListener("submit", (event) => {
 
         event.preventDefault();
 
+
         const name =
-          document.getElementById("authName").value.trim();
+          document
+            .getElementById("authName")
+            .value
+            .trim();
+
 
         const email =
-          document.getElementById("authEmail").value.trim();
+          document
+            .getElementById("authEmail")
+            .value
+            .trim();
+
+
+        if (!email) return;
+
 
         if (authMode === "signup") {
 
           enterVeylo({
+
             guest: false,
-            name: name || "Utilisateur",
-            email: email
+
+            name:
+              name || "Utilisateur",
+
+            email
+
           });
 
-          showToast("Bienvenue sur Veylo 👋");
+          showToast(
+            "Bienvenue sur Veylo 👋"
+          );
 
         } else {
 
           enterVeylo({
+
             guest: false,
-            name: name || "Utilisateur",
-            email: email
+
+            name:
+              name || "Utilisateur",
+
+            email
+
           });
 
-          showToast("Content de te revoir 👋");
+          showToast(
+            "Content de te revoir 👋"
+          );
 
         }
+
 
         closeModal("authModal");
 
@@ -2795,7 +3053,8 @@
     }
 
 
-    document.querySelectorAll("[data-close]")
+    document
+      .querySelectorAll("[data-close]")
       .forEach(button => {
 
         button.addEventListener("click", () => {
@@ -2809,18 +3068,26 @@
       });
 
 
-    document.querySelectorAll(".modal-backdrop")
+    document
+      .querySelectorAll(".modal-backdrop")
       .forEach(backdrop => {
 
-        backdrop.addEventListener("click", (event) => {
+        backdrop.addEventListener(
+          "click",
+          event => {
 
-          if (event.target === backdrop) {
+            if (
+              event.target === backdrop
+            ) {
 
-            backdrop.classList.add("hidden");
+              backdrop.classList.add(
+                "hidden"
+              );
+
+            }
 
           }
-
-        });
+        );
 
       });
 
@@ -2834,15 +3101,26 @@
       document
         .querySelectorAll(".page-section")
         .forEach(section => {
-          section.classList.remove("active");
+
+          section.classList.remove(
+            "active"
+          );
+
         });
 
 
       const target =
-        document.getElementById(page + "Page");
+        document.getElementById(
+          page + "Page"
+        );
+
 
       if (target) {
-        target.classList.add("active");
+
+        target.classList.add(
+          "active"
+        );
+
       }
 
 
@@ -2864,24 +3142,32 @@
       .querySelectorAll(".nav-link")
       .forEach(button => {
 
-        button.addEventListener("click", () => {
+        button.addEventListener(
+          "click",
+          () => {
 
-          showPage(button.dataset.page);
+            showPage(
+              button.dataset.page
+            );
 
-        });
+          }
+        );
 
       });
 
 
     document
       .getElementById("profileButton")
-      .addEventListener("click", () => {
+      .addEventListener(
+        "click",
+        () => {
 
-        showPage("profile");
+          showPage("profile");
 
-        updateUserInterface();
+          updateUserInterface();
 
-      });
+        }
+      );
 
 
     /* =====================================================
@@ -2890,44 +3176,58 @@
 
     document
       .getElementById("sellButton")
-      .addEventListener("click", () => {
+      .addEventListener(
+        "click",
+        () => {
 
-        if (!currentUser || currentUser.guest) {
+          if (
+            !currentUser ||
+            currentUser.guest
+          ) {
 
-          document
-            .getElementById("sellModal")
-            .classList.remove("hidden");
+            document
+              .getElementById("sellModal")
+              .classList.remove(
+                "hidden"
+              );
 
-          return;
+            return;
+
+          }
+
+
+          showToast(
+            "L'espace vendeur arrive bientôt 🚀"
+          );
 
         }
-
-
-        showToast(
-          "L'espace vendeur arrive bientôt 🚀"
-        );
-
-      });
+      );
 
 
     document
       .getElementById("sellCreateAccount")
-      .addEventListener("click", () => {
+      .addEventListener(
+        "click",
+        () => {
 
-        closeModal("sellModal");
+          closeModal("sellModal");
 
-        openAuth("signup");
+          openAuth("signup");
 
-      });
+        }
+      );
 
 
     document
       .getElementById("sellContinue")
-      .addEventListener("click", () => {
+      .addEventListener(
+        "click",
+        () => {
 
-        closeModal("sellModal");
+          closeModal("sellModal");
 
-      });
+        }
+      );
 
 
     /* =====================================================
@@ -2935,10 +3235,14 @@
     ===================================================== */
 
     const searchInput =
-      document.getElementById("searchInput");
+      document.getElementById(
+        "searchInput"
+      );
 
     const clearSearch =
-      document.getElementById("clearSearch");
+      document.getElementById(
+        "clearSearch"
+      );
 
 
     let activeCategory = "all";
@@ -2953,15 +3257,20 @@
 
 
       clearSearch.style.display =
-        query ? "block" : "none";
+        query
+          ? "block"
+          : "none";
 
 
       document
-        .querySelectorAll(".product-card")
+        .querySelectorAll(
+          ".product-card"
+        )
         .forEach(card => {
 
           const name =
-            card.dataset.name.toLowerCase();
+            card.dataset.name
+              .toLowerCase();
 
           const category =
             card.dataset.category;
@@ -2978,7 +3287,8 @@
 
 
           card.style.display =
-            matchesSearch && matchesCategory
+            matchesSearch &&
+            matchesCategory
               ? ""
               : "none";
 
@@ -3011,29 +3321,42 @@
       .querySelectorAll(".category")
       .forEach(button => {
 
-        button.addEventListener("click", () => {
+        button.addEventListener(
+          "click",
+          () => {
 
-          document
-            .querySelectorAll(".category")
-            .forEach(item => {
-              item.classList.remove("active");
-            });
+            document
+              .querySelectorAll(
+                ".category"
+              )
+              .forEach(item => {
+
+                item.classList.remove(
+                  "active"
+                );
+
+              });
 
 
-          button.classList.add("active");
+            button.classList.add(
+              "active"
+            );
 
-          activeCategory =
-            button.dataset.category;
 
-          filterProducts();
+            activeCategory =
+              button.dataset.category;
 
-        });
+
+            filterProducts();
+
+          }
+        );
 
       });
 
 
     /* =====================================================
-       PRODUCT HELPERS
+       PRODUCTS
     ===================================================== */
 
     function getProduct(id) {
@@ -3046,7 +3369,8 @@
     function isSaved(id) {
 
       return savedProducts.some(
-        product => product.id === id
+        product =>
+          product.id === id
       );
 
     }
@@ -3057,6 +3381,7 @@
       const product =
         getProduct(id);
 
+
       if (!product) return;
 
 
@@ -3064,16 +3389,23 @@
 
         savedProducts =
           savedProducts.filter(
-            item => item.id !== id
+            item =>
+              item.id !== id
           );
 
-        showToast("Produit retiré");
+        showToast(
+          "Produit retiré"
+        );
 
       } else {
 
-        savedProducts.push(product);
+        savedProducts.push(
+          product
+        );
 
-        showToast("Produit sauvegardé ✓");
+        showToast(
+          "Produit sauvegardé ✓"
+        );
 
       }
 
@@ -3092,7 +3424,9 @@
     function updateProductButtons() {
 
       document
-        .querySelectorAll(".product-card")
+        .querySelectorAll(
+          ".product-card"
+        )
         .forEach(card => {
 
           const id =
@@ -3103,16 +3437,22 @@
 
 
           const heart =
-            card.querySelector(".heart-button");
+            card.querySelector(
+              ".heart-button"
+            );
 
           const save =
-            card.querySelector(".save-button");
+            card.querySelector(
+              ".save-button"
+            );
 
 
           if (heart) {
 
             heart.textContent =
-              saved ? "♥" : "♡";
+              saved
+                ? "♥"
+                : "♡";
 
             heart.classList.toggle(
               "saved",
@@ -3141,58 +3481,85 @@
     }
 
 
-    /* =====================================================
-       PRODUCT CARD EVENTS
-    ===================================================== */
-
     document
-      .querySelectorAll(".product-card")
+      .querySelectorAll(
+        ".product-card"
+      )
       .forEach(card => {
 
         const id =
           card.dataset.id;
 
 
-        card.addEventListener("click", (event) => {
+        card.addEventListener(
+          "click",
+          event => {
 
-          if (
-            event.target.closest(".heart-button") ||
-            event.target.closest(".save-button") ||
-            event.target.closest(".collection-button")
-          ) {
-            return;
+            if (
+              event.target.closest(
+                ".heart-button"
+              ) ||
+              event.target.closest(
+                ".save-button"
+              ) ||
+              event.target.closest(
+                ".collection-button"
+              )
+            ) {
+
+              return;
+
+            }
+
+
+            openProductModal(id);
+
           }
-
-          openProductModal(id);
-
-        });
+        );
 
 
         card
-          .querySelector(".heart-button")
-          .addEventListener("click", () => {
+          .querySelector(
+            ".heart-button"
+          )
+          .addEventListener(
+            "click",
+            () => {
 
-            saveProduct(id);
+              saveProduct(id);
 
-          });
-
-
-        card
-          .querySelector(".save-button")
-          .addEventListener("click", () => {
-
-            saveProduct(id);
-
-          });
+            }
+          );
 
 
         card
-          .querySelector(".collection-button")
-          .addEventListener("click", () => {
+          .querySelector(
+            ".save-button"
+          )
+          .addEventListener(
+            "click",
+            () => {
 
-            openAddCollectionModal(id);
+              saveProduct(id);
 
-          });
+            }
+          );
+
+
+        card
+          .querySelector(
+            ".collection-button"
+          )
+          .addEventListener(
+            "click",
+            () => {
+
+              openAddCollectionModal(
+                id
+              );
+
+            }
+          );
 
       });
 
@@ -3206,29 +3573,46 @@
       const product =
         getProduct(id);
 
+
       if (!product) return;
 
 
       currentProductId = id;
 
 
-      document.getElementById("detailImage").src =
+      document.getElementById(
+        "detailImage"
+      ).src =
         product.image;
 
-      document.getElementById("detailImage").alt =
+
+      document.getElementById(
+        "detailImage"
+      ).alt =
         product.name;
 
-      document.getElementById("detailName").textContent =
+
+      document.getElementById(
+        "detailName"
+      ).textContent =
         product.name;
 
-      document.getElementById("detailPrice").textContent =
+
+      document.getElementById(
+        "detailPrice"
+      ).textContent =
         product.price + "€";
 
-      document.getElementById("detailCategory").textContent =
+
+      document.getElementById(
+        "detailCategory"
+      ).textContent =
         product.categoryName;
 
 
-      document.getElementById("detailSaveButton").textContent =
+      document.getElementById(
+        "detailSaveButton"
+      ).textContent =
         isSaved(id)
           ? "Sauvegardé"
           : "Sauvegarder";
@@ -3238,8 +3622,12 @@
 
 
       document
-        .getElementById("productModal")
-        .classList.remove("hidden");
+        .getElementById(
+          "productModal"
+        )
+        .classList.remove(
+          "hidden"
+        );
 
     }
 
@@ -3247,7 +3635,10 @@
     function renderAlternatives(id) {
 
       const container =
-        document.getElementById("alternativesContainer");
+        document.getElementById(
+          "alternativesContainer"
+        );
+
 
       container.innerHTML = "";
 
@@ -3256,95 +3647,133 @@
         alternativesData[id] || [];
 
 
-      if (!alternatives.length) {
+      if (
+        !alternatives.length
+      ) {
 
         container.innerHTML =
-          `<p style="color:#888">Nous chercherons bientôt de meilleures alternatives.</p>`;
+          `<p style="color:#888">
+            Nous chercherons bientôt de meilleures alternatives.
+          </p>`;
 
         return;
 
       }
 
 
-      alternatives.forEach(item => {
+      alternatives.forEach(
+        item => {
 
-        const element =
-          document.createElement("div");
+          const element =
+            document.createElement(
+              "div"
+            );
 
-        element.className =
-          "alternative-item";
+
+          element.className =
+            "alternative-item";
 
 
-        element.innerHTML = `
+          element.innerHTML = `
 
-          <img src="${item.image}" alt="${item.name}">
+            <img
+              src="${item.image}"
+              alt="${item.name}"
+            >
 
-          <div class="alternative-info">
+            <div class="alternative-info">
 
-            <div class="alternative-name">
-              ${item.name}
+              <div class="alternative-name">
+                ${item.name}
+              </div>
+
+              <div class="alternative-price">
+                ${item.price}€
+              </div>
+
             </div>
 
-            <div class="alternative-price">
-              ${item.price}€
-            </div>
-
-          </div>
-
-        `;
+          `;
 
 
-        container.appendChild(element);
+          container.appendChild(
+            element
+          );
 
-      });
+        }
+      );
 
     }
 
 
     document
-      .getElementById("detailSaveButton")
-      .addEventListener("click", () => {
+      .getElementById(
+        "detailSaveButton"
+      )
+      .addEventListener(
+        "click",
+        () => {
 
-        if (currentProductId) {
+          if (
+            currentProductId
+          ) {
 
-          saveProduct(currentProductId);
+            saveProduct(
+              currentProductId
+            );
 
-          document.getElementById(
-            "detailSaveButton"
-          ).textContent =
-            isSaved(currentProductId)
-              ? "Sauvegardé"
-              : "Sauvegarder";
+
+            document.getElementById(
+              "detailSaveButton"
+            ).textContent =
+              isSaved(
+                currentProductId
+              )
+                ? "Sauvegardé"
+                : "Sauvegarder";
+
+          }
 
         }
-
-      });
+      );
 
 
     document
-      .getElementById("detailCollectionButton")
-      .addEventListener("click", () => {
+      .getElementById(
+        "detailCollectionButton"
+      )
+      .addEventListener(
+        "click",
+        () => {
 
-        if (currentProductId) {
-
-          openAddCollectionModal(
+          if (
             currentProductId
+          ) {
+
+            openAddCollectionModal(
+              currentProductId
+            );
+
+          }
+
+        }
+      );
+
+
+    document
+      .getElementById(
+        "detailBetterButton"
+      )
+      .addEventListener(
+        "click",
+        () => {
+
+          showToast(
+            "Veylo cherche de meilleures options..."
           );
 
         }
-
-      });
-
-
-    document
-      .getElementById("detailBetterButton")
-      .addEventListener("click", () => {
-
-        showToast(
-          "Veylo cherche de meilleures options..."
-        );
-
-      });
+      );
 
 
     /* =====================================================
@@ -3359,7 +3788,9 @@
         );
 
 
-      if (!savedProducts.length) {
+      if (
+        !savedProducts.length
+      ) {
 
         container.innerHTML = `
 
@@ -3383,73 +3814,102 @@
 
 
       const grid =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
+
 
       grid.className =
         "saved-grid";
 
 
-      savedProducts.forEach(product => {
+      savedProducts.forEach(
+        product => {
 
-        const item =
-          document.createElement("div");
-
-        item.className =
-          "saved-item";
-
-
-        item.innerHTML = `
-
-          <img
-            src="${product.image}"
-            alt="${product.name}"
-          >
-
-          <button class="remove-saved">
-            ×
-          </button>
-
-          <div class="saved-item-name">
-            ${product.name}
-          </div>
-
-          <div class="saved-item-price">
-            ${product.price}€
-          </div>
-
-        `;
+          const item =
+            document.createElement(
+              "div"
+            );
 
 
-        item.addEventListener("click", (event) => {
-
-          if (
-            event.target.closest(".remove-saved")
-          ) {
-            return;
-          }
-
-          openProductModal(product.id);
-
-        });
+          item.className =
+            "saved-item";
 
 
-        item
-          .querySelector(".remove-saved")
-          .addEventListener("click", () => {
+          item.innerHTML = `
 
-            saveProduct(product.id);
+            <img
+              src="${product.image}"
+              alt="${product.name}"
+            >
 
-          });
+            <button class="remove-saved">
+              ×
+            </button>
+
+            <div class="saved-item-name">
+              ${product.name}
+            </div>
+
+            <div class="saved-item-price">
+              ${product.price}€
+            </div>
+
+          `;
 
 
-        grid.appendChild(item);
+          item.addEventListener(
+            "click",
+            event => {
 
-      });
+              if (
+                event.target.closest(
+                  ".remove-saved"
+                )
+              ) {
+
+                return;
+
+              }
+
+
+              openProductModal(
+                product.id
+              );
+
+            }
+          );
+
+
+          item
+            .querySelector(
+              ".remove-saved"
+            )
+            .addEventListener(
+              "click",
+              () => {
+
+                saveProduct(
+                  product.id
+                );
+
+              }
+            );
+
+
+          grid.appendChild(
+            item
+          );
+
+        }
+      );
 
 
       container.innerHTML = "";
 
-      container.appendChild(grid);
+      container.appendChild(
+        grid
+      );
 
     }
 
@@ -3459,65 +3919,90 @@
     ===================================================== */
 
     document
-      .getElementById("newCollectionButton")
-      .addEventListener("click", () => {
+      .getElementById(
+        "newCollectionButton"
+      )
+      .addEventListener(
+        "click",
+        () => {
 
-        document
-          .getElementById("collectionModal")
-          .classList.remove("hidden");
+          document
+            .getElementById(
+              "collectionModal"
+            )
+            .classList.remove(
+              "hidden"
+            );
 
-      });
+        }
+      );
 
 
     document
-      .getElementById("collectionForm")
-      .addEventListener("submit", (event) => {
+      .getElementById(
+        "collectionForm"
+      )
+      .addEventListener(
+        "submit",
+        event => {
 
-        event.preventDefault();
+          event.preventDefault();
 
 
-        const input =
-          document.getElementById(
-            "collectionNameInput"
+          const input =
+            document.getElementById(
+              "collectionNameInput"
+            );
+
+
+          const name =
+            input.value.trim();
+
+
+          if (!name) return;
+
+
+          const collection = {
+
+            id:
+              Date.now().toString(),
+
+            name,
+
+            icon: "✦",
+
+            products: []
+
+          };
+
+
+          collections.push(
+            collection
           );
 
 
-        const name =
-          input.value.trim();
+          saveCollections();
 
 
-        if (!name) return;
+          input.value = "";
 
 
-        const collection = {
-
-          id:
-            Date.now().toString(),
-
-          name,
-
-          icon: "✦",
-
-          products: []
-
-        };
+          closeModal(
+            "collectionModal"
+          );
 
 
-        collections.push(collection);
+          renderCollections();
 
-        saveCollections();
+          updateUserInterface();
 
-        input.value = "";
 
-        closeModal("collectionModal");
+          showToast(
+            "Collection créée ✓"
+          );
 
-        renderCollections();
-
-        updateUserInterface();
-
-        showToast("Collection créée ✓");
-
-      });
+        }
+      );
 
 
     function renderCollections() {
@@ -3531,11 +4016,16 @@
       container.innerHTML = "";
 
 
-      if (!collections.length) {
+      if (
+        !collections.length
+      ) {
 
         container.innerHTML = `
 
-          <div class="empty-state" style="grid-column:1/-1">
+          <div
+            class="empty-state"
+            style="grid-column:1/-1"
+          >
 
             <h3>
               Crée ton premier univers.
@@ -3554,154 +4044,189 @@
       }
 
 
-      collections.forEach(collection => {
+      collections.forEach(
+        collection => {
 
-        const card =
-          document.createElement("div");
-
-        card.className =
-          "collection-card";
-
-
-        const products =
-          collection.products || [];
+          const card =
+            document.createElement(
+              "div"
+            );
 
 
-        const previewProducts =
-          products.slice(0, 3);
+          card.className =
+            "collection-card";
 
 
-        let previewHTML = "";
+          const products =
+            collection.products || [];
 
 
-        if (previewProducts.length === 0) {
-
-          previewHTML = `
-
-            <div style="
-              grid-column:1/-1;
-              display:flex;
-              align-items:center;
-              justify-content:center;
-              color:#999;
-              font-size:13px;
-            ">
-              Collection vide
-            </div>
-
-          `;
-
-        } else {
-
-          previewHTML = `
-
-            <img
-              src="${previewProducts[0].image}"
-              alt=""
-            >
-
-            <div class="preview-right">
-
-              ${
-                previewProducts[1]
-                  ? `<img src="${previewProducts[1].image}" alt="">`
-                  : `<div style="background:#eee"></div>`
-              }
-
-              ${
-                previewProducts[2]
-                  ? `<img src="${previewProducts[2].image}" alt="">`
-                  : `<div style="background:#e8e8e8"></div>`
-              }
-
-            </div>
-
-          `;
-
-        }
+          const previewProducts =
+            products.slice(
+              0,
+              3
+            );
 
 
-        card.innerHTML = `
+          let previewHTML = "";
 
-          <div class="collection-preview">
-
-            ${previewHTML}
-
-          </div>
-
-          <button
-            class="delete-collection"
-            title="Supprimer"
-          >
-            ×
-          </button>
-
-          <div class="collection-icon">
-            ${collection.icon || "✦"}
-          </div>
-
-          <div class="collection-name">
-            ${collection.name}
-          </div>
-
-          <div class="collection-count">
-            ${products.length}
-            ${products.length > 1 ? "produits" : "produit"}
-          </div>
-
-        `;
-
-
-        card.addEventListener("click", (event) => {
 
           if (
-            event.target.closest(".delete-collection")
+            previewProducts.length === 0
           ) {
-            return;
+
+            previewHTML = `
+
+              <div style="
+                grid-column:1/-1;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                color:#999;
+                font-size:13px;
+              ">
+                Collection vide
+              </div>
+
+            `;
+
+          } else {
+
+            previewHTML = `
+
+              <img
+                src="${previewProducts[0].image}"
+                alt=""
+              >
+
+              <div class="preview-right">
+
+                ${
+                  previewProducts[1]
+                    ? `<img src="${previewProducts[1].image}" alt="">`
+                    : `<div style="background:#eee"></div>`
+                }
+
+                ${
+                  previewProducts[2]
+                    ? `<img src="${previewProducts[2].image}" alt="">`
+                    : `<div style="background:#e8e8e8"></div>`
+                }
+
+              </div>
+
+            `;
+
           }
 
-          openCollectionDetail(
-            collection.id
-          );
 
-        });
+          card.innerHTML = `
+
+            <div class="collection-preview">
+              ${previewHTML}
+            </div>
+
+            <button
+              class="delete-collection"
+              title="Supprimer"
+            >
+              ×
+            </button>
+
+            <div class="collection-icon">
+              ${collection.icon || "✦"}
+            </div>
+
+            <div class="collection-name">
+              ${collection.name}
+            </div>
+
+            <div class="collection-count">
+              ${products.length}
+              ${
+                products.length > 1
+                  ? "produits"
+                  : "produit"
+              }
+            </div>
+
+          `;
 
 
-        card
-          .querySelector(".delete-collection")
-          .addEventListener("click", () => {
+          card.addEventListener(
+            "click",
+            event => {
 
-            collections =
-              collections.filter(
-                item =>
-                  item.id !== collection.id
+              if (
+                event.target.closest(
+                  ".delete-collection"
+                )
+              ) {
+
+                return;
+
+              }
+
+
+              openCollectionDetail(
+                collection.id
               );
 
-            saveCollections();
-
-            renderCollections();
-
-            updateUserInterface();
-
-            showToast("Collection supprimée");
-
-          });
+            }
+          );
 
 
-        container.appendChild(card);
+          card
+            .querySelector(
+              ".delete-collection"
+            )
+            .addEventListener(
+              "click",
+              () => {
 
-      });
+                collections =
+                  collections.filter(
+                    item =>
+                      item.id !==
+                      collection.id
+                  );
+
+
+                saveCollections();
+
+                renderCollections();
+
+                updateUserInterface();
+
+
+                showToast(
+                  "Collection supprimée"
+                );
+
+              }
+            );
+
+
+          container.appendChild(
+            card
+          );
+
+        }
+      );
 
     }
 
 
     /* =====================================================
-       ADD TO COLLECTION
+       ADD COLLECTION
     ===================================================== */
 
-    function openAddCollectionModal(productId) {
+    function openAddCollectionModal(
+      productId
+    ) {
 
-      currentProductId = productId;
+      currentProductId =
+        productId;
 
 
       const container =
@@ -3713,7 +4238,9 @@
       container.innerHTML = "";
 
 
-      if (!collections.length) {
+      if (
+        !collections.length
+      ) {
 
         container.innerHTML = `
 
@@ -3743,96 +4270,146 @@
           .getElementById(
             "createCollectionFromAdd"
           )
-          .addEventListener("click", () => {
-
-            closeModal("addCollectionModal");
-
-            document
-              .getElementById("collectionModal")
-              .classList.remove("hidden");
-
-          });
-
-
-      } else {
-
-        collections.forEach(collection => {
-
-          const button =
-            document.createElement("button");
-
-          button.style.width = "100%";
-          button.style.textAlign = "left";
-          button.style.border = "none";
-          button.style.background = "#f4f4f4";
-          button.style.borderRadius = "14px";
-          button.style.padding = "15px";
-          button.style.marginBottom = "8px";
-          button.style.fontWeight = "800";
-
-
-          const alreadyAdded =
-            collection.products.some(
-              product =>
-                product.id === productId
-            );
-
-
-          button.textContent =
-            `${collection.icon || "✦"} ${collection.name}${
-              alreadyAdded ? " · Ajouté" : ""
-            }`;
-
-
-          button.addEventListener(
+          .addEventListener(
             "click",
             () => {
-
-              if (alreadyAdded) {
-
-                showToast(
-                  "Déjà dans cette collection"
-                );
-
-                return;
-
-              }
-
-
-              const product =
-                getProduct(productId);
-
-
-              collection.products.push(product);
-
-              saveCollections();
 
               closeModal(
                 "addCollectionModal"
               );
 
-              renderCollections();
 
-              updateUserInterface();
-
-              showToast(
-                "Ajouté à " + collection.name
-              );
+              document
+                .getElementById(
+                  "collectionModal"
+                )
+                .classList.remove(
+                  "hidden"
+                );
 
             }
           );
 
 
-          container.appendChild(button);
+      } else {
 
-        });
+        collections.forEach(
+          collection => {
+
+            const button =
+              document.createElement(
+                "button"
+              );
+
+
+            button.style.width =
+              "100%";
+
+            button.style.textAlign =
+              "left";
+
+            button.style.border =
+              "none";
+
+            button.style.background =
+              "#f4f4f4";
+
+            button.style.borderRadius =
+              "14px";
+
+            button.style.padding =
+              "15px";
+
+            button.style.marginBottom =
+              "8px";
+
+            button.style.fontWeight =
+              "800";
+
+
+            const alreadyAdded =
+              collection.products.some(
+                product =>
+                  product.id ===
+                  productId
+              );
+
+
+            button.textContent =
+              `${collection.icon || "✦"} ${collection.name}${
+                alreadyAdded
+                  ? " · Ajouté"
+                  : ""
+              }`;
+
+
+            button.addEventListener(
+              "click",
+              () => {
+
+                if (
+                  alreadyAdded
+                ) {
+
+                  showToast(
+                    "Déjà dans cette collection"
+                  );
+
+                  return;
+
+                }
+
+
+                const product =
+                  getProduct(
+                    productId
+                  );
+
+
+                collection.products.push(
+                  product
+                );
+
+
+                saveCollections();
+
+
+                closeModal(
+                  "addCollectionModal"
+                );
+
+
+                renderCollections();
+
+                updateUserInterface();
+
+
+                showToast(
+                  "Ajouté à " +
+                  collection.name
+                );
+
+              }
+            );
+
+
+            container.appendChild(
+              button
+            );
+
+          }
+        );
 
       }
 
 
       document
-        .getElementById("addCollectionModal")
-        .classList.remove("hidden");
+        .getElementById(
+          "addCollectionModal"
+        )
+        .classList.remove(
+          "hidden"
+        );
 
     }
 
@@ -3841,18 +4418,22 @@
        COLLECTION DETAIL
     ===================================================== */
 
-    function openCollectionDetail(id) {
+    function openCollectionDetail(
+      id
+    ) {
 
       const collection =
         collections.find(
-          item => item.id === id
+          item =>
+            item.id === id
         );
 
 
       if (!collection) return;
 
 
-      currentCollectionId = id;
+      currentCollectionId =
+        id;
 
 
       document.getElementById(
@@ -3880,7 +4461,9 @@
       grid.innerHTML = "";
 
 
-      if (!collection.products.length) {
+      if (
+        !collection.products.length
+      ) {
 
         grid.innerHTML = `
 
@@ -3900,108 +4483,132 @@
 
       } else {
 
-        collection.products.forEach(product => {
+        collection.products.forEach(
+          product => {
 
-          const item =
-            document.createElement("div");
-
-          item.className =
-            "moodboard-item";
-
-
-          item.innerHTML = `
-
-            <img
-              src="${product.image}"
-              alt="${product.name}"
-            >
-
-            <button class="moodboard-remove">
-              ×
-            </button>
-
-            <div class="moodboard-overlay">
-
-              <strong>
-                ${product.name}
-              </strong>
-
-              <div>
-                ${product.price}€
-              </div>
-
-            </div>
-
-          `;
-
-
-          item.addEventListener(
-            "click",
-            (event) => {
-
-              if (
-                event.target.closest(
-                  ".moodboard-remove"
-                )
-              ) {
-                return;
-              }
-
-              openProductModal(
-                product.id
+            const item =
+              document.createElement(
+                "div"
               );
 
-            }
-          );
+
+            item.className =
+              "moodboard-item";
 
 
-          item
-            .querySelector(".moodboard-remove")
-            .addEventListener(
+            item.innerHTML = `
+
+              <img
+                src="${product.image}"
+                alt="${product.name}"
+              >
+
+              <button class="moodboard-remove">
+                ×
+              </button>
+
+              <div class="moodboard-overlay">
+
+                <strong>
+                  ${product.name}
+                </strong>
+
+                <div>
+                  ${product.price}€
+                </div>
+
+              </div>
+
+            `;
+
+
+            item.addEventListener(
               "click",
-              () => {
+              event => {
 
-                collection.products =
-                  collection.products.filter(
-                    item =>
-                      item.id !== product.id
-                  );
+                if (
+                  event.target.closest(
+                    ".moodboard-remove"
+                  )
+                ) {
 
-                saveCollections();
+                  return;
 
-                openCollectionDetail(
-                  collection.id
-                );
+                }
 
-                renderCollections();
 
-                showToast(
-                  "Produit retiré de la collection"
+                openProductModal(
+                  product.id
                 );
 
               }
             );
 
 
-          grid.appendChild(item);
+            item
+              .querySelector(
+                ".moodboard-remove"
+              )
+              .addEventListener(
+                "click",
+                () => {
 
-        });
+                  collection.products =
+                    collection.products.filter(
+                      item =>
+                        item.id !==
+                        product.id
+                    );
+
+
+                  saveCollections();
+
+
+                  openCollectionDetail(
+                    collection.id
+                  );
+
+
+                  renderCollections();
+
+
+                  showToast(
+                    "Produit retiré de la collection"
+                  );
+
+                }
+              );
+
+
+            grid.appendChild(
+              item
+            );
+
+          }
+        );
 
       }
 
 
-      showPage("collectionDetail");
+      showPage(
+        "collectionDetail"
+      );
 
     }
 
 
     document
-      .getElementById("backToSpace")
-      .addEventListener("click", () => {
+      .getElementById(
+        "backToSpace"
+      )
+      .addEventListener(
+        "click",
+        () => {
 
-        showPage("space");
+          showPage("space");
 
-      });
+        }
+      );
 
 
     /* =====================================================
@@ -4009,12 +4616,17 @@
     ===================================================== */
 
     document
-      .getElementById("logoutButton")
-      .addEventListener("click", () => {
+      .getElementById(
+        "logoutButton"
+      )
+      .addEventListener(
+        "click",
+        () => {
 
-        logout();
+          logout();
 
-      });
+        }
+      );
 
 
     /* =====================================================
@@ -4032,11 +4644,17 @@
 
       if (currentUser) {
 
-        authScreen.classList.add("hidden");
+        authScreen.classList.add(
+          "hidden"
+        );
 
-        navbar.classList.remove("hidden");
+        navbar.classList.remove(
+          "hidden"
+        );
 
-        mainContent.classList.remove("hidden");
+        mainContent.classList.remove(
+          "hidden"
+        );
 
         updateUserInterface();
 
