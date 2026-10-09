@@ -1606,112 +1606,9 @@ nav{
    DISCOVER PRODUCTS
    ========================= */
 
-/*
-  IMPORTANT :
-  Les produits des vendeurs ne sont PAS ajoutés ici.
-  Ils restent uniquement dans l'espace vendeur.
-*/
-
-const baseProducts = [
-
-  {
-    id:"minimal-chair",
-    name:"Minimal Chair",
-    price:129,
-    category:"furniture",
-    description:"Une chaise minimaliste pensée pour les espaces modernes.",
-    image:"https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=900&q=85"
-  },
-
-  {
-    id:"orbit-lamp",
-    name:"Orbit Lamp",
-    price:59,
-    category:"lighting",
-    description:"Une lampe sculpturale pour donner une lumière douce.",
-    image:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=85"
-  },
-
-  {
-    id:"studio-display",
-    name:"Studio Display",
-    price:499,
-    category:"setup",
-    description:"Un écran élégant pour créer un setup propre.",
-    image:"https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=900&q=85"
-  },
-
-  {
-    id:"cloud-sofa",
-    name:"Cloud Sofa",
-    price:899,
-    category:"furniture",
-    description:"Un canapé généreux inspiré des formes organiques.",
-    image:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85"
-  },
-
-  {
-    id:"arc-table",
-    name:"Arc Table",
-    price:299,
-    category:"furniture",
-    description:"Une table aux lignes douces.",
-    image:"https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?auto=format&fit=crop&w=900&q=85"
-  },
-
-  {
-    id:"soft-rug",
-    name:"Soft Rug",
-    price:119,
-    category:"decor",
-    description:"Un tapis doux pour une ambiance chaleureuse.",
-    image:"https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&w=900&q=85"
-  },
-
-  {
-    id:"halo-mirror",
-    name:"Halo Mirror",
-    price:149,
-    category:"decor",
-    description:"Un miroir rond pensé comme une pièce décorative.",
-    image:"https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=85"
-  },
-
-  {
-    id:"desk-set",
-    name:"Desk Set",
-    price:189,
-    category:"setup",
-    description:"Une sélection d'accessoires pour un bureau élégant.",
-    image:"https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=900&q=85"
-  },
-
-  {
-    id:"wood-shelf",
-    name:"Oak Shelf",
-    price:179,
-    category:"furniture",
-    description:"Une étagère en bois pour exposer tes objets préférés.",
-    image:"https://images.unsplash.com/photo-1594620302200-9a762244a156?auto=format&fit=crop&w=900&q=85"
-  },
-
-  {
-    id:"warm-light",
-    name:"Warm Light",
-    price:79,
-    category:"lighting",
-    description:"Une lumière chaude pour créer une ambiance calme.",
-    image:"https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=900&q=85"
-  }
-
-];
-
-/*
-  products = uniquement les produits Discover.
-  Les annonces vendeurs n'y sont volontairement PAS.
-*/
-
-let products=[...baseProducts];
+/* Discover affiche uniquement les annonces publiées par les vendeurs. */
+const baseProducts = [];
+let products = [];
 
 let saved=JSON.parse(
   localStorage.getItem("veylo_saved")||"[]"
@@ -1724,6 +1621,9 @@ let collections=JSON.parse(
 let listings=JSON.parse(
   localStorage.getItem("veylo_listings")||"[]"
 );
+
+/* Les annonces déjà publiées apparaissent aussi dans Discover au chargement. */
+products = [...listings];
 
 let currentCategory="all";
 
@@ -2310,6 +2210,9 @@ function createListing(){
     JSON.stringify(listings)
   );
 
+  products = [...listings];
+  renderProducts();
+
   closeModal("listingModal");
 
   clearListingForm();
@@ -2505,10 +2408,12 @@ function deleteListing(id){
     JSON.stringify(listings)
   );
 
+  products = [...listings];
+  renderProducts();
   renderSellerListings();
 
   showToast(
-    "Annonce supprimée."
+    "Annonce supprimée de Discover et de ton espace vendeur."
   );
 
 }
