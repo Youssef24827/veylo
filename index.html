@@ -7,6 +7,7 @@
 <title>Veylo — Find things that fit your world.</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -58,6 +59,7 @@ nav{
   background:rgba(247,246,242,.94);
   backdrop-filter:blur(15px);
   border-bottom:1px solid rgba(0,0,0,.05);
+
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -784,6 +786,7 @@ nav{
 /* RESPONSIVE */
 
 @media(max-width:850px){
+
   .nav-links{
     display:none;
   }
@@ -803,9 +806,11 @@ nav{
   .seller-actions{
     grid-template-columns:1fr;
   }
+
 }
 
 @media(max-width:550px){
+
   nav{
     padding:0 18px;
   }
@@ -841,15 +846,20 @@ nav{
   .image-picker-buttons{
     grid-template-columns:1fr;
   }
+
 }
+
 </style>
 </head>
 
 <body>
-  <!-- AUTH -->
+
+<!-- AUTH -->
 
 <div id="authScreen" class="auth-screen">
+
   <div class="auth-box">
+
     <div class="auth-logo">Veylo.</div>
 
     <h1>Find things that fit your world.</h1>
@@ -870,24 +880,43 @@ nav{
     <button class="auth-btn guest" id="guestBtn">
       Continuer en invité
     </button>
+
   </div>
+
 </div>
 
 <!-- NAV -->
 
 <nav>
+
   <div class="logo" onclick="scrollToTop()">
     Veylo.
   </div>
 
   <div class="nav-links">
-    <button onclick="scrollToTop()">Discover</button>
-    <button onclick="scrollToSection('inspiration')">Inspiration</button>
-    <button onclick="scrollToSection('mySpace')">My Space</button>
-    <button class="sell-nav" onclick="openSellerAccess()">Vendre</button>
+
+    <button onclick="scrollToTop()">
+      Discover
+    </button>
+
+    <button onclick="scrollToSection('inspiration')">
+      Inspiration
+    </button>
+
+    <button onclick="scrollToSection('mySpace')">
+      My Space
+    </button>
+
+    <button class="sell-nav" onclick="openSellerAccess()">
+      Vendre
+    </button>
+
   </div>
 
-  <button class="profile-btn" onclick="openProfile()">V</button>
+  <button class="profile-btn" onclick="openProfile()">
+    V
+  </button>
+
 </nav>
 
 <!-- APP -->
@@ -897,6 +926,7 @@ nav{
   <!-- HERO -->
 
   <section class="hero">
+
     <div class="hero-badge">
       Pinterest × TikTok × Shopping
     </div>
@@ -913,89 +943,181 @@ nav{
     </p>
 
     <div class="search-wrap">
+
       <input
         id="searchInput"
         class="search-input"
         type="text"
         placeholder="Cherche une lampe, un canapé, un bureau..."
       >
+
     </div>
+
   </section>
 
   <!-- CATEGORIES -->
 
   <div class="categories">
-    <button class="category active" data-category="all">Tout</button>
-    <button class="category" data-category="furniture">Furniture</button>
-    <button class="category" data-category="lighting">Lighting</button>
-    <button class="category" data-category="setup">Setup</button>
-    <button class="category" data-category="decor">Decor</button>
+
+    <button class="category active" data-category="all">
+      Tout
+    </button>
+
+    <button class="category" data-category="furniture">
+      Furniture
+    </button>
+
+    <button class="category" data-category="lighting">
+      Lighting
+    </button>
+
+    <button class="category" data-category="setup">
+      Setup
+    </button>
+
+    <button class="category" data-category="decor">
+      Decor
+    </button>
+
   </div>
 
   <!-- DISCOVER -->
 
   <section class="section" id="inspiration">
+
     <div class="section-head">
+
       <div>
+
         <h2>Discover</h2>
-        <p>Des objets sélectionnés pour ton univers.</p>
+
+        <p>
+          Des objets sélectionnés pour ton univers.
+        </p>
+
       </div>
+
     </div>
 
     <div id="productGrid" class="product-grid"></div>
+
   </section>
 
   <!-- MY SPACE -->
 
   <section class="space" id="mySpace">
+
     <div class="space-header">
+
       <h2>My Space</h2>
-      <p>Tes produits sauvegardés et tes univers.</p>
+
+      <p>
+        Tes produits sauvegardés et tes univers.
+      </p>
+
     </div>
 
     <div id="savedSection"></div>
 
     <div style="margin-top:45px">
+
       <div class="section-head">
+
         <div>
+
           <h2>Collections</h2>
-          <p>Construis tes propres moodboards.</p>
+
+          <p>
+            Construis tes propres moodboards.
+          </p>
+
         </div>
+
       </div>
 
       <div id="collectionsGrid" class="space-grid"></div>
+
     </div>
+
   </section>
 
   <!-- SELLER -->
 
   <section id="sellerSpace" class="space hidden">
+
     <div class="seller-hero">
+
       <h2>Espace vendeur</h2>
-      <p>Transforme tes produits en annonces Veylo.</p>
+
+      <p>
+        Transforme tes produits en annonces Veylo.
+      </p>
+
     </div>
 
     <div class="seller-actions">
-      <button class="seller-action" onclick="openCreateListing()">
-        <div class="seller-action-icon">＋</div>
-        <h3>Publier un produit</h3>
-        <p>Ajoute ton produit avec une vraie photo.</p>
+
+      <button
+        class="seller-action"
+        onclick="openCreateListing()"
+      >
+
+        <div class="seller-action-icon">
+          ＋
+        </div>
+
+        <h3>
+          Publier un produit
+        </h3>
+
+        <p>
+          Ajoute ton produit avec une vraie photo.
+        </p>
+
       </button>
 
-      <button class="seller-action" onclick="showSellerListings()">
-        <div class="seller-action-icon">▣</div>
-        <h3>Mes annonces</h3>
-        <p>Consulte tes produits publiés.</p>
+      <button
+        class="seller-action"
+        onclick="showSellerListings()"
+      >
+
+        <div class="seller-action-icon">
+          ▣
+        </div>
+
+        <h3>
+          Mes annonces
+        </h3>
+
+        <p>
+          Consulte tes produits publiés.
+        </p>
+
       </button>
 
-      <button class="seller-action" onclick="showSellerSales()">
-        <div class="seller-action-icon">€</div>
-        <h3>Mes ventes</h3>
-        <p>Ton suivi des ventes arrivera bientôt.</p>
+      <button
+        class="seller-action"
+        onclick="showSellerSales()"
+      >
+
+        <div class="seller-action-icon">
+          €
+        </div>
+
+        <h3>
+          Mes ventes
+        </h3>
+
+        <p>
+          Ton suivi des ventes arrivera bientôt.
+        </p>
+
       </button>
+
     </div>
 
     <div id="sellerListings"></div>
+
   </section>
 
 </main>
@@ -1003,158 +1125,330 @@ nav{
 <!-- LOGIN -->
 
 <div id="loginModal" class="modal-backdrop hidden">
-  <div class="modal">
-    <button class="close" onclick="closeModal('loginModal')">×</button>
 
-    <h2>Se connecter</h2>
-    <p class="modal-subtitle">Retrouve ton univers Veylo.</p>
+  <div class="modal">
+
+    <button
+      class="close"
+      onclick="closeModal('loginModal')"
+    >
+      ×
+    </button>
+
+    <h2>
+      Se connecter
+    </h2>
+
+    <p class="modal-subtitle">
+      Retrouve ton univers Veylo.
+    </p>
 
     <div class="form-group">
-      <label>Email</label>
+
+      <label>
+        Email
+      </label>
+
       <input
         id="loginEmail"
         class="form-input"
         type="email"
         placeholder="toi@email.com"
       >
+
     </div>
 
     <div class="form-group">
-      <label>Mot de passe</label>
+
+      <label>
+        Mot de passe
+      </label>
+
       <input
         id="loginPassword"
         class="form-input"
         type="password"
         placeholder="••••••••"
       >
+
     </div>
 
-    <button class="primary-btn" onclick="login()">Se connecter</button>
-    <button class="secondary-btn" onclick="switchToRegister()">Créer un compte</button>
+    <button
+      class="primary-btn"
+      onclick="login()"
+    >
+      Se connecter
+    </button>
+
+    <button
+      class="secondary-btn"
+      onclick="switchToRegister()"
+    >
+      Créer un compte
+    </button>
+
   </div>
+
 </div>
 
 <!-- REGISTER -->
 
 <div id="registerModal" class="modal-backdrop hidden">
-  <div class="modal">
-    <button class="close" onclick="closeModal('registerModal')">×</button>
 
-    <h2>Créer ton compte</h2>
-    <p class="modal-subtitle">Rejoins Veylo.</p>
+  <div class="modal">
+
+    <button
+      class="close"
+      onclick="closeModal('registerModal')"
+    >
+      ×
+    </button>
+
+    <h2>
+      Créer ton compte
+    </h2>
+
+    <p class="modal-subtitle">
+      Rejoins Veylo.
+    </p>
 
     <div class="form-group">
-      <label>Nom</label>
+
+      <label>
+        Nom
+      </label>
+
       <input
         id="registerName"
         class="form-input"
         type="text"
         placeholder="Ton prénom"
       >
+
     </div>
 
     <div class="form-group">
-      <label>Email</label>
+
+      <label>
+        Email
+      </label>
+
       <input
         id="registerEmail"
         class="form-input"
         type="email"
         placeholder="toi@email.com"
       >
+
     </div>
 
     <div class="form-group">
-      <label>Mot de passe</label>
+
+      <label>
+        Mot de passe
+      </label>
+
       <input
         id="registerPassword"
         class="form-input"
         type="password"
         placeholder="••••••••"
       >
+
     </div>
 
-    <button class="primary-btn" onclick="register()">Créer mon compte</button>
-    <button class="secondary-btn" onclick="switchToLogin()">J'ai déjà un compte</button>
+    <button
+      class="primary-btn"
+      onclick="register()"
+    >
+      Créer mon compte
+    </button>
+
+    <button
+      class="secondary-btn"
+      onclick="switchToLogin()"
+    >
+      J'ai déjà un compte
+    </button>
+
   </div>
+
 </div>
 
 <!-- PRODUCT -->
 
 <div id="productModal" class="modal-backdrop hidden">
+
   <div class="modal large">
-    <button class="close" onclick="closeModal('productModal')">×</button>
+
+    <button
+      class="close"
+      onclick="closeModal('productModal')"
+    >
+      ×
+    </button>
+
     <div id="productDetail"></div>
+
+  </div>
+
+</div>
+
+<!-- MESSAGERIE VENDEUR -->
+<div id="messageModal" class="modal-backdrop hidden">
+  <div class="modal">
+    <button class="close" onclick="closeModal('messageModal')">×</button>
+    <h2 id="messageTitle">Message au vendeur</h2>
+    <p id="messageSubtitle" class="modal-subtitle"></p>
+    <div id="messageHistory" style="display:flex;flex-direction:column;gap:10px;min-height:160px;max-height:320px;overflow-y:auto;padding:12px;background:#fafaf8;border-radius:16px;margin-bottom:16px;"></div>
+    <div class="form-group">
+      <label for="messageInput">Ton message</label>
+      <textarea id="messageInput" class="form-textarea" placeholder="Bonjour, j’aimerais avoir plus d’informations…"></textarea>
+    </div>
+    <button class="primary-btn" onclick="sendSellerMessage()">Envoyer le message</button>
   </div>
 </div>
 
 <!-- COLLECTION -->
 
 <div id="collectionModal" class="modal-backdrop hidden">
-  <div class="modal">
-    <button class="close" onclick="closeModal('collectionModal')">×</button>
 
-    <h2>Nouvelle collection</h2>
-    <p class="modal-subtitle">Crée un nouvel univers.</p>
+  <div class="modal">
+
+    <button
+      class="close"
+      onclick="closeModal('collectionModal')"
+    >
+      ×
+    </button>
+
+    <h2>
+      Nouvelle collection
+    </h2>
+
+    <p class="modal-subtitle">
+      Crée un nouvel univers.
+    </p>
 
     <div class="form-group">
-      <label>Nom de la collection</label>
+
+      <label>
+        Nom de la collection
+      </label>
+
       <input
         id="collectionNameInput"
         class="form-input"
         placeholder="Mon salon idéal"
       >
+
     </div>
 
-    <button class="primary-btn" onclick="createCollection()">Créer la collection</button>
+    <button
+      class="primary-btn"
+      onclick="createCollection()"
+    >
+      Créer la collection
+    </button>
+
   </div>
+
 </div>
 
 <!-- ADD COLLECTION -->
 
 <div id="addCollectionModal" class="modal-backdrop hidden">
-  <div class="modal">
-    <button class="close" onclick="closeModal('addCollectionModal')">×</button>
 
-    <h2>Ajouter à...</h2>
-    <p class="modal-subtitle">Choisis une collection.</p>
+  <div class="modal">
+
+    <button
+      class="close"
+      onclick="closeModal('addCollectionModal')"
+    >
+      ×
+    </button>
+
+    <h2>
+      Ajouter à...
+    </h2>
+
+    <p class="modal-subtitle">
+      Choisis une collection.
+    </p>
 
     <div id="collectionChoices"></div>
 
-    <button class="secondary-btn" onclick="openCollectionCreatorFromAdd()">
+    <button
+      class="secondary-btn"
+      onclick="openCollectionCreatorFromAdd()"
+    >
       + Nouvelle collection
     </button>
+
   </div>
+
 </div>
 
 <!-- COLLECTION DETAIL -->
 
 <div id="collectionDetailModal" class="modal-backdrop hidden">
+
   <div class="modal large">
-    <button class="close" onclick="closeModal('collectionDetailModal')">×</button>
+
+    <button
+      class="close"
+      onclick="closeModal('collectionDetailModal')"
+    >
+      ×
+    </button>
+
     <div id="collectionDetail"></div>
+
   </div>
+
 </div>
 
 <!-- CREATE LISTING -->
 
 <div id="listingModal" class="modal-backdrop hidden">
-  <div class="modal">
-    <button class="close" onclick="closeModal('listingModal')">×</button>
 
-    <h2>Publier un produit</h2>
-    <p class="modal-subtitle">Ajoute ton produit avec une vraie photo.</p>
+  <div class="modal">
+
+    <button
+      class="close"
+      onclick="closeModal('listingModal')"
+    >
+      ×
+    </button>
+
+    <h2>
+      Publier un produit
+    </h2>
+
+    <p class="modal-subtitle">
+      Ajoute ton produit avec une vraie photo.
+    </p>
 
     <div class="form-group">
-      <label>Nom du produit</label>
+
+      <label>
+        Nom du produit
+      </label>
+
       <input
         id="listingName"
         class="form-input"
         placeholder="Ex : Fauteuil design"
       >
+
     </div>
 
     <div class="form-group">
-      <label>Prix (€)</label>
+
+      <label>
+        Prix (€)
+      </label>
+
       <input
         id="listingPrice"
         class="form-input"
@@ -1162,24 +1456,50 @@ nav{
         min="0"
         placeholder="129"
       >
+
     </div>
 
     <div class="form-group">
-      <label>Catégorie</label>
-      <select id="listingCategory" class="form-select">
-        <option value="furniture">Furniture</option>
-        <option value="lighting">Lighting</option>
-        <option value="setup">Setup</option>
-        <option value="decor">Decor</option>
+
+      <label>
+        Catégorie
+      </label>
+
+      <select
+        id="listingCategory"
+        class="form-select"
+      >
+
+        <option value="furniture">
+          Furniture
+        </option>
+
+        <option value="lighting">
+          Lighting
+        </option>
+
+        <option value="setup">
+          Setup
+        </option>
+
+        <option value="decor">
+          Decor
+        </option>
+
       </select>
+
     </div>
 
     <!-- IMAGE -->
 
     <div class="form-group">
-      <label>Photo du produit</label>
+
+      <label>
+        Photo du produit
+      </label>
 
       <div class="image-picker">
+
         <img
           id="listingImagePreview"
           class="image-picker-preview"
@@ -1187,6 +1507,7 @@ nav{
         >
 
         <div class="image-picker-buttons">
+
           <button
             type="button"
             class="image-picker-btn"
@@ -1202,13 +1523,17 @@ nav{
           >
             📷 Prendre une photo
           </button>
+
         </div>
 
         <div class="image-picker-help">
           Choisis une image dans ta bibliothèque
           ou prends directement une photo.
         </div>
+
       </div>
+
+      <!-- INPUT BIBLIOTHÈQUE -->
 
       <input
         id="libraryImageInput"
@@ -1217,6 +1542,8 @@ nav{
         class="hidden"
       >
 
+      <!-- INPUT APPAREIL PHOTO -->
+
       <input
         id="cameraImageInput"
         type="file"
@@ -1224,195 +1551,441 @@ nav{
         capture="environment"
         class="hidden"
       >
+
     </div>
 
     <div class="form-group">
-      <label>Description</label>
+
+      <label>
+        Description
+      </label>
+
       <textarea
         id="listingDescription"
         class="form-textarea"
         placeholder="Décris ton produit..."
       ></textarea>
+
     </div>
 
-    <button class="primary-btn" onclick="createListing()">Publier sur Veylo</button>
+    <button
+      class="primary-btn"
+      onclick="createListing()"
+    >
+      Publier sur Veylo
+    </button>
+
   </div>
+
 </div>
 
 <!-- PROFILE -->
 
 <div id="profileModal" class="modal-backdrop hidden">
+
   <div class="modal">
-    <button class="close" onclick="closeModal('profileModal')">×</button>
+
+    <button
+      class="close"
+      onclick="closeModal('profileModal')"
+    >
+      ×
+    </button>
+
     <div id="profileContent"></div>
+
   </div>
+
 </div>
 
 <div id="toast" class="toast"></div>
 
 <script>
-  /* =========================
+
+/* =========================
    DISCOVER PRODUCTS
    ========================= */
 
 /*
-   Discover démarre sans produits de démonstration.
-   Les annonces vendeurs sont chargées depuis le navigateur.
+  IMPORTANT :
+  Les produits des vendeurs ne sont PAS ajoutés ici.
+  Ils restent uniquement dans l'espace vendeur.
 */
 
-const baseProducts = [];
+const baseProducts = [
 
-let products = [...baseProducts];
+  {
+    id:"minimal-chair",
+    name:"Minimal Chair",
+    price:129,
+    category:"furniture",
+    description:"Une chaise minimaliste pensée pour les espaces modernes.",
+    image:"https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=900&q=85"
+  },
 
-let saved = JSON.parse(
-  localStorage.getItem("veylo_saved") || "[]"
+  {
+    id:"orbit-lamp",
+    name:"Orbit Lamp",
+    price:59,
+    category:"lighting",
+    description:"Une lampe sculpturale pour donner une lumière douce.",
+    image:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=85"
+  },
+
+  {
+    id:"studio-display",
+    name:"Studio Display",
+    price:499,
+    category:"setup",
+    description:"Un écran élégant pour créer un setup propre.",
+    image:"https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=900&q=85"
+  },
+
+  {
+    id:"cloud-sofa",
+    name:"Cloud Sofa",
+    price:899,
+    category:"furniture",
+    description:"Un canapé généreux inspiré des formes organiques.",
+    image:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85"
+  },
+
+  {
+    id:"arc-table",
+    name:"Arc Table",
+    price:299,
+    category:"furniture",
+    description:"Une table aux lignes douces.",
+    image:"https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?auto=format&fit=crop&w=900&q=85"
+  },
+
+  {
+    id:"soft-rug",
+    name:"Soft Rug",
+    price:119,
+    category:"decor",
+    description:"Un tapis doux pour une ambiance chaleureuse.",
+    image:"https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&w=900&q=85"
+  },
+
+  {
+    id:"halo-mirror",
+    name:"Halo Mirror",
+    price:149,
+    category:"decor",
+    description:"Un miroir rond pensé comme une pièce décorative.",
+    image:"https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=85"
+  },
+
+  {
+    id:"desk-set",
+    name:"Desk Set",
+    price:189,
+    category:"setup",
+    description:"Une sélection d'accessoires pour un bureau élégant.",
+    image:"https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=900&q=85"
+  },
+
+  {
+    id:"wood-shelf",
+    name:"Oak Shelf",
+    price:179,
+    category:"furniture",
+    description:"Une étagère en bois pour exposer tes objets préférés.",
+    image:"https://images.unsplash.com/photo-1594620302200-9a762244a156?auto=format&fit=crop&w=900&q=85"
+  },
+
+  {
+    id:"warm-light",
+    name:"Warm Light",
+    price:79,
+    category:"lighting",
+    description:"Une lumière chaude pour créer une ambiance calme.",
+    image:"https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=900&q=85"
+  }
+
+];
+
+/*
+  products = uniquement les produits Discover.
+  Les annonces vendeurs n'y sont volontairement PAS.
+*/
+
+let products=[...baseProducts];
+
+let saved=JSON.parse(
+  localStorage.getItem("veylo_saved")||"[]"
 );
 
-let collections = JSON.parse(
-  localStorage.getItem("veylo_collections") || "[]"
+let collections=JSON.parse(
+  localStorage.getItem("veylo_collections")||"[]"
 );
 
-let listings = JSON.parse(
-  localStorage.getItem("veylo_listings") || "[]"
+let listings=JSON.parse(
+  localStorage.getItem("veylo_listings")||"[]"
 );
 
-products = [...listings];
+let currentCategory="all";
 
-let currentCategory = "all";
-let selectedProductForCollection = null;
+let selectedProductForCollection=null;
 
 /* =========================
    AUTH
    ========================= */
 
-function getUser() {
-  try {
+function getUser(){
+
+  try{
+
     return JSON.parse(
-      localStorage.getItem("veylo_user") || "null"
+      localStorage.getItem("veylo_user")||"null"
     );
-  } catch {
+
+  }catch{
+
     return null;
+
   }
+
 }
 
-function isLoggedIn() {
+function isLoggedIn(){
+
   return !!getUser();
+
 }
 
-function initializeAuth() {
-  const user = getUser();
+function initializeAuth(){
 
-  if (user || localStorage.getItem("veylo_guest") === "true") {
-    document.getElementById("authScreen").classList.add("hidden");
+  const user=getUser();
+
+  if(user||localStorage.getItem("veylo_guest")==="true"){
+
+    document
+      .getElementById("authScreen")
+      .classList.add("hidden");
+
   }
 
   updateProfileButton();
+
 }
 
-document.getElementById("guestBtn").addEventListener("click", () => {
-  localStorage.setItem("veylo_guest", "true");
-  localStorage.removeItem("veylo_user");
+document
+  .getElementById("guestBtn")
+  .addEventListener("click",()=>{
 
-  document.getElementById("authScreen").classList.add("hidden");
-  showToast("Bienvenue sur Veylo 👋");
-});
+    localStorage.setItem(
+      "veylo_guest",
+      "true"
+    );
 
-document.getElementById("openLoginBtn").addEventListener("click", () => {
-  document.getElementById("loginModal").classList.remove("hidden");
-});
+    localStorage.removeItem(
+      "veylo_user"
+    );
 
-document.getElementById("openRegisterBtn").addEventListener("click", () => {
-  document.getElementById("registerModal").classList.remove("hidden");
-});
+    document
+      .getElementById("authScreen")
+      .classList.add("hidden");
 
-function login() {
-  const email = document.getElementById("loginEmail").value.trim();
-  const password = document.getElementById("loginPassword").value.trim();
+    showToast("Bienvenue sur Veylo 👋");
 
-  if (!email || !password) {
+  });
+
+document
+  .getElementById("openLoginBtn")
+  .addEventListener("click",()=>{
+
+    document
+      .getElementById("loginModal")
+      .classList.remove("hidden");
+
+  });
+
+document
+  .getElementById("openRegisterBtn")
+  .addEventListener("click",()=>{
+
+    document
+      .getElementById("registerModal")
+      .classList.remove("hidden");
+
+  });
+
+function login(){
+
+  const email=
+    document
+      .getElementById("loginEmail")
+      .value.trim();
+
+  const password=
+    document
+      .getElementById("loginPassword")
+      .value.trim();
+
+  if(!email||!password){
+
     showToast("Remplis tous les champs.");
+
     return;
+
   }
 
-  const user = {
-    name: email.split("@")[0],
-    email: email
+  const user={
+    name:email.split("@")[0],
+    email:email
   };
 
-  localStorage.setItem("veylo_user", JSON.stringify(user));
-  localStorage.removeItem("veylo_guest");
+  localStorage.setItem(
+    "veylo_user",
+    JSON.stringify(user)
+  );
+
+  localStorage.removeItem(
+    "veylo_guest"
+  );
 
   closeModal("loginModal");
-  document.getElementById("authScreen").classList.add("hidden");
+
+  document
+    .getElementById("authScreen")
+    .classList.add("hidden");
 
   updateProfileButton();
+
   showToast("Connexion réussie 👋");
+
 }
 
-function register() {
-  const name = document.getElementById("registerName").value.trim();
-  const email = document.getElementById("registerEmail").value.trim();
-  const password = document.getElementById("registerPassword").value.trim();
+function register(){
 
-  if (!name || !email || !password) {
+  const name=
+    document
+      .getElementById("registerName")
+      .value.trim();
+
+  const email=
+    document
+      .getElementById("registerEmail")
+      .value.trim();
+
+  const password=
+    document
+      .getElementById("registerPassword")
+      .value.trim();
+
+  if(!name||!email||!password){
+
     showToast("Remplis tous les champs.");
+
     return;
+
   }
 
-  const user = { name, email };
+  const user={
+    name,
+    email
+  };
 
-  localStorage.setItem("veylo_user", JSON.stringify(user));
-  localStorage.removeItem("veylo_guest");
+  localStorage.setItem(
+    "veylo_user",
+    JSON.stringify(user)
+  );
+
+  localStorage.removeItem(
+    "veylo_guest"
+  );
 
   closeModal("registerModal");
-  document.getElementById("authScreen").classList.add("hidden");
+
+  document
+    .getElementById("authScreen")
+    .classList.add("hidden");
 
   updateProfileButton();
+
   showToast("Compte créé 🎉");
+
 }
 
-function switchToRegister() {
+function switchToRegister(){
+
   closeModal("loginModal");
-  document.getElementById("registerModal").classList.remove("hidden");
+
+  document
+    .getElementById("registerModal")
+    .classList.remove("hidden");
+
 }
 
-function switchToLogin() {
+function switchToLogin(){
+
   closeModal("registerModal");
-  document.getElementById("loginModal").classList.remove("hidden");
+
+  document
+    .getElementById("loginModal")
+    .classList.remove("hidden");
+
 }
 
-function logout() {
+function logout(){
+
   localStorage.removeItem("veylo_user");
   localStorage.removeItem("veylo_guest");
 
-  document.getElementById("sellerSpace").classList.add("hidden");
-  document.getElementById("mySpace").classList.remove("hidden");
-  document.getElementById("inspiration").classList.remove("hidden");
-  document.getElementById("authScreen").classList.remove("hidden");
+  document
+    .getElementById("sellerSpace")
+    .classList.add("hidden");
+
+  document
+    .getElementById("mySpace")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("inspiration")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("authScreen")
+    .classList.remove("hidden");
 
   closeModal("profileModal");
+
 }
 
 /* =========================
    PROFILE
    ========================= */
 
-function updateProfileButton() {
-  const button = document.querySelector(".profile-btn");
-  const user = getUser();
+function updateProfileButton(){
 
-  button.textContent = user
-    ? user.name.charAt(0).toUpperCase()
-    : "V";
+  const button=
+    document.querySelector(".profile-btn");
+
+  const user=getUser();
+
+  button.textContent=
+    user
+      ? user.name.charAt(0).toUpperCase()
+      : "V";
+
 }
 
-function openProfile() {
-  const user = getUser();
-  const content = document.getElementById("profileContent");
+function openProfile(){
 
-  if (user) {
-    content.innerHTML = `
-      <h2>${escapeHtml(user.name)}</h2>
+  const user=getUser();
+
+  const content=
+    document.getElementById("profileContent");
+
+  if(user){
+
+    content.innerHTML=`
+
+      <h2>
+        ${escapeHtml(user.name)}
+      </h2>
 
       <p class="modal-subtitle">
         ${escapeHtml(user.email)}
@@ -1420,7 +1993,10 @@ function openProfile() {
 
       <button
         class="primary-btn"
-        onclick="closeModal('profileModal');openSellerAccess()"
+        onclick="
+          closeModal('profileModal');
+          openSellerAccess();
+        "
       >
         Espace vendeur
       </button>
@@ -1431,10 +2007,16 @@ function openProfile() {
       >
         Se déconnecter
       </button>
+
     `;
-  } else {
-    content.innerHTML = `
-      <h2>Invité</h2>
+
+  }else{
+
+    content.innerHTML=`
+
+      <h2>
+        Invité
+      </h2>
 
       <p class="modal-subtitle">
         Connecte-toi pour accéder à l'espace vendeur.
@@ -1442,180 +2024,354 @@ function openProfile() {
 
       <button
         class="primary-btn"
-        onclick="closeModal('profileModal');switchToLogin()"
+        onclick="
+          closeModal('profileModal');
+          switchToLogin();
+        "
       >
         Se connecter
       </button>
 
       <button
         class="secondary-btn"
-        onclick="closeModal('profileModal');switchToRegister()"
+        onclick="
+          closeModal('profileModal');
+          switchToRegister();
+        "
       >
         Créer un compte
       </button>
+
     `;
+
   }
 
-  document.getElementById("profileModal").classList.remove("hidden");
+  document
+    .getElementById("profileModal")
+    .classList.remove("hidden");
+
 }
 
 /* =========================
    SELLER
    ========================= */
 
-function openSellerAccess() {
-  if (!isLoggedIn()) {
-    showToast("Connecte-toi pour vendre sur Veylo.");
+function openSellerAccess(){
 
-    setTimeout(() => {
-      document.getElementById("loginModal").classList.remove("hidden");
-    }, 300);
+  if(!isLoggedIn()){
+
+    showToast(
+      "Connecte-toi pour vendre sur Veylo."
+    );
+
+    setTimeout(()=>{
+
+      document
+        .getElementById("loginModal")
+        .classList.remove("hidden");
+
+    },300);
 
     return;
+
   }
 
-  document.getElementById("sellerSpace").classList.remove("hidden");
-  document.getElementById("inspiration").classList.add("hidden");
-  document.getElementById("mySpace").classList.add("hidden");
+  document
+    .getElementById("sellerSpace")
+    .classList.remove("hidden");
 
-  document.getElementById("sellerSpace").scrollIntoView({
-    behavior: "smooth"
-  });
+  document
+    .getElementById("inspiration")
+    .classList.add("hidden");
+
+  document
+    .getElementById("mySpace")
+    .classList.add("hidden");
+
+  document
+    .getElementById("sellerSpace")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
 
   renderSellerListings();
+
 }
 
-function openCreateListing() {
-  if (!isLoggedIn()) {
-    showToast("Connecte-toi pour vendre.");
+function openCreateListing(){
+
+  if(!isLoggedIn()){
+
+    showToast(
+      "Connecte-toi pour vendre."
+    );
+
     return;
+
   }
 
-  document.getElementById("listingModal").classList.remove("hidden");
+  document
+    .getElementById("listingModal")
+    .classList.remove("hidden");
+
 }
 
 /* =========================
    IMAGE PICKER
    ========================= */
 
-let selectedListingImage = "";
+let selectedListingImage="";
 
-function chooseLibraryImage() {
-  document.getElementById("libraryImageInput").click();
+/*
+  Ouvre la bibliothèque
+*/
+
+function chooseLibraryImage(){
+
+  document
+    .getElementById("libraryImageInput")
+    .click();
+
 }
 
-function chooseCameraImage() {
-  document.getElementById("cameraImageInput").click();
+/*
+  Ouvre l'appareil photo
+*/
+
+function chooseCameraImage(){
+
+  document
+    .getElementById("cameraImageInput")
+    .click();
+
 }
 
-function handleImageFile(file) {
-  if (!file) return;
+/*
+  Traitement de l'image choisie
+*/
 
-  if (!file.type.startsWith("image/")) {
-    showToast("Choisis uniquement une image.");
+function handleImageFile(file){
+
+  if(!file){
+
     return;
+
   }
 
-  const reader = new FileReader();
+  if(!file.type.startsWith("image/")){
 
-  reader.onload = function(event) {
-    selectedListingImage = event.target.result;
+    showToast(
+      "Choisis uniquement une image."
+    );
 
-    const preview = document.getElementById("listingImagePreview");
-    preview.src = selectedListingImage;
-    preview.style.display = "block";
+    return;
+
+  }
+
+  const reader=
+    new FileReader();
+
+  reader.onload=function(event){
+
+    selectedListingImage=
+      event.target.result;
+
+    const preview=
+      document.getElementById(
+        "listingImagePreview"
+      );
+
+    preview.src=
+      selectedListingImage;
+
+    preview.style.display=
+      "block";
+
   };
 
   reader.readAsDataURL(file);
+
 }
 
-document.getElementById("libraryImageInput").addEventListener("change", event => {
-  handleImageFile(event.target.files[0]);
-});
+document
+  .getElementById("libraryImageInput")
+  .addEventListener(
+    "change",
+    event=>{
 
-document.getElementById("cameraImageInput").addEventListener("change", event => {
-  handleImageFile(event.target.files[0]);
-});
+      const file=
+        event.target.files[0];
+
+      handleImageFile(file);
+
+    }
+  );
+
+document
+  .getElementById("cameraImageInput")
+  .addEventListener(
+    "change",
+    event=>{
+
+      const file=
+        event.target.files[0];
+
+      handleImageFile(file);
+
+    }
+  );
 
 /* =========================
    CREATE LISTING
    ========================= */
 
-function createListing() {
-  if (!isLoggedIn()) {
-    showToast("Connexion obligatoire.");
+function createListing(){
+
+  if(!isLoggedIn()){
+
+    showToast(
+      "Connexion obligatoire."
+    );
+
     return;
+
   }
 
-  const name = document.getElementById("listingName").value.trim();
-  const price = Number(document.getElementById("listingPrice").value);
-  const category = document.getElementById("listingCategory").value;
-  const description = document.getElementById("listingDescription").value.trim();
+  const name=
+    document
+      .getElementById("listingName")
+      .value.trim();
 
-  if (!name || !price) {
-    showToast("Ajoute un nom et un prix.");
+  const price=
+    Number(
+      document
+        .getElementById("listingPrice")
+        .value
+    );
+
+  const category=
+    document
+      .getElementById("listingCategory")
+      .value;
+
+  const description=
+    document
+      .getElementById("listingDescription")
+      .value.trim();
+
+  if(!name||!price){
+
+    showToast(
+      "Ajoute un nom et un prix."
+    );
+
     return;
+
   }
 
-  if (!selectedListingImage) {
-    showToast("Ajoute une photo du produit.");
+  if(!selectedListingImage){
+
+    showToast(
+      "Ajoute une photo du produit."
+    );
+
     return;
+
   }
 
-  const user = getUser();
+  const user=getUser();
 
-  const listing = {
-    id: "listing-" + Date.now(),
+  const listing={
+
+    id:"listing-"+Date.now(),
+
     name,
+
     price,
+
     category,
-    image: selectedListingImage,
+
+    image:selectedListingImage,
+
     description,
-    seller: user.name,
-    sellerEmail: user.email,
-    createdAt: new Date().toISOString()
+
+    seller:user.name,
+
+    sellerEmail:user.email,
+
+    createdAt:new Date().toISOString()
+
   };
 
   listings.unshift(listing);
-
-  /* Mise à jour immédiate de Discover */
-  products = [...listings];
 
   localStorage.setItem(
     "veylo_listings",
     JSON.stringify(listings)
   );
 
-  renderProducts();
   closeModal("listingModal");
+
   clearListingForm();
+
   renderSellerListings();
 
-  showToast("Produit publié dans Discover 🎉");
+  showToast(
+    "Produit publié dans ton espace vendeur 🎉"
+  );
+
 }
 
-function clearListingForm() {
-  document.getElementById("listingName").value = "";
-  document.getElementById("listingPrice").value = "";
-  document.getElementById("listingDescription").value = "";
-  document.getElementById("libraryImageInput").value = "";
-  document.getElementById("cameraImageInput").value = "";
+function clearListingForm(){
 
-  selectedListingImage = "";
+  document
+    .getElementById("listingName")
+    .value="";
 
-  const preview = document.getElementById("listingImagePreview");
-  preview.src = "";
-  preview.style.display = "none";
+  document
+    .getElementById("listingPrice")
+    .value="";
+
+  document
+    .getElementById("listingDescription")
+    .value="";
+
+  document
+    .getElementById("libraryImageInput")
+    .value="";
+
+  document
+    .getElementById("cameraImageInput")
+    .value="";
+
+  selectedListingImage="";
+
+  const preview=
+    document.getElementById(
+      "listingImagePreview"
+    );
+
+  preview.src="";
+
+  preview.style.display="none";
+
 }
-  /* =========================
+
+/* =========================
    SELLER LISTINGS
    ========================= */
 
-function renderSellerListings() {
-  const container = document.getElementById("sellerListings");
+function renderSellerListings(){
 
-  if (!listings.length) {
-    container.innerHTML = `
+  const container=
+    document.getElementById(
+      "sellerListings"
+    );
+
+  if(!listings.length){
+
+    container.innerHTML=`
+
       <div style="
         background:white;
         border:1px solid var(--line);
@@ -1623,9 +2379,15 @@ function renderSellerListings() {
         padding:35px;
         text-align:center;
       ">
-        <h3>Aucune annonce</h3>
 
-        <p style="color:#777;margin:8px 0 20px">
+        <h3>
+          Aucune annonce
+        </h3>
+
+        <p style="
+          color:#777;
+          margin:8px 0 20px;
+        ">
           Ton catalogue est encore vide.
         </p>
 
@@ -1636,193 +2398,294 @@ function renderSellerListings() {
         >
           + Publier mon premier produit
         </button>
+
       </div>
+
     `;
+
     return;
+
   }
 
-  container.innerHTML = `
+  container.innerHTML=`
+
     <div class="section-head">
+
       <div>
-        <h2>Mes annonces</h2>
+
+        <h2>
+          Mes annonces
+        </h2>
+
         <p>
           ${listings.length}
-          produit${listings.length > 1 ? "s" : ""}.
+          produit${listings.length>1?"s":""}.
         </p>
+
       </div>
+
     </div>
 
     <div class="seller-list">
+
       ${
-        listings.map(listing => `
+        listings.map(listing=>`
+
           <div class="seller-item">
+
             <img
               src="${escapeAttr(listing.image)}"
               alt="${escapeAttr(listing.name)}"
             >
 
             <div class="seller-item-info">
-              <strong>${escapeHtml(listing.name)}</strong>
+
+              <strong>
+                ${escapeHtml(listing.name)}
+              </strong>
+
               <span>
                 ${listing.price} € ·
-                ${escapeHtml(categoryLabel(listing.category))}
+                ${escapeHtml(
+                  categoryLabel(listing.category)
+                )}
               </span>
+
             </div>
 
             <button
               class="delete-btn"
-              onclick="deleteListing('${listing.id}')"
+              onclick="
+                deleteListing('${listing.id}')
+              "
             >
               Supprimer
             </button>
+
           </div>
+
         `).join("")
       }
+
     </div>
+
   `;
+
 }
 
-function showSellerListings() {
+function showSellerListings(){
+
   renderSellerListings();
 
-  document.getElementById("sellerListings").scrollIntoView({
-    behavior: "smooth"
-  });
+  document
+    .getElementById("sellerListings")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
 }
 
-function showSellerSales() {
-  showToast("Les ventes arriveront bientôt.");
+function showSellerSales(){
+
+  showToast(
+    "Les ventes arriveront bientôt."
+  );
+
 }
 
-function deleteListing(id) {
-  listings = listings.filter(listing => listing.id !== id);
-  products = [...listings];
+function deleteListing(id){
+
+  listings=
+    listings.filter(
+      listing=>listing.id!==id
+    );
 
   localStorage.setItem(
     "veylo_listings",
     JSON.stringify(listings)
   );
 
-  renderProducts();
   renderSellerListings();
 
-  showToast("Annonce supprimée.");
+  showToast(
+    "Annonce supprimée."
+  );
+
 }
 
 /* =========================
-   PRODUCTS / DISCOVER
+   PRODUCTS
    ========================= */
 
-function renderProducts() {
-  const grid = document.getElementById("productGrid");
+function renderProducts(){
 
-  const search = document
-    .getElementById("searchInput")
-    .value
-    .toLowerCase()
-    .trim();
+  const grid=
+    document.getElementById(
+      "productGrid"
+    );
 
-  const filtered = products.filter(product => {
-    const matchesCategory =
-      currentCategory === "all" ||
-      product.category === currentCategory;
+  const search=
+    document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
 
-    const matchesSearch =
-      !search ||
-      product.name.toLowerCase().includes(search) ||
-      (product.description || "").toLowerCase().includes(search) ||
-      product.category.toLowerCase().includes(search);
+  const filtered=
+    products.filter(product=>{
 
-    return matchesCategory && matchesSearch;
-  });
+      const matchesCategory=
+        currentCategory==="all"||
+        product.category===currentCategory;
 
-  if (!filtered.length) {
-    grid.innerHTML = `
+      const matchesSearch=
+        !search||
+        product.name.toLowerCase().includes(search)||
+        product.description.toLowerCase().includes(search)||
+        product.category.toLowerCase().includes(search);
+
+      return matchesCategory&&matchesSearch;
+
+    });
+
+  if(!filtered.length){
+
+    grid.innerHTML=`
+
       <div style="
         padding:40px;
         color:#777;
         text-align:center;
       ">
-        Aucun produit pour le moment. Les produits apparaîtront ici dès qu’un vendeur publiera une annonce.
+        Aucun produit trouvé.
       </div>
+
     `;
+
     return;
+
   }
 
-  grid.innerHTML = filtered
-    .map(product => renderProductCard(product))
-    .join("");
+  grid.innerHTML=
+    filtered
+      .map(product=>renderProductCard(product))
+      .join("");
+
 }
 
-function renderProductCard(product) {
-  const isSaved = saved.includes(product.id);
+function renderProductCard(product){
+
+  const isSaved=
+    saved.includes(product.id);
 
   return `
+
     <article class="product-card">
+
       <button
-        class="heart-btn ${isSaved ? "saved" : ""}"
-        onclick="toggleSave('${product.id}')"
+        class="heart-btn ${isSaved?"saved":""}"
+        onclick="
+          toggleSave('${product.id}')
+        "
       >
-        ${isSaved ? "♥" : "♡"}
+        ${isSaved?"♥":"♡"}
       </button>
 
       <img
         class="product-image"
         src="${escapeAttr(product.image)}"
         alt="${escapeAttr(product.name)}"
-        onclick="openProduct('${product.id}')"
+        onclick="
+          openProduct('${product.id}')
+        "
       >
 
       <div class="product-info">
-        <h3>${escapeHtml(product.name)}</h3>
+
+        <h3>
+          ${escapeHtml(product.name)}
+        </h3>
 
         <div class="product-meta">
-          <span>${categoryLabel(product.category)}</span>
-          <span class="price">${product.price} €</span>
+
+          <span>
+            ${categoryLabel(product.category)}
+          </span>
+
+          <span class="price">
+            ${product.price} €
+          </span>
+
         </div>
 
         <div class="product-actions">
+
           <button
             class="small-btn"
-            onclick="openProduct('${product.id}')"
+            onclick="
+              openProduct('${product.id}')
+            "
           >
             Voir
           </button>
 
           <button
             class="small-btn"
-            onclick="openAddCollection('${product.id}')"
+            onclick="
+              openAddCollection('${product.id}')
+            "
           >
             + Collection
           </button>
+
         </div>
+
       </div>
+
     </article>
+
   `;
+
 }
 
-function categoryLabel(category) {
-  const labels = {
-    furniture: "Furniture",
-    lighting: "Lighting",
-    setup: "Setup",
-    decor: "Decor"
+function categoryLabel(category){
+
+  const labels={
+    furniture:"Furniture",
+    lighting:"Lighting",
+    setup:"Setup",
+    decor:"Decor"
   };
 
-  return labels[category] || category;
+  return labels[category]||category;
+
 }
 
 /* =========================
-   SAVED / FAVORIS
+   SAVED
    ========================= */
 
-function toggleSave(id) {
-  if (saved.includes(id)) {
-    saved = saved.filter(savedId => savedId !== id);
-    showToast("Retiré de My Space.");
-  } else {
+function toggleSave(id){
+
+  if(saved.includes(id)){
+
+    saved=
+      saved.filter(
+        savedId=>savedId!==id
+      );
+
+    showToast(
+      "Retiré de My Space."
+    );
+
+  }else{
+
     saved.push(id);
-    showToast("Sauvegardé dans My Space ♥");
+
+    showToast(
+      "Sauvegardé dans My Space ♥"
+    );
+
   }
 
   localStorage.setItem(
@@ -1832,17 +2695,25 @@ function toggleSave(id) {
 
   renderProducts();
   renderSaved();
+
 }
 
-function renderSaved() {
-  const container = document.getElementById("savedSection");
+function renderSaved(){
 
-  const savedProducts = products.filter(
-    product => saved.includes(product.id)
-  );
+  const container=
+    document.getElementById(
+      "savedSection"
+    );
 
-  if (!savedProducts.length) {
-    container.innerHTML = `
+  const savedProducts=
+    products.filter(
+      product=>saved.includes(product.id)
+    );
+
+  if(!savedProducts.length){
+
+    container.innerHTML=`
+
       <div style="
         background:white;
         border:1px solid var(--line);
@@ -1853,103 +2724,265 @@ function renderSaved() {
         Tu n'as encore rien sauvegardé.
         Explore Veylo et ajoute tes coups de cœur ♥
       </div>
+
     `;
+
     return;
+
   }
 
-  container.innerHTML = `
+  container.innerHTML=`
+
     <div class="section-head">
+
       <div>
-        <h2>Tes favoris</h2>
+
+        <h2>
+          Tes favoris
+        </h2>
+
         <p>
           ${savedProducts.length}
-          produit${savedProducts.length > 1 ? "s" : ""}
+          produit${savedProducts.length>1?"s":""}
         </p>
+
       </div>
+
     </div>
 
     <div class="product-grid">
+
       ${
         savedProducts
-          .map(product => renderProductCard(product))
+          .map(product=>renderProductCard(product))
           .join("")
       }
+
     </div>
+
   `;
+
 }
 
 /* =========================
    PRODUCT DETAIL
    ========================= */
 
-function openProduct(id) {
-  const product = products.find(p => p.id === id);
-  if (!product) return;
+function openProduct(id){
 
-  document.getElementById("productDetail").innerHTML = `
-    <div class="product-detail">
-      <img
-        src="${escapeAttr(product.image)}"
-        alt="${escapeAttr(product.name)}"
-      >
+  const product=
+    products.find(
+      p=>p.id===id
+    );
 
-      <div class="detail-info">
-        <h2>${escapeHtml(product.name)}</h2>
+  if(!product)return;
 
-        <div class="detail-price">
-          ${product.price} €
+  document
+    .getElementById("productDetail")
+    .innerHTML=`
+
+      <div class="product-detail">
+
+        <img
+          src="${escapeAttr(product.image)}"
+          alt="${escapeAttr(product.name)}"
+        >
+
+        <div class="detail-info">
+
+          <h2>
+            ${escapeHtml(product.name)}
+          </h2>
+
+          <div class="detail-price">
+            ${product.price} €
+          </div>
+
+          <p class="detail-description">
+            ${escapeHtml(product.description)}
+          </p>
+
+          <button
+            class="primary-btn"
+            onclick="
+              toggleSave('${product.id}');
+              closeModal('productModal');
+            "
+          >
+            ${
+              saved.includes(product.id)
+              ?"Retirer de My Space"
+              :"Sauvegarder"
+            }
+          </button>
+
+          <button
+            class="secondary-btn"
+            onclick="
+              openAddCollection('${product.id}')
+            "
+          >
+            + Ajouter à une collection
+          </button>
+
+          <button
+            class="secondary-btn"
+            onclick="openSellerChat('${product.id}')"
+          >
+            💬 Message au vendeur
+          </button>
+
         </div>
 
-        <p class="detail-description">
-          ${escapeHtml(product.description || "Aucune description fournie.")}
-        </p>
-
-        <button
-          class="primary-btn"
-          onclick="
-            toggleSave('${product.id}');
-            closeModal('productModal');
-          "
-        >
-          ${
-            saved.includes(product.id)
-              ? "Retirer de My Space"
-              : "Sauvegarder"
-          }
-        </button>
-
-        <button
-          class="secondary-btn"
-          onclick="openAddCollection('${product.id}')"
-        >
-          + Ajouter à une collection
-        </button>
       </div>
-    </div>
-  `;
 
-  document.getElementById("productModal").classList.remove("hidden");
+    `;
+
+  document
+    .getElementById("productModal")
+    .classList.remove("hidden");
+
+}
+
+/* =========================
+   MESSAGERIE VENDEUR
+   ========================= */
+
+let activeChatProduct = null;
+
+function getVeyloMessages(){
+  try{
+    return JSON.parse(localStorage.getItem("veylo_messages")||"[]");
+  }catch(error){
+    return [];
+  }
+}
+
+function openSellerChat(productId){
+  const product=products.find(p=>p.id===productId);
+  if(!product){
+    showToast("Produit introuvable.");
+    return;
+  }
+
+  activeChatProduct=product;
+  document.getElementById("messageTitle").textContent="Message au vendeur";
+  document.getElementById("messageSubtitle").textContent=
+    product.name+" · "+(product.seller||"Vendeur Veylo");
+  document.getElementById("messageInput").value="";
+  renderSellerMessages();
+  closeModal("productModal");
+  document.getElementById("messageModal").classList.remove("hidden");
+}
+
+function renderSellerMessages(){
+  const history=document.getElementById("messageHistory");
+  if(!activeChatProduct){
+    history.innerHTML="<p>Aucune conversation sélectionnée.</p>";
+    return;
+  }
+
+  const user=typeof getUser==="function"?getUser():null;
+  const currentEmail=user?.email||"";
+  const messages=getVeyloMessages().filter(message=>
+    message.productId===activeChatProduct.id
+  );
+
+  if(!messages.length){
+    history.innerHTML=`
+      <p style="color:#777;text-align:center;padding:25px 8px;">
+        Pas encore de messages. Lance la conversation !
+      </p>`;
+    return;
+  }
+
+  history.innerHTML=messages.map(message=>{
+    const own=message.senderEmail===currentEmail;
+    return `
+      <div style="align-self:${own?"flex-end":"flex-start"};max-width:85%;background:${own?"#171717":"#efeee9"};color:${own?"#fff":"#171717"};padding:11px 14px;border-radius:14px;overflow-wrap:anywhere;">
+        <div style="font-size:11px;opacity:.7;margin-bottom:5px;">${escapeHtml(message.senderName||"Utilisateur")}</div>
+        <div>${escapeHtml(message.text)}</div>
+        <div style="font-size:10px;opacity:.65;margin-top:6px;">${escapeHtml(message.date||"")}</div>
+      </div>`;
+  }).join("");
+
+  history.scrollTop=history.scrollHeight;
+}
+
+function sendSellerMessage(){
+  if(!activeChatProduct){
+    showToast("Ouvre d’abord un produit.");
+    return;
+  }
+  if(typeof isLoggedIn==="function"&&!isLoggedIn()){
+    showToast("Connecte-toi pour envoyer un message.");
+    return;
+  }
+
+  const input=document.getElementById("messageInput");
+  const messageText=input.value.trim();
+  if(!messageText){
+    showToast("Écris un message avant de l’envoyer.");
+    return;
+  }
+
+  const user=typeof getUser==="function"?getUser():null;
+  if(!user){
+    showToast("Impossible de récupérer ton compte.");
+    return;
+  }
+
+  const messages=getVeyloMessages();
+  messages.push({
+    id:"msg-"+Date.now(),
+    productId:activeChatProduct.id,
+    productName:activeChatProduct.name,
+    sellerName:activeChatProduct.seller||"Vendeur Veylo",
+    sellerEmail:activeChatProduct.sellerEmail||"",
+    senderName:user.name||"Utilisateur",
+    senderEmail:user.email||"",
+    text:messageText,
+    date:new Date().toLocaleString("fr-FR")
+  });
+
+  localStorage.setItem("veylo_messages",JSON.stringify(messages));
+  input.value="";
+  renderSellerMessages();
+  showToast("Message enregistré dans ce navigateur.");
 }
 
 /* =========================
    COLLECTIONS
    ========================= */
 
-function createCollection() {
-  const name = document
-    .getElementById("collectionNameInput")
-    .value
-    .trim();
+function createCollection(){
 
-  if (!name) {
-    showToast("Donne un nom à ta collection.");
+  const name=
+    document
+      .getElementById(
+        "collectionNameInput"
+      )
+      .value
+      .trim();
+
+  if(!name){
+
+    showToast(
+      "Donne un nom à ta collection."
+    );
+
     return;
+
   }
 
-  const collection = {
-    id: "collection-" + Date.now(),
+  const collection={
+
+    id:"collection-"+Date.now(),
+
     name,
-    products: []
+
+    products:[]
+
   };
 
   collections.push(collection);
@@ -1959,133 +2992,252 @@ function createCollection() {
     JSON.stringify(collections)
   );
 
-  document.getElementById("collectionNameInput").value = "";
+  document
+    .getElementById(
+      "collectionNameInput"
+    )
+    .value="";
 
   closeModal("collectionModal");
+
   renderCollections();
 
-  showToast("Collection créée ✨");
+  showToast(
+    "Collection créée ✨"
+  );
+
 }
 
-function renderCollections() {
-  const grid = document.getElementById("collectionsGrid");
+function renderCollections(){
 
-  let html = `
+  const grid=
+    document.getElementById(
+      "collectionsGrid"
+    );
+
+  let html=`
+
     <button
       class="new-collection"
-      onclick="openNewCollection()"
+      onclick="
+        openNewCollection()
+      "
     >
-      <div style="font-size:35px">＋</div>
-      <strong>Nouvelle collection</strong>
-      <span>Créer un moodboard</span>
+
+      <div style="font-size:35px">
+        ＋
+      </div>
+
+      <strong>
+        Nouvelle collection
+      </strong>
+
+      <span>
+        Créer un moodboard
+      </span>
+
     </button>
+
   `;
 
-  html += collections.map(collection => {
-    const preview = collection.products
-      .map(id => products.find(product => product.id === id))
-      .filter(Boolean)
-      .slice(0, 3);
+  html+=
+    collections
+      .map(collection=>{
 
-    let previewHTML = "";
+        const preview=
+          collection.products
+            .map(id=>
+              products.find(
+                product=>product.id===id
+              )
+            )
+            .filter(Boolean)
+            .slice(0,3);
 
-    if (!preview.length) {
-      previewHTML = `
-        <div style="
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          color:#999;
-          height:100%;
-          grid-column:span 2;
-        ">
-          Collection vide
-        </div>
-      `;
-    } else {
-      previewHTML = preview.map(product => `
-        <img
-          src="${escapeAttr(product.image)}"
-          alt=""
-        >
-      `).join("");
-    }
+        let previewHTML="";
 
-    return `
-      <div
-        class="collection-card"
-        onclick="openCollection('${collection.id}')"
-      >
-        <div class="collection-preview">
-          ${previewHTML}
-        </div>
+        if(!preview.length){
 
-        <div class="collection-name">
-          ${escapeHtml(collection.name)}
-        </div>
+          previewHTML=`
 
-        <div class="collection-count">
-          ${collection.products.length}
-          produit${collection.products.length > 1 ? "s" : ""}
-        </div>
-      </div>
-    `;
-  }).join("");
+            <div style="
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              color:#999;
+              height:100%;
+              grid-column:span 2;
+            ">
+              Collection vide
+            </div>
 
-  grid.innerHTML = html;
+          `;
+
+        }else{
+
+          previewHTML=
+            preview
+              .map(
+                product=>
+                  `<img
+                    src="${escapeAttr(product.image)}"
+                    alt=""
+                  >`
+              )
+              .join("");
+
+        }
+
+        return `
+
+          <div
+            class="collection-card"
+            onclick="
+              openCollection('${collection.id}')
+            "
+          >
+
+            <div class="collection-preview">
+
+              ${previewHTML}
+
+            </div>
+
+            <div class="collection-name">
+
+              ${escapeHtml(collection.name)}
+
+            </div>
+
+            <div class="collection-count">
+
+              ${collection.products.length}
+              produit${collection.products.length>1?"s":""}
+
+            </div>
+
+          </div>
+
+        `;
+
+      })
+      .join("");
+
+  grid.innerHTML=html;
+
 }
 
-function openNewCollection() {
-  document.getElementById("collectionModal").classList.remove("hidden");
+function openNewCollection(){
+
+  document
+    .getElementById("collectionModal")
+    .classList.remove("hidden");
+
 }
-  function openAddCollection(productId) {
-  selectedProductForCollection = productId;
 
-  const container = document.getElementById("collectionChoices");
+function openAddCollection(productId){
 
-  if (!collections.length) {
-    container.innerHTML = `
-      <p style="color:#777;margin-bottom:15px">
+  selectedProductForCollection=
+    productId;
+
+  const container=
+    document.getElementById(
+      "collectionChoices"
+    );
+
+  if(!collections.length){
+
+    container.innerHTML=`
+
+      <p style="
+        color:#777;
+        margin-bottom:15px;
+      ">
         Tu n'as pas encore de collection.
       </p>
-    `;
-  } else {
-    container.innerHTML = collections.map(collection => `
-      <button
-        style="
-          width:100%;
-          text-align:left;
-          padding:15px;
-          background:#fafafa;
-          border:1px solid var(--line);
-          border-radius:13px;
-          margin-bottom:8px;
-        "
-        onclick="addProductToCollection('${collection.id}','${productId}')"
-      >
-        <strong>${escapeHtml(collection.name)}</strong>
 
-        <div style="color:#777;font-size:13px;margin-top:3px">
-          ${collection.products.length}
-          produit${collection.products.length > 1 ? "s" : ""}
-        </div>
-      </button>
-    `).join("");
+    `;
+
+  }else{
+
+    container.innerHTML=
+      collections
+        .map(collection=>`
+
+          <button
+            style="
+              width:100%;
+              text-align:left;
+              padding:15px;
+              background:#fafafa;
+              border:1px solid var(--line);
+              border-radius:13px;
+              margin-bottom:8px;
+            "
+            onclick="
+              addProductToCollection(
+                '${collection.id}',
+                '${productId}'
+              )
+            "
+          >
+
+            <strong>
+              ${escapeHtml(collection.name)}
+            </strong>
+
+            <div style="
+              color:#777;
+              font-size:13px;
+              margin-top:3px;
+            ">
+              ${collection.products.length}
+              produit${collection.products.length>1?"s":""}
+            </div>
+
+          </button>
+
+        `)
+        .join("");
+
   }
 
-  document.getElementById("addCollectionModal").classList.remove("hidden");
+  document
+    .getElementById(
+      "addCollectionModal"
+    )
+    .classList.remove("hidden");
+
 }
 
-function openCollectionCreatorFromAdd() {
-  closeModal("addCollectionModal");
-  document.getElementById("collectionModal").classList.remove("hidden");
+function openCollectionCreatorFromAdd(){
+
+  closeModal(
+    "addCollectionModal"
+  );
+
+  document
+    .getElementById(
+      "collectionModal"
+    )
+    .classList.remove("hidden");
+
 }
 
-function addProductToCollection(collectionId, productId) {
-  const collection = collections.find(c => c.id === collectionId);
-  if (!collection) return;
+function addProductToCollection(
+  collectionId,
+  productId
+){
 
-  if (!collection.products.includes(productId)) {
+  const collection=
+    collections.find(
+      c=>c.id===collectionId
+    );
+
+  if(!collection)return;
+
+  if(!collection.products.includes(productId)){
+
     collection.products.push(productId);
 
     localStorage.setItem(
@@ -2093,36 +3245,71 @@ function addProductToCollection(collectionId, productId) {
       JSON.stringify(collections)
     );
 
-    showToast("Ajouté à la collection ✨");
-  } else {
-    showToast("Ce produit est déjà dans la collection.");
+    showToast(
+      "Ajouté à la collection ✨"
+    );
+
+  }else{
+
+    showToast(
+      "Ce produit est déjà dans la collection."
+    );
+
   }
 
-  closeModal("addCollectionModal");
+  closeModal(
+    "addCollectionModal"
+  );
+
   renderCollections();
+
 }
 
-function openCollection(id) {
-  const collection = collections.find(c => c.id === id);
-  if (!collection) return;
+function openCollection(id){
 
-  const collectionProducts = collection.products
-    .map(productId => products.find(product => product.id === productId))
-    .filter(Boolean);
+  const collection=
+    collections.find(
+      c=>c.id===id
+    );
 
-  document.getElementById("collectionDetail").innerHTML = `
-    <h2>${escapeHtml(collection.name)}</h2>
+  if(!collection)return;
 
-    <p class="modal-subtitle">
-      ${collectionProducts.length}
-      produit${collectionProducts.length > 1 ? "s" : ""}
-    </p>
+  const collectionProducts=
+    collection.products
+      .map(productId=>
+        products.find(
+          product=>product.id===productId
+        )
+      )
+      .filter(Boolean);
 
-    <div class="collection-detail-grid">
-      ${
-        collectionProducts.length
-          ? collectionProducts.map(product => `
-              <div class="collection-product">
+  document
+    .getElementById(
+      "collectionDetail"
+    )
+    .innerHTML=`
+
+      <h2>
+        ${escapeHtml(collection.name)}
+      </h2>
+
+      <p class="modal-subtitle">
+        ${collectionProducts.length}
+        produit${collectionProducts.length>1?"s":""}
+      </p>
+
+      <div class="collection-detail-grid">
+
+        ${
+          collectionProducts.length
+          ?
+          collectionProducts
+            .map(product=>`
+
+              <div
+                class="collection-product"
+              >
+
                 <img
                   src="${escapeAttr(product.image)}"
                   alt="${escapeAttr(product.name)}"
@@ -2130,41 +3317,82 @@ function openCollection(id) {
 
                 <button
                   class="remove-collection-product"
-                  onclick="removeFromCollection('${collection.id}','${product.id}')"
+                  onclick="
+                    removeFromCollection(
+                      '${collection.id}',
+                      '${product.id}'
+                    )
+                  "
                 >
                   ×
                 </button>
 
                 <div class="collection-overlay">
-                  <strong>${escapeHtml(product.name)}</strong>
-                  <div>${product.price} €</div>
+
+                  <strong>
+                    ${escapeHtml(product.name)}
+                  </strong>
+
+                  <div>
+                    ${product.price} €
+                  </div>
+
                 </div>
-              </div>
-            `).join("")
-          : `
-              <div style="color:#777;padding:30px">
-                Cette collection est vide.
-              </div>
-            `
-      }
-    </div>
 
-    <button
-      class="secondary-btn"
-      onclick="deleteCollection('${collection.id}')"
-    >
-      Supprimer la collection
-    </button>
-  `;
+              </div>
 
-  document.getElementById("collectionDetailModal").classList.remove("hidden");
+            `)
+            .join("")
+          :
+          `
+
+            <div style="
+              color:#777;
+              padding:30px;
+            ">
+              Cette collection est vide.
+            </div>
+
+          `
+        }
+
+      </div>
+
+      <button
+        class="secondary-btn"
+        onclick="
+          deleteCollection('${collection.id}')
+        "
+      >
+        Supprimer la collection
+      </button>
+
+    `;
+
+  document
+    .getElementById(
+      "collectionDetailModal"
+    )
+    .classList.remove("hidden");
+
 }
 
-function removeFromCollection(collectionId, productId) {
-  const collection = collections.find(c => c.id === collectionId);
-  if (!collection) return;
+function removeFromCollection(
+  collectionId,
+  productId
+){
 
-  collection.products = collection.products.filter(id => id !== productId);
+  const collection=
+    collections.find(
+      c=>c.id===collectionId
+    );
+
+  if(!collection)return;
+
+  collection.products=
+    collection.products.filter(
+      id=>id!==productId
+    );
 
   localStorage.setItem(
     "veylo_collections",
@@ -2172,97 +3400,173 @@ function removeFromCollection(collectionId, productId) {
   );
 
   renderCollections();
+
   openCollection(collectionId);
+
 }
 
-function deleteCollection(id) {
-  collections = collections.filter(collection => collection.id !== id);
+function deleteCollection(id){
+
+  collections=
+    collections.filter(
+      collection=>collection.id!==id
+    );
 
   localStorage.setItem(
     "veylo_collections",
     JSON.stringify(collections)
   );
 
-  closeModal("collectionDetailModal");
+  closeModal(
+    "collectionDetailModal"
+  );
+
   renderCollections();
 
-  showToast("Collection supprimée.");
+  showToast(
+    "Collection supprimée."
+  );
+
 }
 
 /* =========================
    FILTERS
    ========================= */
 
-document.querySelectorAll(".category").forEach(button => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".category").forEach(btn => {
-      btn.classList.remove("active");
-    });
+document
+  .querySelectorAll(".category")
+  .forEach(button=>{
 
-    button.classList.add("active");
-    currentCategory = button.dataset.category;
+    button.addEventListener(
+      "click",
+      ()=>{
 
-    renderProducts();
+        document
+          .querySelectorAll(".category")
+          .forEach(btn=>
+            btn.classList.remove("active")
+          );
+
+        button.classList.add("active");
+
+        currentCategory=
+          button.dataset.category;
+
+        renderProducts();
+
+      }
+    );
+
   });
-});
 
-document.getElementById("searchInput").addEventListener("input", () => {
-  currentCategory = "all";
+document
+  .getElementById("searchInput")
+  .addEventListener(
+    "input",
+    ()=>{
 
-  document.querySelectorAll(".category").forEach(btn => {
-    btn.classList.remove("active");
-  });
+      currentCategory="all";
 
-  document
-    .querySelector('[data-category="all"]')
-    .classList.add("active");
+      document
+        .querySelectorAll(".category")
+        .forEach(btn=>
+          btn.classList.remove("active")
+        );
 
-  renderProducts();
-});
+      document
+        .querySelector(
+          '[data-category="all"]'
+        )
+        .classList.add("active");
+
+      renderProducts();
+
+    }
+  );
 
 /* =========================
    MODALS
    ========================= */
 
-function closeModal(id) {
-  document.getElementById(id).classList.add("hidden");
+function closeModal(id){
+
+  document
+    .getElementById(id)
+    .classList.add("hidden");
+
 }
 
-document.querySelectorAll(".modal-backdrop").forEach(backdrop => {
-  backdrop.addEventListener("click", event => {
-    if (event.target === backdrop) {
-      backdrop.classList.add("hidden");
-    }
+document
+  .querySelectorAll(".modal-backdrop")
+  .forEach(backdrop=>{
+
+    backdrop.addEventListener(
+      "click",
+      event=>{
+
+        if(event.target===backdrop){
+
+          backdrop.classList.add(
+            "hidden"
+          );
+
+        }
+
+      }
+    );
+
   });
-});
 
 /* =========================
    NAVIGATION
    ========================= */
 
-function scrollToTop() {
-  document.getElementById("sellerSpace").classList.add("hidden");
-  document.getElementById("mySpace").classList.remove("hidden");
-  document.getElementById("inspiration").classList.remove("hidden");
+function scrollToTop(){
+
+  document
+    .getElementById("sellerSpace")
+    .classList.add("hidden");
+
+  document
+    .getElementById("mySpace")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("inspiration")
+    .classList.remove("hidden");
 
   window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+    top:0,
+    behavior:"smooth"
   });
+
 }
 
-function scrollToSection(id) {
-  document.getElementById("sellerSpace").classList.add("hidden");
-  document.getElementById("mySpace").classList.remove("hidden");
-  document.getElementById("inspiration").classList.remove("hidden");
+function scrollToSection(id){
 
-  const element = document.getElementById(id);
+  document
+    .getElementById("sellerSpace")
+    .classList.add("hidden");
 
-  if (element) {
+  document
+    .getElementById("mySpace")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("inspiration")
+    .classList.remove("hidden");
+
+  const element=
+    document.getElementById(id);
+
+  if(element){
+
     element.scrollIntoView({
-      behavior: "smooth"
+      behavior:"smooth"
     });
+
   }
+
 }
 
 /* =========================
@@ -2271,34 +3575,46 @@ function scrollToSection(id) {
 
 let toastTimer;
 
-function showToast(message) {
-  const toast = document.getElementById("toast");
+function showToast(message){
 
-  toast.textContent = message;
+  const toast=
+    document.getElementById("toast");
+
+  toast.textContent=
+    message;
+
   toast.classList.add("show");
 
   clearTimeout(toastTimer);
 
-  toastTimer = setTimeout(() => {
-    toast.classList.remove("show");
-  }, 2500);
+  toastTimer=
+    setTimeout(()=>{
+
+      toast.classList.remove("show");
+
+    },2500);
+
 }
 
 /* =========================
    ESCAPE
    ========================= */
 
-function escapeHtml(value) {
+function escapeHtml(value){
+
   return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
 }
 
-function escapeAttr(value) {
+function escapeAttr(value){
+
   return escapeHtml(value);
+
 }
 
 /* =========================
@@ -2306,8 +3622,11 @@ function escapeAttr(value) {
    ========================= */
 
 initializeAuth();
+
 renderProducts();
+
 renderSaved();
+
 renderCollections();
 
 </script>
