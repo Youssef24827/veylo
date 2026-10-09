@@ -1097,6 +1097,25 @@ nav{
 
       <button
         class="seller-action"
+        onclick="openSellerInbox()"
+      >
+
+        <div class="seller-action-icon">
+          💬
+        </div>
+
+        <h3>
+          Messages <span id="sellerUnreadCount" style="font-size:12px"></span>
+        </h3>
+
+        <p>
+          Réponds aux acheteurs intéressés par tes produits.
+        </p>
+
+      </button>
+
+      <button
+        class="seller-action"
         onclick="showSellerSales()"
       >
 
@@ -1306,6 +1325,16 @@ nav{
       <textarea id="messageInput" class="form-textarea" placeholder="Bonjour, j’aimerais avoir plus d’informations…"></textarea>
     </div>
     <button class="primary-btn" onclick="sendSellerMessage()">Envoyer le message</button>
+  </div>
+</div>
+
+<!-- BOITE DE RECEPTION VENDEUR -->
+<div id="sellerInboxModal" class="modal-backdrop hidden">
+  <div class="modal" style="max-width:760px;width:min(760px,94vw);">
+    <button class="close" onclick="closeModal('sellerInboxModal')">×</button>
+    <h2>Mes messages</h2>
+    <p class="modal-subtitle">Retrouve ici les acheteurs qui t’ont contacté au sujet de tes produits.</p>
+    <div id="sellerInboxList" style="display:flex;flex-direction:column;gap:12px;"></div>
   </div>
 </div>
 
@@ -2754,10 +2783,12 @@ function openProduct(id){
    ========================= */
 
 let activeChatProduct = null;
+let activeChatOtherEmail = "";
 
 function getVeyloMessages(){
   try{
-    return JSON.parse(localStorage.getItem("veylo_messages")||"[]");
+    const data=JSON.parse(localStorage.getItem("veylo_messages")||"[]");
+    return Array.isArray(data)?data:[];
   }catch(error){
     return [];
   }
@@ -2769,15 +2800,91 @@ function openSellerChat(productId){
     showToast("Produit introuvable.");
     return;
   }
+  const user=getUser();
+  if(user && product.sellerEmail && user.email===product.sellerEmail){
+    showToast("C’est ton annonce : ouvre Messages dans ton espace vendeur pour répondre aux acheteurs.");
+    return;
+  }
 
   activeChatProduct=product;
+  activeChatOtherEmail=product.sellerEmail||"";
   document.getElementById("messageTitle").textContent="Message au vendeur";
   document.getElementById("messageSubtitle").textContent=
     product.name+" · "+(product.seller||"Vendeur Veylo");
   document.getElementById("messageInput").value="";
   renderSellerMessages();
   closeModal("productModal");
+  closeModal("sellerInboxModal");
   document.getElementById("messageModal").classList.remove("hidden");
+}
+
+function openSellerConversation(productId,buyerEmail){
+  const product=products.find(p=>p.id===productId) || listings.find(p=>p.id===productId);
+  if(!product){
+    showToast("Cette annonce n’est plus disponible.");
+    return;
+  }
+  activeChatProduct=product;
+  activeChatOtherEmail=buyerEmail;
+  document.getElementById("messageTitle").textContent="Conversation avec l’acheteur";
+  document.getElementById("messageSubtitle").textContent=product.name+" · "+buyerEmail;
+  document.getElementById("messageInput").value="";
+  renderSellerMessages();
+  closeModal("sellerInboxModal");
+  document.getElementById("messageModal").classList.remove("hidden");
+}
+
+function openSellerInbox(){
+  if(!isLoggedIn()){
+    showToast("Connecte-toi pour consulter tes messages.");
+    return;
+  }
+  renderSellerInbox();
+  document.getElementById("sellerInboxModal").classList.remove("hidden");
+}
+
+function renderSellerInbox(){
+  const user=getUser();
+  const list=document.getElementById("sellerInboxList");
+  if(!user || !list) return;
+  const allMessages=getVeyloMessages();
+  const incoming=allMessages.filter(message=>
+    message.sellerEmail===user.email && message.senderEmail!==user.email
+  );
+  const conversations=new Map();
+  incoming.forEach(message=>{
+    const buyerEmail=message.buyerEmail||message.senderEmail;
+    const key=message.productId+"::"+buyerEmail;
+    const previous=conversations.get(key);
+    if(!previous || (message.id||"")>(previous.last.id||"")){
+      conversations.set(key,{productId:message.productId,buyerEmail,productName:message.productName||"Produit",last:message});
+    }
+  });
+  const items=[...conversations.values()].sort((a,b)=>{
+    const parseDate=value=>{const time=Date.parse(value||"");return Number.isNaN(time)?0:time;};
+    return parseDate(b.last.date)-parseDate(a.last.date);
+  });
+  const badge=document.getElementById("sellerUnreadCount");
+  if(badge) badge.textContent=items.length?"("+items.length+")":"";
+
+  if(!items.length){
+    list.innerHTML=`<div style="padding:30px 18px;text-align:center;background:#fafaf8;border-radius:16px;color:#777;">
+      <div style="font-size:32px;margin-bottom:8px;">💬</div>
+      <strong style="color:#171717;">Aucun message pour le moment</strong>
+      <p style="margin-top:8px;">Quand un acheteur te contactera depuis une annonce, sa conversation apparaîtra ici.</p>
+    </div>`;
+    return;
+  }
+  list.innerHTML=items.map(item=>`
+    <button type="button" onclick="openSellerConversation('${escapeAttr(item.productId)}','${escapeAttr(item.buyerEmail)}')" style="width:100%;text-align:left;border:1px solid var(--line);background:white;border-radius:16px;padding:16px;display:flex;gap:14px;align-items:center;cursor:pointer;">
+      <div style="width:44px;height:44px;flex:0 0 44px;border-radius:50%;background:#f0efe9;display:grid;place-items:center;font-weight:700;">${escapeHtml((item.buyerEmail||"A").charAt(0).toUpperCase())}</div>
+      <div style="min-width:0;flex:1;">
+        <strong style="display:block;color:#171717;">${escapeHtml(item.buyerEmail)}</strong>
+        <span style="display:block;font-size:12px;color:#777;margin:3px 0;">Pour : ${escapeHtml(item.productName)}</span>
+        <span style="display:block;font-size:14px;color:#555;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(item.last.text||"")}</span>
+      </div>
+      <span style="font-size:20px;">›</span>
+    </button>`).join("");
 }
 
 function renderSellerMessages(){
@@ -2786,73 +2893,66 @@ function renderSellerMessages(){
     history.innerHTML="<p>Aucune conversation sélectionnée.</p>";
     return;
   }
-
-  const user=typeof getUser==="function"?getUser():null;
+  const user=getUser();
   const currentEmail=user?.email||"";
-  const messages=getVeyloMessages().filter(message=>
-    message.productId===activeChatProduct.id
-  );
+  const otherEmail=activeChatOtherEmail;
+  const messages=getVeyloMessages().filter(message=>{
+    if(message.productId!==activeChatProduct.id) return false;
+    if(!otherEmail) return true;
+    return message.senderEmail===otherEmail ||
+      message.recipientEmail===otherEmail ||
+      message.buyerEmail===otherEmail ||
+      (message.senderEmail===currentEmail && message.recipientEmail===otherEmail);
+  });
 
   if(!messages.length){
-    history.innerHTML=`
-      <p style="color:#777;text-align:center;padding:25px 8px;">
-        Pas encore de messages. Lance la conversation !
-      </p>`;
+    history.innerHTML=`<p style="color:#777;text-align:center;padding:25px 8px;">Pas encore de messages. Lance la conversation !</p>`;
     return;
   }
-
   history.innerHTML=messages.map(message=>{
     const own=message.senderEmail===currentEmail;
-    return `
-      <div style="align-self:${own?"flex-end":"flex-start"};max-width:85%;background:${own?"#171717":"#efeee9"};color:${own?"#fff":"#171717"};padding:11px 14px;border-radius:14px;overflow-wrap:anywhere;">
-        <div style="font-size:11px;opacity:.7;margin-bottom:5px;">${escapeHtml(message.senderName||"Utilisateur")}</div>
-        <div>${escapeHtml(message.text)}</div>
-        <div style="font-size:10px;opacity:.65;margin-top:6px;">${escapeHtml(message.date||"")}</div>
-      </div>`;
+    return `<div style="align-self:${own?"flex-end":"flex-start"};max-width:85%;background:${own?"#171717":"#efeee9"};color:${own?"#fff":"#171717"};padding:11px 14px;border-radius:14px;overflow-wrap:anywhere;">
+      <div style="font-size:11px;opacity:.7;margin-bottom:5px;">${escapeHtml(message.senderName||"Utilisateur")}</div>
+      <div>${escapeHtml(message.text)}</div>
+      <div style="font-size:10px;opacity:.65;margin-top:6px;">${escapeHtml(message.date||"")}</div>
+    </div>`;
   }).join("");
-
   history.scrollTop=history.scrollHeight;
 }
 
 function sendSellerMessage(){
-  if(!activeChatProduct){
-    showToast("Ouvre d’abord un produit.");
-    return;
-  }
+  if(!activeChatProduct){showToast("Ouvre d’abord un produit.");return;}
   if(typeof isLoggedIn==="function"&&!isLoggedIn()){
-    showToast("Connecte-toi pour envoyer un message.");
-    return;
+    showToast("Connecte-toi pour envoyer un message.");return;
   }
-
   const input=document.getElementById("messageInput");
   const messageText=input.value.trim();
-  if(!messageText){
-    showToast("Écris un message avant de l’envoyer.");
-    return;
-  }
+  if(!messageText){showToast("Écris un message avant de l’envoyer.");return;}
+  const user=getUser();
+  if(!user){showToast("Impossible de récupérer ton compte.");return;}
 
-  const user=typeof getUser==="function"?getUser():null;
-  if(!user){
-    showToast("Impossible de récupérer ton compte.");
-    return;
-  }
-
+  const sellerEmail=activeChatProduct.sellerEmail||"";
+  const isSeller=!!sellerEmail && user.email===sellerEmail;
+  const recipientEmail=isSeller?(activeChatOtherEmail||""):sellerEmail;
+  const buyerEmail=isSeller?(activeChatOtherEmail||""):(user.email||"");
   const messages=getVeyloMessages();
   messages.push({
-    id:"msg-"+Date.now(),
+    id:"msg-"+Date.now()+"-"+Math.random().toString(36).slice(2,7),
     productId:activeChatProduct.id,
     productName:activeChatProduct.name,
     sellerName:activeChatProduct.seller||"Vendeur Veylo",
-    sellerEmail:activeChatProduct.sellerEmail||"",
+    sellerEmail,
+    buyerEmail,
+    recipientEmail,
     senderName:user.name||"Utilisateur",
     senderEmail:user.email||"",
     text:messageText,
     date:new Date().toLocaleString("fr-FR")
   });
-
   localStorage.setItem("veylo_messages",JSON.stringify(messages));
   input.value="";
   renderSellerMessages();
+  if(isSeller) renderSellerInbox();
   showToast("Message enregistré dans ce navigateur.");
 }
 
